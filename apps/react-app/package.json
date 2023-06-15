@@ -7,8 +7,7 @@
   "main": "index.js",
   "scripts": {
     "build": "esbuild src/app.tsx --bundle --outfile=public/js/app.js",
-    "start": "esbuild src/app.tsx --bundle --outfile=public/js/app.js --watch --serve --servedir=public",
-    "serve": "esbuild src/app.tsx --bundle --outfile=public/js/app.js --serve --servedir=public"
+    "watch": "esbuild src/app.tsx --bundle --outfile=public/js/app.js --watch --servedir=public"
   },
   "devDependencies": {
     "@types/react": "^18.2.12",

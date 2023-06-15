@@ -6,7 +6,8 @@
   "module": "./dist/index.js",
   "source": "./src/index.ts",
   "scripts": {
-    "build": "esbuild src/index.tsx --format=esm --bundle --sourcemap --outfile=dist/index.js"
+    "build": "esbuild src/index.tsx --format=esm --bundle --sourcemap --outfile=dist/index.js",
+    "watch": "esbuild src/index.tsx --format=esm --bundle --sourcemap --outfile=dist/index.js --watch"
   },
   "devDependencies": {
     "esbuild": "0.18.3",
