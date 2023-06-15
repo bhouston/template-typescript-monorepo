@@ -1,9 +1,9 @@
-import * as React from 'react'
-import ReactDOM from 'react-dom'
+import * as React from 'react';
+import ReactDOM from 'react-dom';
 import { HelloWorldComponent } from '@esbuild-ts-monorepo/react-lib';
 
-function App() {
-    return <HelloWorldComponent />
+function App(): React.JSX.Element {
+  return <HelloWorldComponent />;
 }
 
-ReactDOM.render(<App />, document.querySelector('#root'))
+ReactDOM.render(<App />, document.querySelector('#root'));
