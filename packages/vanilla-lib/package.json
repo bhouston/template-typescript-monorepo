@@ -1,0 +1,15 @@
+{
+  "name": "@esbuild-ts-monorepo/vanilla-lib",
+  "version": "1.0.0",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.js",
+  "source": "./src/index.ts",
+  "scripts": {
+    "build": "esbuild src/index.ts --format=esm --bundle --sourcemap --outfile=dist/index.js"
+  },
+  "devDependencies": {
+    "esbuild": "0.18.3",
+    "typescript": "5.1.3"
+  }
+}

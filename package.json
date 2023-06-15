@@ -1,0 +1,24 @@
+{
+  "name": "esbuild-ts-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "lerna run build --parallel",
+    "dev": "lerna run dev --parallel",
+    "watch": "lerna run watch --parallel --stream",
+    "start": "npm run start -w=react-app"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "devDependencies": {
+    "esbuild": "0.18.3",
+    "lerna": "^6.6.2"
+  }
+}
