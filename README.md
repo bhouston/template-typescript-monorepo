@@ -15,6 +15,7 @@ This is a template for a monorepository that uses ESBuild, TypeScript, and React
 - Prettier for code formatting
 - ESLint for linting
 - VSCode will auto-format on save and paste.
+- Jest testing
 
 ## Getting Started
 
@@ -24,6 +25,10 @@ This is a template for a monorepository that uses ESBuild, TypeScript, and React
 ### Enable Typechecking
 
 1. Run `npm run types` to watch for type errors
+
+### Tests
+
+1. Run `npm run test` to run all jest tests
 
 ### Web Server
 
