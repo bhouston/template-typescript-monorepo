@@ -25389,7 +25389,7 @@
   });
   var import_react = __toESM2(require_react2(), 1);
   var getHelloWorld = () => {
-    return "Hello World";
+    return "Hello World 1";
   };
   var HelloWorldComponent = () => /* @__PURE__ */ import_react.default.createElement("h1", null, getHelloWorld());
 

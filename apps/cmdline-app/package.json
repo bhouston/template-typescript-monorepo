@@ -8,7 +8,7 @@
   "bin": "./bin/cli.js",
   "scripts": {
     "build": "esbuild src/index.ts --format=esm --bundle --sourcemap --outfile=dist/index.js",
-    "watch": "esbuild src/index.ts --format=esm --bundle --sourcemap --outfile=dist/index.js --watch"
+    "dev": "esbuild src/index.ts --format=esm --bundle --sourcemap --outfile=dist/index.js --watch"
   },
   "devDependencies": {
     "esbuild": "0.18.3",

@@ -6,9 +6,7 @@
   "main": "index.js",
   "scripts": {
     "build": "lerna run build --parallel",
-    "dev": "lerna run dev --parallel",
-    "watch": "lerna run watch --parallel --stream",
-    "start": "npm run start -w=react-app",
+    "dev": "lerna run dev --parallel --stream",
     "format": "eslint \"{apps,packages}/**/src/**/*.{js,ts,tsx,json}\" --fix && prettier \"{apps,packages}/**/src/**/*.{js,ts,tsx,json}\" --check --write"
   },
   "keywords": [],
@@ -33,6 +31,5 @@
     "lerna": "^6.6.2",
     "prettier": "^2.8.8"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }

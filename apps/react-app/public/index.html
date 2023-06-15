@@ -4,7 +4,12 @@
     <div id="root" />
     <script src="js/app.js"></script>
     <script mimetype="application/javascript">
-      new EventSource('/esbuild').addEventListener('change', () => location.reload())
+      // check if this is hosted on localhost:
+      console.log( 'location.hostname', location.hostname);
+      if (location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.hostname === '[::1]' ) {
+        // if so, connect to the esbuild server
+        new EventSource('http://localhost:8001/esbuild').addEventListener('change', () => location.reload())
+      }
     </script>
   </body>
 </html>

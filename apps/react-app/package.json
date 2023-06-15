@@ -6,8 +6,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild src/app.tsx --bundle --outfile=public/js/app.js",
-    "watch": "esbuild src/app.tsx --bundle --outfile=public/js/app.js --watch --servedir=public"
+    "build": "esbuild src/app.tsx --bundle --minify --outfile=public/js/app.js",
+    "dev": "esbuild src/app.tsx --bundle --outfile=public/js/app.js --watch --serve=8001 --servedir=public"
   },
   "devDependencies": {
     "@types/react": "^18.2.12",
