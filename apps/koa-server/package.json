@@ -5,9 +5,10 @@
   "version": "1.0.0",
   "main": "src/server.js",
   "scripts": {
-    "build": "tsc",
+    "build": "esbuild src/server.ts --format=cjs --platform=node --bundle --sourcemap --outfile=dist/server.js",
     "start": "node dist/server.js",
-    "dev": "nodemon --exec 'npm run build && npm run start'"
+    "dev": "nodemon --exec 'npm run build && npm run start'",
+    "types": "tsc --noEmit --watch"
   },
   "devDependencies": {
     "@types/hapi__joi": "^17.1.9",

@@ -7,6 +7,7 @@
   "scripts": {
     "build": "lerna run build --parallel",
     "dev": "lerna run dev --parallel --stream",
+    "types": "lerna run types --parallel --stream",
     "format": "eslint \"{apps,packages}/**/src/**/*.{js,ts,tsx,json}\" --fix && prettier \"{apps,packages}/**/src/**/*.{js,ts,tsx,json}\" --check --write"
   },
   "keywords": [],
