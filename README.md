@@ -14,6 +14,7 @@ This is a template for a monorepository that uses ESBuild, TypeScript, and React
 - Lerna for managing the monorepo dependencies in parallel builds
 - Prettier for code formatting
 - ESLint for linting
+- VSCode will auto-format on save and paste.
 
 ## Getting Started
 
@@ -33,4 +34,3 @@ This is a template for a monorepository that uses ESBuild, TypeScript, and React
 
 1. Run `npm run build` to build the source
 2. Run `npx cmdline-app` to run the CLI example
-
