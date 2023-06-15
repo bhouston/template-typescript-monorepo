@@ -10,10 +10,6 @@
     "dev": "esbuild src/index.tsx --format=esm --bundle --sourcemap --outfile=dist/index.js --watch",
     "types": "tsc --emitDeclarationOnly --outDir dist --watch"
   },
-  "devDependencies": {
-    "esbuild": "0.18.3",
-    "typescript": "5.1.3"
-  },
   "dependencies": {
     "@esbuild-ts-monorepo/vanilla-lib": "*"
   }
