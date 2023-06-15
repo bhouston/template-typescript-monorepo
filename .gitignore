@@ -2,5 +2,4 @@
 node_modules
 dist
 build
-public/js
-
+apps/react-app/public/js
