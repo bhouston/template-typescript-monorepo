@@ -10,12 +10,14 @@ This is a template for a monorepository that uses ESBuild, TypeScript, and React
 - Both react and vanilla JS libraries
 - Command line, React, and webserver apps
 - ESBuild for fast builds
-- Hot reload of everything
+- Hot reload of React
+- Auto service resetart for webservers
 - Lerna for managing the monorepo dependencies in parallel builds
 - Prettier for code formatting
 - ESLint for linting
 - VSCode will auto-format on save and paste.
 - Jest testing
+- NX build caching
 
 ## Getting Started
 
