@@ -4,6 +4,7 @@
       "@esbuild-ts-monorepo/vanilla-lib": ["./packages/vanilla-lib/"],
       "@esbuild-ts-monorepo/react-lib": ["./packages/react-lib/"]
     },
+    "outDir": "./dist",
     "esModuleInterop": true,
     "moduleResolution": "node",
     "lib": ["es2020", "dom"],
