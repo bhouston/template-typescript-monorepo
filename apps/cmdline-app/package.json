@@ -7,8 +7,8 @@
   "source": "./src/index.ts",
   "bin": "./bin/cli.js",
   "scripts": {
-    "build": "esbuild src/index.ts --format=esm --bundle --sourcemap --outfile=dist/index.js",
-    "dev": "esbuild src/index.ts --format=esm --bundle --sourcemap --outfile=dist/index.js --watch",
+    "build": "esbuild src/index.ts --format=cjs --platform=node --bundle --sourcemap --outfile=dist/index.js",
+    "dev": "esbuild src/index.ts --format=cjs --platform=node --bundle --sourcemap --outfile=dist/index.js --watch",
     "types": "tsc --noEmit --watch"
   },
   "dependencies": {
