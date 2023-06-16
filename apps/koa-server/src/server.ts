@@ -4,10 +4,15 @@ import cors from '@koa/cors';
 import Router from '@koa/router';
 import Koa from 'koa';
 import logger from 'koa-logger';
-import Static from 'koa-static';
+import serve from 'koa-static';
 import proxy from 'koa-proxies';
+import mount from 'koa-mount';
+import compress from 'koa-compress';
+import staticCache from 'koa-static-cache';
 
 import { HOST, PORT } from './config';
+
+const useStaticCache = true;
 
 (async () => {
   console.log('Specifying Server...');
@@ -16,6 +21,13 @@ import { HOST, PORT } from './config';
 
   app.use(logger());
   app.use(cors());
+  app.use(
+    compress({
+      filter() {
+        return true;
+      }
+    })
+  );
 
   router.get('/api/my-api-composite', async (ctx: Koa.Context) => {
     ctx.response.body = {
@@ -28,10 +40,13 @@ import { HOST, PORT } from './config';
   app.use(router.routes());
   app.use(router.allowedMethods());
 
-  if( process.env.NODE_ENV === 'production' ) {
-    app.use( Static('../react-app/public') );
-  }
-  else {
+  if (process.env.NODE_ENV === 'production') {
+    if (useStaticCache) {
+      app.use(mount('/', staticCache('../react-app/public', { maxAge: 60 })));
+    } else {
+      app.use(mount('/', serve('../react-app/public')));
+    }
+  } else {
     app.use(
       proxy('/', {
         target: 'http://127.0.0.1:8001/',
