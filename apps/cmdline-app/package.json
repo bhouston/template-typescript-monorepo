@@ -1,10 +1,8 @@
 {
   "name": "cmdline-app",
   "version": "1.0.0",
-  "type": "module",
-  "types": "./dist/index.d.ts",
-  "module": "./dist/index.js",
   "source": "./src/index.ts",
+  "main": "./dist/index.js",
   "bin": "./bin/cli.js",
   "scripts": {
     "build": "esbuild src/index.ts --format=cjs --platform=node --bundle --sourcemap --outfile=dist/index.js",
