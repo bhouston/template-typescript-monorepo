@@ -2,6 +2,7 @@
   "name": "koa-server",
   "version": "1.0.0",
   "main": "src/server.js",
+  "source": "src/server.ts",
   "scripts": {
     "build": "esbuild src/server.ts --format=cjs --platform=node --bundle --sourcemap --outfile=dist/server.js",
     "start": "node dist/server.js",
