@@ -7,7 +7,6 @@
   "scripts": {
     "build": "lerna run build",
     "dev": "lerna run dev --parallel --stream",
-    "types": "lerna run types --parallel --stream",
     "clean": "rm -rf node_modules packages/*/node_modules app/*/node_modules packages/*/dist apps/*/dist",
     "format": "eslint \"{apps,packages}/**/src/**/*.{js,ts,tsx,json}\" --fix && prettier \"{apps,packages}/**/src/**/*.{js,ts,tsx,json}\" --check --write",
     "test": "jest"

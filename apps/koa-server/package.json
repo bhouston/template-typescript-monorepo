@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "src/server.js",
   "source": "src/server.ts",
+  "bin": "./bin/cli.js",
   "scripts": {
     "build": "tsc --noEmit && esbuild src/server.ts --format=cjs --platform=node --bundle --sourcemap --outfile=dist/server.js",
-    "start": "nodemon ./dist/server.js --watch ../../apps/koa-server/dist --watch ../../packages",
+    "start": "nodemon ./bin/cli.js --watch ../../apps/koa-server/dist --watch ../../packages",
     "dev": "tsc --noEmit --watch & esbuild src/server.ts --format=cjs --platform=node --bundle --sourcemap --outfile=dist/server.js --watch"
   },
   "devDependencies": {

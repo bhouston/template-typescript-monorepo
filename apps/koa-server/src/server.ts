@@ -15,7 +15,7 @@ import { HOST, PORT } from './config';
 
 const useStaticCache = true;
 
-(async () => {
+export const main = async () => {
   console.log('Specifying Server...');
   const app = new Koa();
   const router = new Router();
@@ -77,4 +77,4 @@ const useStaticCache = true;
   ['SIGINT', 'SIGTERM', 'SIGUSR1', 'SIGUSR2', 'exit'].forEach((signal) => {
     process.on(signal, closeGracefully);
   });
-})();
+};

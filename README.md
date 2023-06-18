@@ -24,20 +24,23 @@ This is a template for a monorepository that uses ESBuild, TypeScript, and React
 1. Clone this repository
 2. Run `npm install`
 
-### Enable Typechecking
-
-1. Run `npm run types` to watch for type errors
-
 ### Tests
 
 1. Run `npm run test` to run all jest tests
 
-### Web Server
+### Continuous Dev Build
 
 1. Run `npm run dev` to start the hot reload development server & build watchers
+
+### Optimized Production Build
+
+1. Run `npm run build` to build the source
+
+### Run the webserver
+
+1. Run `npx koa-server` to start the webserver
 2. Open `http://localhost:8000` in your browser
 
 ### Command Line
 
-1. Run `npm run build` to build the source
 2. Run `npx cmdline-app` to run the CLI example
