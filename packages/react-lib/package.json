@@ -7,8 +7,7 @@
   "source": "./src/index.ts",
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch",
-    "types": "tsc --emitDeclarationOnly --outDir dist --watch"
+    "dev": "tsc --watch"
   },
   "dependencies": {
     "@esbuild-ts-monorepo/vanilla-lib": "*"

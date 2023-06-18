@@ -4,10 +4,9 @@
   "main": "src/server.js",
   "source": "src/server.ts",
   "scripts": {
-    "build": "esbuild src/server.ts --format=cjs --platform=node --bundle --sourcemap --outfile=dist/server.js",
-    "start": "node dist/server.js",
-    "dev": "nodemon --exec 'npm run build && npm run start'",
-    "types": "tsc --noEmit --watch"
+    "build": "tsc --noEmit && esbuild src/server.ts --format=cjs --platform=node --bundle --sourcemap --outfile=dist/server.js",
+    "start": "nodemon ./dist/server.js --watch ../../apps/koa-server/dist --watch ../../packages",
+    "dev": "tsc --noEmit --watch & esbuild src/server.ts --format=cjs --platform=node --bundle --sourcemap --outfile=dist/server.js --watch"
   },
   "devDependencies": {
     "@types/hapi__joi": "^17.1.9",

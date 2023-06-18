@@ -9,6 +9,7 @@ import proxy from 'koa-proxies';
 import mount from 'koa-mount';
 import compress from 'koa-compress';
 import staticCache from 'koa-static-cache';
+import { getHelloWorld } from '@esbuild-ts-monorepo/vanilla-lib';
 
 import { HOST, PORT } from './config';
 
@@ -58,6 +59,7 @@ const useStaticCache = true;
   console.log('Starting server...');
   const server = app.listen(PORT, () => {
     console.log(`Server running ${HOST}:${PORT}`);
+    console.log('Status: ' + getHelloWorld());
   });
 
   let isClosed = false;
