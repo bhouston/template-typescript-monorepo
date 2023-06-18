@@ -78,3 +78,5 @@ export const main = async () => {
     process.on(signal, closeGracefully);
   });
 };
+
+main();

@@ -31,6 +31,8 @@ This is a template for a monorepository that uses ESBuild, TypeScript, and React
 ### Continuous Dev Build
 
 1. Run `npm run dev` to start the hot reload development server & build watchers
+2. Run `npn run start -2=koa-server` to start the webserver in auto-reload mode
+3. Open `http://localhost:8000` in your browser
 
 ### Optimized Production Build
 
