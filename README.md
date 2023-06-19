@@ -4,6 +4,12 @@ This is a template for a monorepository that uses ESBuild, TypeScript, and React
 
 It is what @bhouston considers best practice in June 2022.
 
+## The end result
+
+<img width="687" alt="Screenshot 2023-06-19 at 7 10 00 AM" src="https://github.com/bhouston/esbuild-ts-monorepo/assets/588541/ba6d1764-f4d6-4a31-8a98-957e954d95eb">
+
+(Aside, it is ridiculous that this installs +1000 packages, but it is what it is.)
+
 ## Features
 
 - Mono-repository using NPM workspaces
