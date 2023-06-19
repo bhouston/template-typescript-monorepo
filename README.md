@@ -2,7 +2,7 @@
 
 This is a template for a monorepository that uses ESBuild, TypeScript, and React.
 
-It is what @bhouston considers best practice in June 2022.
+It is what @bhouston considers best practice in June 2023.
 
 ## The end result
 
