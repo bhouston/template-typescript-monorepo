@@ -5,9 +5,8 @@
   "main": "./dist/index.js",
   "bin": "./bin/cli.js",
   "scripts": {
-    "build": "esbuild src/index.ts --format=cjs --platform=node --bundle --sourcemap --outfile=dist/index.js",
-    "dev": "esbuild src/index.ts --format=cjs --platform=node --bundle --sourcemap --outfile=dist/index.js --watch",
-    "types": "tsc --noEmit --watch"
+    "build": "tsc --noEmit && esbuild src/index.ts --format=cjs --platform=node --bundle --outfile=dist/index.js",
+    "dev": "tsc --noEmit --watch & esbuild src/index.ts --format=cjs --platform=node --bundle --sourcemap --outfile=dist/index.js --watch"
   },
   "dependencies": {
     "@esbuild-ts-monorepo/vanilla-lib": "*"
