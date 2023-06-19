@@ -2,6 +2,8 @@
 
 This is a template for a monorepository that uses ESBuild, TypeScript, and React.
 
+It is what @bhouston considers best practice in June 2022.
+
 ## Features
 
 - Mono-repository using NPM workspaces
@@ -9,9 +11,9 @@ This is a template for a monorepository that uses ESBuild, TypeScript, and React
 - React for UI
 - Both react and vanilla JS libraries
 - Command line, React, and webserver apps
-- ESBuild for fast builds
+- ESBuild for fast bundles
 - Hot reload of React
-- Auto service resetart for webservers
+- Auto service resetart for the webs erver
 - Lerna for managing the monorepo dependencies in parallel builds
 - Prettier for code formatting
 - ESLint for linting
@@ -38,11 +40,11 @@ This is a template for a monorepository that uses ESBuild, TypeScript, and React
 
 1. Run `npm run build` to build the source
 
-### Run the webserver
+### Run the webserver (no reload)
 
 1. Run `npx koa-server` to start the webserver
 2. Open `http://localhost:8000` in your browser
 
 ### Command Line
 
-2. Run `npx cmdline-app` to run the CLI example
+1. Run `npx cmdline-app` to run the CLI example
