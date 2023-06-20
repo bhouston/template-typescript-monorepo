@@ -1,4 +1,5 @@
 import { getHelloWorld } from '@esbuild-ts-monorepo/vanilla-lib';
+
 import { name, version } from '../package.json';
 
 export const main = async () => {

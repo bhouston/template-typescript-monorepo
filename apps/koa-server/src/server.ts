@@ -1,15 +1,15 @@
 import crypto from 'node:crypto';
 
+import { getHelloWorld } from '@esbuild-ts-monorepo/vanilla-lib';
 import cors from '@koa/cors';
 import Router from '@koa/router';
 import Koa from 'koa';
-import logger from 'koa-logger';
-import serve from 'koa-static';
-import proxy from 'koa-proxies';
-import mount from 'koa-mount';
 import compress from 'koa-compress';
+import logger from 'koa-logger';
+import mount from 'koa-mount';
+import proxy from 'koa-proxies';
+import serve from 'koa-static';
 import staticCache from 'koa-static-cache';
-import { getHelloWorld } from '@esbuild-ts-monorepo/vanilla-lib';
 
 import { HOST, PORT } from './config';
 

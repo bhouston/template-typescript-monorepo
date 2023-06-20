@@ -1,6 +1,6 @@
+import { HelloWorldComponent } from '@esbuild-ts-monorepo/react-lib';
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
-import { HelloWorldComponent } from '@esbuild-ts-monorepo/react-lib';
 
 function App(): React.JSX.Element {
   return (
