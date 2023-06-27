@@ -4,22 +4,16 @@
       "@esbuild-ts-monorepo/vanilla-lib": ["./packages/vanilla-lib/"],
       "@esbuild-ts-monorepo/react-lib": ["./packages/react-lib/"]
     },
-    "outDir": "./dist",
-    "esModuleInterop": true,
+    "outDir": "dist",
+    "target": "ES2018",
+    "module": "ES2020",
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "lib": ["es2020", "dom"],
-    "module": "ESNext",
-    "declaration": true,
-    "stripInternal": true,
     "typeRoots": ["node_modules/@types"],
     "resolveJsonModule": true,
-
-    // Components of "strict" mode.
-    "alwaysStrict": true,
-    "strictFunctionTypes": true,
-    "strictBindCallApply": true,
-    "noImplicitThis": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true
+    "declaration": true,
+    "sourceMap": true,
+    "strict": true
   }
 }

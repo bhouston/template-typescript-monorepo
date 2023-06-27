@@ -2,9 +2,9 @@
   "name": "@esbuild-ts-monorepo/vanilla-lib",
   "version": "1.0.0",
   "type": "module",
-  "types": "./dist/index.d.ts",
-  "module": "./dist/index.js",
-  "source": "./src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "source": "src/index.ts",
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch"
