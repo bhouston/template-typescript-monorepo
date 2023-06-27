@@ -1,5 +1,5 @@
 {
-  "name": "cmdline-app",
+  "name": "cli",
   "version": "1.0.0",
   "type": "module",
   "source": "./src/index.ts",
