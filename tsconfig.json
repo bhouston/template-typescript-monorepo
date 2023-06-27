@@ -1,26 +1,24 @@
 {
   "compilerOptions": {
     "paths": {
-      "@esbuild-ts-monorepo/vanilla-lib": ["./packages/vanilla-lib/"],
+      "@esbuild-ts-monorepo/generic-lib": ["./packages/generic-lib/"],
+      "@esbuild-ts-monorepo/node-lib": ["./packages/node-lib/"],
       "@esbuild-ts-monorepo/react-lib": ["./packages/react-lib/"]
     },
-    "outDir": "./dist",
-    "esModuleInterop": true,
+    "outDir": "dist",
+    "target": "ES2020",
+    "module": "ES2020",
     "moduleResolution": "node",
-    "lib": ["es2020", "dom"],
-    "module": "ESNext",
-    "target": "ES2018",
-    "declaration": true,
-    "stripInternal": true,
+    "lib": ["es2020", "dom", "dom.iterable"],
     "typeRoots": ["node_modules/@types"],
+    "esModuleInterop": true,
     "resolveJsonModule": true,
-
-    // Components of "strict" mode.
-    "alwaysStrict": true,
-    "strictFunctionTypes": true,
-    "strictBindCallApply": true,
-    "noImplicitThis": true,
+    "declaration": true,
+    "sourceMap": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "allowJs": true
   }
 }

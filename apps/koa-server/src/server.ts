@@ -1,6 +1,5 @@
-import crypto from 'node:crypto';
-
-import { getHelloWorld } from '@esbuild-ts-monorepo/vanilla-lib';
+import { toCamelCase } from '@esbuild-ts-monorepo/common-lib';
+import { stringToMd5Hash } from '@esbuild-ts-monorepo/node-lib';
 import cors from '@koa/cors';
 import Router from '@koa/router';
 import Koa from 'koa';
@@ -11,7 +10,7 @@ import proxy from 'koa-proxies';
 import serve from 'koa-static';
 import staticCache from 'koa-static-cache';
 
-import { HOST, PORT, VERSION } from './config';
+import { HOST, PORT, VERSION } from './config.js';
 
 const useStaticCache = true;
 
@@ -34,7 +33,7 @@ export const main = async () => {
   router.get('/api/my-api-composite', async (ctx: Koa.Context) => {
     ctx.response.body = {
       message: 'Hello World!',
-      random: crypto.randomBytes(16).toString('hex')
+      random: stringToMd5Hash('Hello World!')
     };
     ctx.response.status = 200;
   });
@@ -60,7 +59,7 @@ export const main = async () => {
   console.log('Starting server...');
   const server = app.listen(PORT, () => {
     console.log(`Server running ${HOST}:${PORT}`);
-    console.log('Status: ' + getHelloWorld());
+    console.log('Status: ' + toCamelCase('hello world!'));
   });
 
   let isClosed = false;
