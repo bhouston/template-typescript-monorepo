@@ -4,8 +4,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "build": "tsc --noEmit && esbuild src/app.tsx --bundle --minify --outfile=public/js/app.js",
-    "dev": "tsc --noEmit --watch & esbuild src/app.tsx --bundle --sourcemap --outfile=public/js/app.js --watch --serve=8001 --servedir=public"
+    "build": "tsc --noEmit && esbuild src/app.tsx --target=es2018 --bundle --minify --outfile=public/js/app.js",
+    "dev": "tsc --noEmit --watch & esbuild src/app.tsx --target=es2018 --bundle --sourcemap --outfile=public/js/app.js --watch --serve=8001 --servedir=public"
   },
   "devDependencies": {
     "@types/react": "^18.2.12",
