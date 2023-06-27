@@ -1,7 +1,7 @@
 {
   "name": "koa-server",
   "version": "1.0.0",
-  "main": "src/server.js",
+  "main": "dist/server.js",
   "source": "src/server.ts",
   "bin": "./bin/cli.js",
   "scripts": {
@@ -20,7 +20,7 @@
     "@types/koa-mount": "^4.0.2",
     "@types/koa-static": "^4.0.2",
     "@types/koa-static-cache": "^5.1.1",
-   "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22"
   },
   "dependencies": {
     "@esbuild-ts-monorepo/vanilla-lib": "*",
