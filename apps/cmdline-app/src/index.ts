@@ -1,9 +1,9 @@
-import { getHelloWorld } from '@esbuild-ts-monorepo/vanilla-lib';
+import { toCamelCase } from '@esbuild-ts-monorepo/common-lib';
 
 import { name, version } from '../package.json';
 
 export const main = async () => {
   console.log(`${name} v${version}`);
 
-  console.log(getHelloWorld());
+  console.log(toCamelCase('hello World!'));
 };

@@ -1,15 +1,13 @@
 {
-  "name": "@esbuild-ts-monorepo/react-lib",
+  "name": "@esbuild-ts-monorepo/node-lib",
   "version": "1.0.0",
   "type": "module",
-  "types": "dist/index.d.ts",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "source": "src/index.ts",
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch"
   },
-  "dependencies": {
-    "@esbuild-ts-monorepo/common-lib": "*"
-  }
+  "devDependencies": {}
 }

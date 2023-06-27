@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "paths": {
-      "@esbuild-ts-monorepo/vanilla-lib": ["./packages/vanilla-lib/"],
+      "@esbuild-ts-monorepo/generic-lib": ["./packages/generic-lib/"],
+      "@esbuild-ts-monorepo/node-lib": ["./packages/node-lib/"],
       "@esbuild-ts-monorepo/react-lib": ["./packages/react-lib/"]
     },
     "outDir": "dist",

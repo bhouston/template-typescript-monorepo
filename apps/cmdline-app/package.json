@@ -9,6 +9,6 @@
     "dev": "tsc --noEmit --watch & esbuild src/index.ts --format=cjs --platform=node --bundle --sourcemap --outfile=dist/index.js --watch"
   },
   "dependencies": {
-    "@esbuild-ts-monorepo/vanilla-lib": "*"
+    "@esbuild-ts-monorepo/common-lib": "*"
   }
 }

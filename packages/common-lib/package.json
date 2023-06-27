@@ -1,5 +1,5 @@
 {
-  "name": "@esbuild-ts-monorepo/vanilla-lib",
+  "name": "@esbuild-ts-monorepo/common-lib",
   "version": "1.0.0",
   "type": "module",
   "main": "dist/index.js",
@@ -9,6 +9,5 @@
     "build": "tsc",
     "dev": "tsc --watch"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
