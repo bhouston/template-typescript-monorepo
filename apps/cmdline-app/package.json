@@ -1,12 +1,13 @@
 {
   "name": "cmdline-app",
   "version": "1.0.0",
+  "type": "module",
   "source": "./src/index.ts",
   "main": "./dist/index.js",
   "bin": "./bin/cli.js",
   "scripts": {
-    "build": "tsc --noEmit && esbuild src/index.ts --format=cjs --target=es2018 --platform=node --bundle --outfile=dist/index.js",
-    "dev": "tsc --noEmit --watch & esbuild src/index.ts --format=cjs --target=es2018 --platform=node --bundle --sourcemap --outfile=dist/index.js --watch"
+    "build": "tsc",
+    "dev": "tsc --watch"
   },
   "dependencies": {
     "@esbuild-ts-monorepo/common-lib": "*"

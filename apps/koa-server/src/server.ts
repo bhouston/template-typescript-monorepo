@@ -10,11 +10,12 @@ import proxy from 'koa-proxies';
 import serve from 'koa-static';
 import staticCache from 'koa-static-cache';
 
-import { HOST, PORT } from './config';
+import { HOST, PORT, VERSION } from './config.js';
 
 const useStaticCache = true;
 
 export const main = async () => {
+  console.log(`Version: ${VERSION}`);
   console.log('Specifying Server...');
   const app = new Koa();
   const router = new Router();

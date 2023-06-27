@@ -1,12 +1,13 @@
 {
   "name": "koa-server",
   "version": "1.0.0",
+  "type": "module",
   "main": "src/server.js",
   "source": "src/server.ts",
   "bin": "./bin/cli.js",
   "scripts": {
-    "build": "tsc --noEmit && esbuild src/server.ts --format=cjs --target=es2018 --platform=node --bundle --outfile=dist/server.js",
-    "dev": "tsc --noEmit --watch & esbuild src/server.ts --format=cjs --target=es2018 --platform=node --bundle --sourcemap --outfile=dist/server.js --watch",
+    "build": "tsc",
+    "dev": "tsc --watch",
     "start": "nodemon dist/server.js"
   },
   "devDependencies": {
