@@ -5,8 +5,8 @@
   "source": "src/server.ts",
   "bin": "./bin/cli.js",
   "scripts": {
-    "build": "tsc --noEmit && esbuild src/server.ts --format=cjs --platform=node --bundle --outfile=dist/server.js",
-    "dev": "tsc --noEmit --watch & esbuild src/server.ts --format=cjs --platform=node --bundle --sourcemap --outfile=dist/server.js --watch",
+    "build": "tsc --noEmit && esbuild src/server.ts --format=cjs --target=es2018 --platform=node --bundle --outfile=dist/server.js",
+    "dev": "tsc --noEmit --watch & esbuild src/server.ts --format=cjs --target=es2018 --platform=node --bundle --sourcemap --outfile=dist/server.js --watch",
     "start": "nodemon dist/server.js"
   },
   "devDependencies": {
@@ -20,8 +20,7 @@
     "@types/koa-mount": "^4.0.2",
     "@types/koa-static": "^4.0.2",
     "@types/koa-static-cache": "^5.1.1",
-    "@types/node": "^18.15.11",
-    "nodemon": "^2.0.22"
+   "nodemon": "^2.0.22"
   },
   "dependencies": {
     "@esbuild-ts-monorepo/vanilla-lib": "*",

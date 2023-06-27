@@ -1,0 +1,8 @@
+steps:
+- name: 'gcr.io/kaniko-project/executor:latest'
+  args:
+  - --destination=gcr.io/$PROJECT_ID/esbuild-ts-monorepo-image
+  - --cache=true
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
+  entrypoint: gcloud
+  args: ['run', 'services', 'update', 'esbuild-ts-monorepo', '--platform=managed', '--image=gcr.io/$PROJECT_ID/esbuild-ts-monorepo-image', '--region=us-central1', '--quiet']

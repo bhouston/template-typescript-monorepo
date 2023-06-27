@@ -7,7 +7,7 @@
   "scripts": {
     "build": "lerna run build",
     "dev": "lerna run dev --parallel --stream",
-    "clean": "rm -rf node_modules packages/*/node_modules app/*/node_modules packages/*/dist apps/*/dist",
+    "clean": "rm -rf node_modules packages/*/node_modules apps/*/node_modules packages/*/dist apps/*/dist",
     "format": "eslint \"{apps,packages}/**/src/**/*.{js,ts,tsx,json}\" --fix && prettier \"{apps,packages}/**/src/**/*.{js,ts,tsx,json}\" --check --write",
     "test": "jest"
   },
@@ -20,6 +20,7 @@
   ],
   "devDependencies": {
     "@types/jest": "^29.5.2",
+    "@types/node": "^20.3.1",
     "@typescript-eslint/eslint-plugin": "^5.59.11",
     "esbuild": "0.18.3",
     "eslint": "^8.42.0",
