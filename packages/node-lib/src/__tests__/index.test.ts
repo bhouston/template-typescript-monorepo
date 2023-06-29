@@ -1,4 +1,4 @@
-import { stringToMd5Hash } from '../index';
+import { stringToMd5Hash } from '../index.js';
 
 // check if hello world is returned
 test('hello world', () => {
