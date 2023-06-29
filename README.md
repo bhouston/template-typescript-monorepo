@@ -14,12 +14,14 @@ It is what @bhouston considers best practice in June 2023.
 
 - Mono-repository using NPM workspaces
 - TypeScript for type safety
+- ES Modules for fast builds
+- NodeNext node resolution
 - React for UI
 - Both react and vanilla JS libraries
-- Command line, React, and webserver apps
+- Command line, React app, and web server
 - ESBuild for fast bundles
 - Hot reload of React
-- Auto service resetart for the webs erver
+- Auto service restart for the web server
 - Lerna for managing the monorepo dependencies in parallel builds
 - Prettier for code formatting
 - ESLint for linting
@@ -39,8 +41,11 @@ It is what @bhouston considers best practice in June 2023.
 ### Continuous Dev Build
 
 1. Run `npm run dev` to start the hot reload development server & build watchers
-2. Run `npn run start -2=koa-server` to start the webserver in auto-reload mode
-3. Open `http://localhost:8000` in your browser
+
+#### Start Webserver with Auto-Reload
+
+1. Run `npn run start` to start the webserver in auto-reload mode
+2. Open `http://localhost:8000` in your browser
 
 ### Optimized Production Build
 
