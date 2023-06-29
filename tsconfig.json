@@ -12,7 +12,7 @@
     "lib": ["es2020", "dom", "dom.iterable"],
     "typeRoots": ["node_modules/@types"],
     "esModuleInterop": true,
-    "resolveJsonModule": true,
+    "resolveJsonModule": false, // causes problems by hoisting json files, and src to the root of the dist folder
     "declaration": true,
     "sourceMap": true,
     "strict": true,
