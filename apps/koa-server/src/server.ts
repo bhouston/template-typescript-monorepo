@@ -10,7 +10,7 @@ import proxy from 'koa-proxies';
 import serve from 'koa-static';
 import staticCache from 'koa-static-cache';
 
-import { HOST, PORT, VERSION } from './config.js';
+import { PORT, VERSION } from './config.js';
 
 const useStaticCache = true;
 
@@ -58,7 +58,7 @@ export const main = async () => {
 
   console.log('Starting server...');
   const server = app.listen(PORT, () => {
-    console.log(`Server running ${HOST}:${PORT}`);
+    console.log(`Server running ${PORT}`);
     console.log('Status: ' + toCamelCase('hello world!'));
   });
 
