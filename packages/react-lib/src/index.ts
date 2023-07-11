@@ -1,3 +1,3 @@
-import './index.css';
+import './styles.css';
 
-export * from './HelloWorldComponent.js';
+export * from './HelloWorld.js';

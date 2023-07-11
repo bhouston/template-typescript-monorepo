@@ -4,14 +4,16 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "build": "tsc --noEmit && node build.js",
-    "dev": "tsc --noEmit --watch & node build.js --dev"
+    "build:css": "npx postcss src/styles.css -o dist/styles.css",
+    "build:tsc": "tsc --noEmit",
+    "build:esbuild": "esbuild src/app.tsx --target=es2018 --bundle --minify --outfile=public/js/app.js",
+    "build": "npm run build:css && npm run build:tsc && npm run build:esbuild",
+    "dev": "tsc --noEmit --watch & esbuild src/app.tsx --target=es2018 --bundle --sourcemap --outfile=public/js/app.js --watch --serve=8001 --servedir=public"
   },
   "devDependencies": {
     "@types/react": "^18.2.12",
     "@types/react-dom": "^18.2.5",
     "autoprefixer": "^10.4.14",
-    "esbuild-style-plugin": "^1.6.2",
     "postcss": "^8.4.25",
     "tailwindcss": "^3.3.2"
   },
