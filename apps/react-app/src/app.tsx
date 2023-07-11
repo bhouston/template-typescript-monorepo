@@ -1,15 +1,10 @@
-import { HelloWorldComponent } from '@esbuild-ts-monorepo/react-lib';
-import * as React from 'react';
-import { createRoot } from 'react-dom/client';
+import React from 'react';
+import HelloWorld from './HelloWorld';
 
-function App(): React.JSX.Element {
-  return (
-    <>
-      <HelloWorldComponent />
-    </>
-  );
-}
+const App: React.FC = () => (
+  <div className="text-center mt-4">
+    <HelloWorld name="World" />
+  </div>
+);
 
-const container = document.querySelector('#root');
-const root = createRoot(container!);
-root.render(<App />);
+export default App;
