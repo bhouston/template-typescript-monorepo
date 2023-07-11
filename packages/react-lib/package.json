@@ -11,5 +11,8 @@
   },
   "dependencies": {
     "@esbuild-ts-monorepo/common-lib": "*"
+  },
+  "devDependencies": {
+    "esbuild-style-plugin": "^1.6.2"
   }
 }
