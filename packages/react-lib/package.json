@@ -5,26 +5,12 @@
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "source": "src/index.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js"
-    },
-    "./package.json": "./package.json",
-    "./dist/*": "./dist/*",
-    "./src/*": "./src/*"
-  },
   "scripts": {
-    "build:ts": "tsc",
-    "build:css": "npx postcss src/styles.css -o dist/styles.css",
-    "build": "npm run build:ts && npm run build:css",
-    "dev": "npx postcss src/styles.css -o dist/styles.css --watch & tsc --watch"
+    "build": "tsc",
+    "dev": "tsc --watch"
   },
   "dependencies": {
     "@esbuild-ts-monorepo/common-lib": "*"
   },
-  "devDependencies": {
-    "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.25",
-    "tailwindcss": "^3.3.2"
-  }
+  "devDependencies": {}
 }
