@@ -43,14 +43,14 @@ export const main = async () => {
 
   if (process.env.NODE_ENV === 'production') {
     if (useStaticCache) {
-      app.use(mount('/', staticCache('../react-app/public', { maxAge: 60 })));
+      app.use(mount('/', staticCache('../react-app/dist', { maxAge: 60 })));
     } else {
-      app.use(mount('/', serve('../react-app/public')));
+      app.use(mount('/', serve('../react-app/dist')));
     }
   } else {
     app.use(
       proxy('/', {
-        target: 'http://127.0.0.1:8001/',
+        target: 'http://localhost:5173/',
         changeOrigin: true
       })
     );

@@ -4,18 +4,18 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "build:tsc": "tsc --noEmit",
-    "build:css": "npx postcss src/styles.css -o public/styles.css",
-    "build:esbuild": "esbuild src/index.tsx --target=es2018 --bundle --minify --outfile=public/index.js",
-    "build": "npm run build:tsc && npm run build:css && npm run build:esbuild",
-    "dev": "npx postcss src/styles.css -o public/styles.css --watch & tsc --noEmit --watch & esbuild src/index.tsx --target=es2018 --bundle --sourcemap --outfile=public/index.js --watch --serve=8001 --servedir=public"
+    "build": "tsc && vite build",
+    "dev": "vite"
   },
   "devDependencies": {
     "@types/react": "^18.2.12",
     "@types/react-dom": "^18.2.5",
+    "@vitejs/plugin-react": "^4.0.3",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.25",
-    "tailwindcss": "^3.3.2"
+    "tailwindcss": "^3.3.2",
+    "vite": "^4.4.3",
+    "vite-tsconfig-paths": "^4.2.0"
   },
   "dependencies": {
     "@esbuild-ts-monorepo/react-lib": "*",

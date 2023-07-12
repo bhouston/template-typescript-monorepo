@@ -6,7 +6,7 @@
   "bin": "./bin/cli.js",
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch",
+    "dev": "tsc --watch & nodemon dist/server.js",
     "start": "nodemon dist/server.js"
   },
   "devDependencies": {
