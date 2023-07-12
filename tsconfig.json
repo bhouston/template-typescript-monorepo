@@ -11,6 +11,7 @@
     "moduleResolution": "NodeNext",
     "lib": ["es2020", "dom", "dom.iterable"],
     "typeRoots": ["node_modules/@types"],
+    "skipLibCheck": true,
     "esModuleInterop": true,
     "resolveJsonModule": false, // causes problems by hoisting json files, and src to the root of the dist folder
     "declaration": true,
