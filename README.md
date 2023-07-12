@@ -19,7 +19,7 @@ It is what @bhouston considers best practice in June 2023.
 - React for UI
 - Both react and vanilla JS libraries
 - Command line, React app, and web server
-- ESBuild for fast bundles
+- Vite for Bundling, CSS Handling, Live Reloading.
 - Hot reload of React
 - Auto service restart for the web server
 - Lerna for managing the monorepo dependencies in parallel builds
