@@ -7,12 +7,13 @@ import compress from 'koa-compress';
 import logger from 'koa-logger';
 import mount from 'koa-mount';
 import proxy from 'koa-proxies';
+import send from 'koa-send';
 import serve from 'koa-static';
 import staticCache from 'koa-static-cache';
 
-import { NAME, PORT, VERSION } from './config.js';
+import { BASE_DIR, NAME, PORT, VERSION } from './config.js';
 
-const useStaticCache = true;
+const useStaticCache = false;
 
 export const main = async () => {
   console.log(`${NAME}: ${VERSION}`);
@@ -42,11 +43,27 @@ export const main = async () => {
   app.use(router.allowedMethods());
 
   if (process.env.NODE_ENV !== 'development') {
+    const reactApDist = `${BASE_DIR}../react-app/dist`;
+    console.log({ reactApDist });
     if (useStaticCache) {
-      app.use(mount('/', staticCache('../react-app/dist', { maxAge: 60 })));
+      app.use(mount('/', staticCache(reactApDist, { maxAge: 60 })));
     } else {
-      app.use(mount('/', serve('../react-app/dist')));
+      app.use(
+        mount(
+          '/',
+          serve(reactApDist, {
+            index: 'index.html'
+          })
+        )
+      );
     }
+    // This will catch all other routes that are not caught by previous middleware
+    app.use(async (ctx) => {
+      await send(ctx, `${reactApDist}`, {
+        root: '/',
+        index: 'index.html'
+      });
+    });
   } else {
     // when in dev proxy to the vite development server
     app.use(
