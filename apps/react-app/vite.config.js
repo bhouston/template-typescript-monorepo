@@ -1,7 +1,8 @@
 export default {
   server: {
+    port: 4000,
     proxy: {
-      '/api': 'http://localhost:8001'
+      '/api': 'http://localhost:4001'
     }
   }
 };

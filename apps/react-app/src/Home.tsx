@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { HelloWorld } from '@esbuild-ts-monorepo/react-lib';
 
-const App: React.FC = () => {
+const Home: React.FC = () => {
   const [serverMessage, setServerMessage] = useState<string>();
 
   useMemo(() => {
@@ -18,4 +18,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default Home;

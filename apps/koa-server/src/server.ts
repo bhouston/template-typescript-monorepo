@@ -6,6 +6,7 @@ import Koa from 'koa';
 import compress from 'koa-compress';
 import logger from 'koa-logger';
 import mount from 'koa-mount';
+import proxy from 'koa-proxies';
 import serve from 'koa-static';
 import staticCache from 'koa-static-cache';
 
@@ -40,12 +41,21 @@ export const main = async () => {
   app.use(router.routes());
   app.use(router.allowedMethods());
 
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV !== 'development') {
     if (useStaticCache) {
       app.use(mount('/', staticCache('../react-app/dist', { maxAge: 60 })));
     } else {
       app.use(mount('/', serve('../react-app/dist')));
     }
+  } else {
+    // when in dev proxy to the vite development server
+    app.use(
+      proxy('/', {
+        target: 'http://localhost:4000',
+        changeOrigin: true,
+        logs: true
+      })
+    );
   }
 
   const server = app.listen(PORT, () => {
