@@ -6,17 +6,15 @@ import Koa from 'koa';
 import compress from 'koa-compress';
 import logger from 'koa-logger';
 import mount from 'koa-mount';
-import proxy from 'koa-proxies';
 import serve from 'koa-static';
 import staticCache from 'koa-static-cache';
 
-import { PORT, VERSION } from './config.js';
+import { NAME, PORT, VERSION } from './config.js';
 
 const useStaticCache = true;
 
 export const main = async () => {
-  console.log(`Version: ${VERSION}`);
-  console.log('Specifying Server...');
+  console.log(`${NAME}: ${VERSION}`);
   const app = new Koa();
   const router = new Router();
 
@@ -31,9 +29,10 @@ export const main = async () => {
   );
 
   router.get('/api/my-api-composite', async (ctx: Koa.Context) => {
+    const text = toCamelCase('Hello World!');
     ctx.response.body = {
-      message: 'Hello World!',
-      random: stringToMd5Hash('Hello World!')
+      message: text,
+      random: stringToMd5Hash(text)
     };
     ctx.response.status = 200;
   });
@@ -47,29 +46,18 @@ export const main = async () => {
     } else {
       app.use(mount('/', serve('../react-app/dist')));
     }
-  } else {
-    app.use(
-      proxy('/', {
-        target: 'http://localhost:5173/',
-        changeOrigin: true
-      })
-    );
   }
 
-  console.log('Starting server...');
   const server = app.listen(PORT, () => {
-    console.log(`Server running ${PORT}`);
-    console.log('Status: ' + toCamelCase('hello world!'));
+    console.log(`   Server: http://localhost:${PORT}`);
   });
 
   let isClosed = false;
   const closeGracefully = async (signal: NodeJS.Signals) => {
-    console.warn(`Received signal: ${signal}.`);
     if (isClosed) return;
+    console.warn(`Closing as a result of signal: ${signal}.`);
     isClosed = true;
-    console.log('Closing server...');
     server.close();
-    console.log('Exiting...');
     process.exit(0);
   };
 
