@@ -28,8 +28,8 @@ export const main = async () => {
     })
   );
 
-  router.get('/api/my-api-composite', async (ctx: Koa.Context) => {
-    const text = toCamelCase('Hello World!');
+  router.get('/api/get-message', async (ctx: Koa.Context) => {
+    const text = toCamelCase('world');
     ctx.response.body = {
       message: text,
       random: stringToMd5Hash(text)
