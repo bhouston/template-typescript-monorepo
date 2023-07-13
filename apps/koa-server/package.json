@@ -2,7 +2,6 @@
   "name": "koa-server",
   "version": "1.0.0",
   "type": "module",
-  "source": "src/server.ts",
   "bin": "./bin/cli.js",
   "scripts": {
     "build": "tsc",
