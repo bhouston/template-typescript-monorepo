@@ -7,16 +7,16 @@ import compress from 'koa-compress';
 import logger from 'koa-logger';
 import mount from 'koa-mount';
 import proxy from 'koa-proxies';
+import send from 'koa-send';
 import serve from 'koa-static';
 import staticCache from 'koa-static-cache';
 
-import { PORT, VERSION } from './config.js';
+import { BASE_DIR, NAME, PORT, VERSION } from './config.js';
 
-const useStaticCache = true;
+const useStaticCache = false;
 
 export const main = async () => {
-  console.log(`Version: ${VERSION}`);
-  console.log('Specifying Server...');
+  console.log(`${NAME}: ${VERSION}`);
   const app = new Koa();
   const router = new Router();
 
@@ -30,10 +30,11 @@ export const main = async () => {
     })
   );
 
-  router.get('/api/my-api-composite', async (ctx: Koa.Context) => {
+  router.get('/api/get-message', async (ctx: Koa.Context) => {
+    const text = toCamelCase('world');
     ctx.response.body = {
-      message: 'Hello World!',
-      random: stringToMd5Hash('Hello World!')
+      message: text,
+      random: stringToMd5Hash(text)
     };
     ctx.response.status = 200;
   });
@@ -41,35 +42,49 @@ export const main = async () => {
   app.use(router.routes());
   app.use(router.allowedMethods());
 
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV !== 'development') {
+    const reactApDist = `${BASE_DIR}../react-app/dist`;
+    console.log({ reactApDist });
     if (useStaticCache) {
-      app.use(mount('/', staticCache('../react-app/dist', { maxAge: 60 })));
+      app.use(mount('/', staticCache(reactApDist, { maxAge: 60 })));
     } else {
-      app.use(mount('/', serve('../react-app/dist')));
+      app.use(
+        mount(
+          '/',
+          serve(reactApDist, {
+            index: 'index.html'
+          })
+        )
+      );
     }
+    // This will catch all other routes that are not caught by previous middleware
+    app.use(async (ctx) => {
+      await send(ctx, `${reactApDist}`, {
+        root: '/',
+        index: 'index.html'
+      });
+    });
   } else {
+    // when in dev proxy to the vite development server
     app.use(
       proxy('/', {
-        target: 'http://localhost:5173/',
-        changeOrigin: true
+        target: 'http://localhost:4000',
+        changeOrigin: true,
+        logs: true
       })
     );
   }
 
-  console.log('Starting server...');
   const server = app.listen(PORT, () => {
-    console.log(`Server running ${PORT}`);
-    console.log('Status: ' + toCamelCase('hello world!'));
+    console.log(`   Server: http://localhost:${PORT}`);
   });
 
   let isClosed = false;
   const closeGracefully = async (signal: NodeJS.Signals) => {
-    console.warn(`Received signal: ${signal}.`);
     if (isClosed) return;
+    console.warn(`Closing as a result of signal: ${signal}.`);
     isClosed = true;
-    console.log('Closing server...');
     server.close();
-    console.log('Exiting...');
     process.exit(0);
   };
 
