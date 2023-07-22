@@ -1,10 +1,5 @@
 {
   "compilerOptions": {
-    "paths": {
-      "@esbuild-ts-monorepo/generic-lib": ["./packages/generic-lib/"],
-      "@esbuild-ts-monorepo/node-lib": ["./packages/node-lib/"],
-      "@esbuild-ts-monorepo/react-lib": ["./packages/react-lib/"]
-    },
     "outDir": "dist",
     "target": "ES2020",
     "module": "ES2020",
@@ -20,6 +15,7 @@
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "allowJs": true
+    "allowJs": true,
+    "incremental": true
   }
 }
