@@ -25,6 +25,7 @@ It is what @bhouston considers best practice in June 2023.
 - Lerna for managing the monorepo dependencies in parallel builds
 - Prettier for code formatting
 - ESLint for linting
+- Incremental typescript builds for fast updates
 - VSCode will auto-format on save and paste.
 - Jest testing
 - NX build caching
