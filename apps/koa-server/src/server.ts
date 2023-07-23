@@ -1,3 +1,5 @@
+import 'source-map-support/register.js'; // required for cross platform source map support, other options didn't work across OSes.
+
 import { toCamelCase } from '@esbuild-ts-monorepo/common-lib';
 import { stringToMd5Hash } from '@esbuild-ts-monorepo/node-lib';
 import cors from '@koa/cors';
@@ -42,9 +44,9 @@ export const main = async () => {
   app.use(router.routes());
   app.use(router.allowedMethods());
 
-  if (process.env.NODE_ENV !== 'development') {
+  if (process.env.NODE_ENV === 'development') {
     const reactApDist = `${BASE_DIR}../react-app/dist`;
-    console.log({ reactApDist });
+    //console.log({ reactApDist });
     if (useStaticCache) {
       app.use(mount('/', staticCache(reactApDist, { maxAge: 60 })));
     } else {
