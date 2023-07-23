@@ -7,5 +7,6 @@ const packageInfo = require('../package.json');
 export const main = async () => {
   console.log(`${packageInfo.name} v${packageInfo.version}`);
 
+  throw new Error();
   console.log(toCamelCase('hello World!'));
 };
