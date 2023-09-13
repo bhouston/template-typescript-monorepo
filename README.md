@@ -1,6 +1,6 @@
 # ESBuild + TypeScript + React Monorepository Tempate
 
-This is a template for a monorepository that uses ESBuild, TypeScript, and React.
+This is a template for a monorepository that uses best practices for TypeScript, Web Services and React.
 
 It is what @bhouston considers best practice in June 2023.
 
