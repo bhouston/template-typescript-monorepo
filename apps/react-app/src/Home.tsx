@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useState } from 'react';
 import { HelloWorld } from '@esbuild-ts-monorepo/react-lib';
+import React, { useMemo, useState } from 'react';
 
 const Home: React.FC = () => {
   const [serverMessage, setServerMessage] = useState<string>();

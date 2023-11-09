@@ -28,6 +28,7 @@
     ],
     "no-console": 1,
     "prettier/prettier": 2,
+    "no-constant-binary-expression": "warn",
     "no-unused-vars": "off", // or "@typescript-eslint/no-unused-vars": "off",
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [
