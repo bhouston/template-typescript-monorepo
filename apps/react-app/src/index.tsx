@@ -1,10 +1,11 @@
-import React from 'react';
 import './styles.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Home from './Home.js';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import ErrorPage from './ErrorPage.js';
+import Home from './Home.js';
 import Viewer from './Viewer.js';
 
 const container = document.querySelector('#root');
