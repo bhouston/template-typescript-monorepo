@@ -1,5 +1,5 @@
 {
-  "name": "@esbuild-ts-monorepo/react-lib",
+  "name": "@template-typescript-monorepo/react-lib",
   "version": "1.0.0",
   "type": "module",
   "types": "dist/index.d.ts",
@@ -12,7 +12,7 @@
     "dev": "npx postcss src/styles.css -o dist/styles.css --watch & tsc --watch"
   },
   "dependencies": {
-    "@esbuild-ts-monorepo/common-lib": "*"
+    "@template-typescript-monorepo/common-lib": "*"
   },
   "devDependencies": {
     "postcss-cli": "^10.1.0",

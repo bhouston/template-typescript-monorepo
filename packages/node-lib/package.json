@@ -1,5 +1,5 @@
 {
-  "name": "@esbuild-ts-monorepo/node-lib",
+  "name": "@template-typescript-monorepo/node-lib",
   "version": "1.0.0",
   "type": "module",
   "main": "dist/index.js",

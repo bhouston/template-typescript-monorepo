@@ -1,9 +1,9 @@
 import 'source-map-support/register.js'; // required for cross platform source map support, other options didn't work across OSes.
 
-import { toCamelCase } from '@esbuild-ts-monorepo/common-lib';
-import { stringToMd5Hash } from '@esbuild-ts-monorepo/node-lib';
 import cors from '@koa/cors';
 import Router from '@koa/router';
+import { toCamelCase } from '@template-typescript-monorepo/common-lib';
+import { stringToMd5Hash } from '@template-typescript-monorepo/node-lib';
 import Koa from 'koa';
 import compress from 'koa-compress';
 import logger from 'koa-logger';

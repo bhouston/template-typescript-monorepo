@@ -10,6 +10,6 @@
     "dev": "tsc --watch"
   },
   "dependencies": {
-    "@esbuild-ts-monorepo/common-lib": "*"
+    "@template-typescript-monorepo/common-lib": "*"
   }
 }
