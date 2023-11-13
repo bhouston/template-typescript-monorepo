@@ -1,6 +1,6 @@
 {
   "name": "cli",
-  "version": "1.0.0",
+  "version": "1.2.3",
   "type": "module",
   "source": "./src/index.ts",
   "main": "./dist/index.js",
@@ -10,6 +10,7 @@
     "dev": "tsc --watch"
   },
   "dependencies": {
-    "@template-typescript-monorepo/common-lib": "*"
+    "@template-typescript-monorepo/common-lib": "*",
+    "yargs": "^17.7.2"
   }
 }
