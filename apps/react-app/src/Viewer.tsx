@@ -1,4 +1,4 @@
-import { HelloWorld } from '@esbuild-ts-monorepo/react-lib';
+import { HelloWorld } from '@template-typescript-monorepo/react-lib';
 import React from 'react';
 
 const Viewer: React.FC = () => {

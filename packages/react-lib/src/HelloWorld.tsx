@@ -1,4 +1,4 @@
-import { toCamelCase } from '@esbuild-ts-monorepo/common-lib';
+import { toCamelCase } from '@template-typescript-monorepo/common-lib';
 import React from 'react';
 
 export interface HelloWorldProps {
