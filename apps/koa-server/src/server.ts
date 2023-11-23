@@ -1,9 +1,9 @@
 import 'source-map-support/register.js'; // required for cross platform source map support, other options didn't work across OSes.
 
-import cors from '@koa/cors';
-import Router from '@koa/router';
 import { toCamelCase } from '@bhouston/common-lib';
 import { stringToMd5Hash } from '@bhouston/node-lib';
+import cors from '@koa/cors';
+import Router from '@koa/router';
 import Koa from 'koa';
 import compress from 'koa-compress';
 import logger from 'koa-logger';

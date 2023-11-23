@@ -7,7 +7,9 @@
     "promise",
     "simple-import-sort",
     "prettier",
-    "import"
+    "import",
+    "node",
+    "security"
   ],
   "overrides": [
     {
