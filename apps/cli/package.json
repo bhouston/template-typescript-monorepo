@@ -10,7 +10,7 @@
     "dev": "tsc --watch"
   },
   "dependencies": {
-    "@template-typescript-monorepo/common-lib": "*",
+    "@bhouston/common-lib": "*",
     "yargs": "^17.7.2"
   }
 }

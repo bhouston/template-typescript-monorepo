@@ -2,8 +2,8 @@ import 'source-map-support/register.js'; // required for cross platform source m
 
 import cors from '@koa/cors';
 import Router from '@koa/router';
-import { toCamelCase } from '@template-typescript-monorepo/common-lib';
-import { stringToMd5Hash } from '@template-typescript-monorepo/node-lib';
+import { toCamelCase } from '@bhouston/common-lib';
+import { stringToMd5Hash } from '@bhouston/node-lib';
 import Koa from 'koa';
 import compress from 'koa-compress';
 import logger from 'koa-logger';

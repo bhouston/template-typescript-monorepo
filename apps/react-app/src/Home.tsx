@@ -1,4 +1,4 @@
-import { HelloWorld } from '@template-typescript-monorepo/react-lib';
+import { HelloWorld } from '@bhouston/react-lib';
 import React, { useMemo, useState } from 'react';
 
 const Home: React.FC = () => {

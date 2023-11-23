@@ -1,4 +1,4 @@
-import { toCamelCase } from '@template-typescript-monorepo/common-lib';
+import { toCamelCase } from '@bhouston/common-lib';
 import { createRequire } from 'module';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';

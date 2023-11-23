@@ -1,5 +1,5 @@
 {
-  "name": "@template-typescript-monorepo/common-lib",
+  "name": "@bhouston/common-lib",
   "version": "1.0.0",
   "type": "module",
   "main": "dist/index.js",
