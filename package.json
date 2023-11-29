@@ -3,12 +3,13 @@
   "version": "1.4.8",
   "private": true,
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "build": "lerna run build",
     "dev": "lerna run build && lerna run dev --parallel --stream",
     "start": "npm run start -w=koa-server",
-    "clean": "rm -rf node_modules packages/*/node_modules apps/*/node_modules packages/*/dist apps/*/dist",
+    "clean": "node scripts/clean.js --node_modules --dist",
     "format": "eslint --fix \"{apps,packages}/**/src/**/*.{js,jsx,ts,tsx}\" --fix && prettier \"{apps,packages}/**/src/**/*.{js,jsx,css,md,html,ts,tsx,json}\" --check --write",
     "gcloud-setup": "gcloud auth application-default login && gcloud config set project yourprojectname && gcloud config set run/region us-central1",
     "test": "jest"
