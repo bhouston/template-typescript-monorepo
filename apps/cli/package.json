@@ -7,7 +7,7 @@
   "bin": "./bin/cli.js",
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch"
+    "watch": "tsc --watch"
   },
   "dependencies": {
     "@bhouston/common-lib": "*",
