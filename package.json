@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "build": "lerna run build",
-    "dev": "lerna run build && lerna run dev --parallel --stream",
+    "watch": "lerna run build && lerna run watch --parallel --stream",
     "start": "npm run start -w=koa-server",
     "clean": "rm -rf node_modules packages/*/node_modules apps/*/node_modules packages/*/dist apps/*/dist",
     "format": "eslint --fix \"{apps,packages}/**/src/**/*.{js,jsx,ts,tsx}\" --fix && prettier \"{apps,packages}/**/src/**/*.{js,jsx,css,md,html,ts,tsx,json}\" --check --write",

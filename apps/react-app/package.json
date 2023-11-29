@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc && vite build",
-    "dev": "vite"
+    "watch": "vite"
   },
   "devDependencies": {
     "@types/react": "^18.2.12",
