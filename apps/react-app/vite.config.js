@@ -1,4 +1,9 @@
-export default {
+// vite.config.js
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  plugins: [react()],
   server: {
     port: 4000,
     proxy: {
@@ -6,4 +11,4 @@ export default {
     },
     host: '0.0.0.0' // allow external connections
   }
-};
+});
