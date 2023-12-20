@@ -4,8 +4,25 @@
   "type": "module",
   "bin": "./bin/cli.js",
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc --watch & nodemon dist/server.js"
+    "build": "wireit",
+    "start": "wireit"
+  },
+  "wireit": {
+    "build": {
+      "command": "tsc",
+      "files": [
+        "src",
+        "*config.json",
+        "package.json"
+      ],
+      "output": [
+        "dist"
+      ]
+    },
+    "start": {
+      "command": "node dist/server.js",
+      "service": true
+    }
   },
   "devDependencies": {
     "@types/hapi__joi": "^17.1.9",

@@ -14,7 +14,8 @@
     "reserialization",
     "reserialized",
     "Slerp",
-    "threeify"
+    "threeify",
+    "wireit"
   ],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": ["source.formatDocument", "source.fixAll.eslint"]

@@ -6,10 +6,20 @@
   "main": "dist/index.js",
   "source": "src/index.ts",
   "scripts": {
-    "build:css": "npx postcss src/styles.css -o dist/styles.css",
-    "build:tsc": "tsc",
-    "build": "npm run build:tsc && npm run build:css",
-    "watch": "npx postcss src/styles.css -o dist/styles.css --watch & tsc --watch"
+    "build": "wireit"
+  },
+  "wireit": {
+    "build": {
+      "command": "tsc && npx postcss src/styles.css -o dist/styles.css",
+      "files": [
+        "src",
+        "*config.json",
+        "package.json"
+      ],
+      "output": [
+        "dist"
+      ]
+    }
   },
   "dependencies": {
     "@bhouston/common-lib": "*"

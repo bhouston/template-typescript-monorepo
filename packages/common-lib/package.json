@@ -6,8 +6,20 @@
   "types": "dist/index.d.ts",
   "source": "src/index.ts",
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc --watch"
+    "build": "wireit"
+  },
+  "wireit": {
+    "build": {
+      "command": "tsc",
+      "files": [
+        "src",
+        "*config.json",
+        "package.json"
+      ],
+      "output": [
+        "dist"
+      ]
+    }
   },
   "devDependencies": {}
 }
