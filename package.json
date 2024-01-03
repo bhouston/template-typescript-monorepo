@@ -10,7 +10,8 @@
     "watch": "lerna run build && lerna run watch --parallel --stream",
     "start": "npm run start -w=koa-server",
     "clean": "node scripts/clean.js --node_modules --dist",
-    "format": "eslint --quiet --fix \"{apps,packages}/**/src/**/*.{js,jsx,ts,tsx}\" && prettier --check --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\"",
+    "lint": "eslint --quiet --fix \"{apps,packages}/**/src/**/*.{js,jsx,ts,tsx}\"",
+    "format": "prettier --check --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\"",
     "gcloud-setup": "gcloud auth application-default login && gcloud config set project yourprojectname && gcloud config set run/region us-central1",
     "test": "jest"
   },
