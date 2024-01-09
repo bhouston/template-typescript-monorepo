@@ -11,18 +11,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: init node
-        uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v1
         with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+          bun-version: late st
 
-      - name: npm ci
-        run: npm ci
+      - name: bun install
+        run: bun install
 
-      - name: npm run build
-        run: npm run build
+      - name: bun run build
+        run: bun run build
 
   test:
     runs-on: ubuntu-latest
@@ -38,28 +35,18 @@ jobs:
         with:
           fetch-depth: 0
 
-      #
-      #- uses: 'google-github-actions/auth@v2'
-      #  with:
-      #    project_id: 'bhouston-innovation'
-      #    service_account: 'threekit-packages@bhouston-innovation.iam.gserviceaccount.com'
-      #    workload_identity_provider: 'projects/150631667524/locations/global/workloadIdentityPools/github/providers/threekit-packages'
-
-      - name: init node
-        uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v1
         with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+          bun-version: late st
 
-      - name: npm ci
-        run: npm ci
+      - name: bun install
+        run: bun install
 
-      - name: npm test
+      - name: bun test
         env:
           TEST_PUBLIC_TOKEN: ${{ secrets.TEST_PUBLIC_TOKEN }}
           TEST_PRIVATE_TOKEN: ${{ secrets.TEST_PRIVATE_TOKEN }}
-        run: npm test
+        run: bun test
 
   lint:
     runs-on: ubuntu-latest
@@ -69,15 +56,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: init node
-        uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v1
         with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+          bun-version: late st
 
-      - name: npm ci
-        run: npm ci
+      - name: bun install
+        run: bun install
 
-      - name: npm run lint
-        run: npm run lint
+      - name: bun run lint
+        run: bun run lint
