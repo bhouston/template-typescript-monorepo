@@ -1,0 +1,46 @@
+name: deploy-cloud-run
+description: 'Build, Push and Deploy to Google Cloud Run'
+inputs:
+  project_id:
+    description: 'Google Cloud Project ID'
+    required: true
+  service_name:
+    description: 'Google Cloud Run Service Name'
+    required: true
+  grc_hostname:
+    description: 'Google Cloud Run Docker Repository'
+    required: true
+  credentials_json:
+    description: 'Google Cloud Service Account JSON'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - id: 'auth'
+      name: gcloud auth
+      uses: google-github-actions/auth@v2
+      with:
+        credentials_json: '${{ inputs.credentials_json }}'
+
+    - name: gcloud sdk
+      uses: google-github-actions/setup-gcloud@v2
+      with:
+        skip_install: true
+
+    - name: docker build
+      run: |
+        docker build -t ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }} .
+
+    - name: docker push
+      run: |
+        gcloud auth configure-docker
+        docker push ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }}
+
+    - name: gcloud run deploy
+      run: |
+        gcloud run deploy ${{ inputs.service_name }} \
+        --image ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }} \
+        --platform managed \
+        --region us-central1 \
+        --quiet
