@@ -17,30 +17,10 @@ jobs:
       - name: git checkout
         uses: actions/checkout@v4
 
-      - id: 'auth'
-        name: gcloud auth
-        uses: google-github-actions/auth@v2
+      - name: deploy cloud run
+        uses: ./.github/actions/deploy-cloud-run
         with:
-          credentials_json: '${{ secrets.GCP_SA_KEY }}'
-
-      - name: gcloud sdk
-        uses: google-github-actions/setup-gcloud@v2
-        with:
-          skip_install: true
-
-      - name: docker build
-        run: |
-          docker build -t $GCR_HOSTNAME/$PROJECT_ID/$SERVICE_NAME:${{ github.sha }} .
-
-      - name: docker push
-        run: |
-          gcloud auth configure-docker
-          docker push $GCR_HOSTNAME/$PROJECT_ID/$SERVICE_NAME:${{ github.sha }}
-
-      - name: gcloud run deploy
-        run: |
-          gcloud run deploy $SERVICE_NAME \
-          --image $GCR_HOSTNAME/$PROJECT_ID/$SERVICE_NAME:${{ github.sha }} \
-          --platform managed \
-          --region us-central1 \
-          --quiet
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          project_id: ${{ env.PROJECT_ID }}
+          service_name: ${{ env.SERVICE_NAME }}
+          gcr_hostname: ${{ env.GCR_HOSTNAME }}
