@@ -7,31 +7,29 @@ on:
 
 env:
   PROJECT_ID: bhouston-general-hosting
+  SERVICE_NAME: template-typescript-monorepo
   GCR_HOSTNAME: gcr.io
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      SERVICE_NAME: template-typescript-monorepo
-      DOCKERFILE_PATH: .
     steps:
-      - id: auth
-        uses: google-github-actions/auth@v2
-        with:
-          credentials_json: '${{ secrets.GCP_SA_KEY }}'
-
-      - name: gcloud sdk
-        uses: google-github-actions/setup-gcloud@v2
-        with:
-          skip_install: true
-
       - name: git checkout
         uses: actions/checkout@v4
 
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          credentials_json: '${{ secrets.GCP_SA_KEY }}'
+
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v2'
+        with:
+          skip_install: true
+
       - name: docker build
         run: |
-          docker build -t $GCR_HOSTNAME/$PROJECT_ID/$SERVICE_NAME:${{ github.sha }} ${{env.DOCKERFILE_PATH}}
+          docker build -t $GCR_HOSTNAME/$PROJECT_ID/$SERVICE_NAME:${{ github.sha }} .
 
       - name: docker push
         run: |
