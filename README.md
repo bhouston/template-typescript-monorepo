@@ -6,9 +6,7 @@ It is what @bhouston considers best practice in January 2024.
 
 ## The end result
 
-<img width="687" alt="Screenshot 2023-06-19 at 7 10 00 AM" src="https://github.com/bhouston/template-typescript-monorepo/assets/588541/ba6d1764-f4d6-4a31-8a98-957e954d95eb">
-
-(Aside, it is ridiculous that this installs +1000 packages, but it is what it is.)
+<img width="573" alt="Screenshot 2024-01-09 at 4 53 45 PM" src="https://github.com/bhouston/template-typescript-monorepo/assets/588541/3a7e6b62-ff16-492d-9f20-b409ab84f104">
 
 ## Features
 
