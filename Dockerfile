@@ -1,8 +1,4 @@
-# Roughly inspired from: https://bun.sh/guides/ecosystem/docker
-FROM node:20
-
-# install bun
-RUN curl -fsSL https://bun.sh/install | bash
+FROM node:21-alpine
 
 WORKDIR /usr/src/app
 
@@ -10,13 +6,12 @@ WORKDIR /usr/src/app
 COPY . ./
 
 # install dependencies
-RUN bun install --silent
+RUN npm ci
 
 # build all
-RUN bun run build
+RUN npm run build --scope=koa-server,react-app --include-filtered-dependencies
 
 # run app
-USER bun
 ENV PORT=8080
 EXPOSE 8080
-CMD ["bun", "./apps/koa-server/dist/server.js"]
+CMD ["node", "./apps/koa-server/dist/server.js"]
