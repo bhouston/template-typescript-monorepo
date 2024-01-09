@@ -1,0 +1,11 @@
+{
+  "name": "@bhouston/common-lib",
+  "root": "packages/common-lib",
+  "targets": {
+    "watch": {},
+    "build": {},
+    "lint": {},
+    "format": {},
+    "test": {}
+  }
+}

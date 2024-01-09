@@ -1,6 +1,6 @@
 export default {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
-  resolver: 'ts-jest-resolver',
-  testMatch: ['<rootDir>/packages/*/src/**/*.test.ts']
+  projects: [
+    'packages/common-lib/jest.config.js',
+    'packages/node-lib/jest.config.js'
+  ]
 };

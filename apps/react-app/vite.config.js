@@ -5,6 +5,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   plugins: [react()],
   server: {
+    open: true,
     port: 4000,
     proxy: {
       '/api': 'http://localhost:4001'

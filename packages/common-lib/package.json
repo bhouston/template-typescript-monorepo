@@ -5,9 +5,5 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "source": "src/index.ts",
-  "scripts": {
-    "build": "tsc",
-    "watch": "tsc --watch"
-  },
   "devDependencies": {}
 }

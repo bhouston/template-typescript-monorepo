@@ -1,0 +1,11 @@
+{
+  "name": "@bhouston/node-lib",
+  "root": "packages/node-lib",
+  "targets": {
+    "watch": {},
+    "build": {},
+    "lint": {},
+    "format": {},
+    "test": {}
+  }
+}

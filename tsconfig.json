@@ -1,32 +1,45 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "target": "es2022",
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
+    "target": "esnext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "lib": ["es2020", "dom", "dom.iterable"],
     "typeRoots": ["node_modules/@types"],
 
+    // strictness
     "strict": true,
-    "esModuleInterop": true,
+    "alwaysStrict": true,
+    "strictFunctionTypes": true,
+    "allowJs": false,
+
+    // no need for checking libs
     "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+
+    // important for Linux
     "forceConsistentCasingInFileNames": true,
 
+    // linting
     "noImplicitAny": true,
     "noImplicitThis": true,
-    "alwaysStrict": true,
-
-    "resolveJsonModule": false, // causes problems by hoisting json files, and src to the root of the dist folder
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
 
-    "declaration": true,
-    "sourceMap": true,
+    // modules
+    "resolveJsonModule": false, // causes problems by hoisting json files, and src to the root of the dist folder
+    "esModuleInterop": true,
+    "verbatimModuleSyntax": true,
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
-    "allowJs": false,
+
+    // source maps & type maps
+    "declaration": true,
+    "sourceMap": true,
+
+    // cache build outputs
     "incremental": true
   }
 }

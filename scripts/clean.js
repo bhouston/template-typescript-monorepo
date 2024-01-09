@@ -1,18 +1,18 @@
+import fs from 'fs';
 import fsPromises from 'fs/promises';
 import path from 'path';
 import process from 'process';
-import fs from 'fs';
 
 const rootPath = path.join(
   path.dirname(import.meta.url.replace('file:/', '')),
   '..'
 );
 
-const directoryNamesToClean = ['node_modules', 'dist'].filter((directoryName) =>
-  process.argv.includes(`--${directoryName}`)
+const directoryNamesToClean = ['node_modules', 'dist', '.nx'].filter(
+  (directoryName) => process.argv.includes(`--${directoryName}`)
 );
 // remove subdirectories that don't exist.
-const projectPathsToClean = ['apps', 'examples', 'packages'].filter(
+const projectPathsToClean = ['apps', 'examples', 'packages', 'services'].filter(
   (projectPath) => {
     return fs.existsSync(path.join(rootPath, projectPath));
   }

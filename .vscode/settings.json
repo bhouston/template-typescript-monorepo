@@ -3,8 +3,10 @@
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "cSpell.words": [
+    "cacheable",
     "esbuild",
     "fortawesome",
+    "gcloud",
     "GLTF",
     "interruptible",
     "lerp",
