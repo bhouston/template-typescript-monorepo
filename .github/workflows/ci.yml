@@ -46,7 +46,7 @@ jobs:
         env:
           TEST_PUBLIC_TOKEN: ${{ secrets.TEST_PUBLIC_TOKEN }}
           TEST_PRIVATE_TOKEN: ${{ secrets.TEST_PRIVATE_TOKEN }}
-        run: bun test
+        run: bun run test
 
   lint:
     runs-on: ubuntu-latest
