@@ -12,6 +12,7 @@ import proxy from 'koa-proxies';
 import send from 'koa-send';
 import serve from 'koa-static';
 import staticCache from 'koa-static-cache';
+import path from 'path';
 
 import { BASE_DIR, NAME, PORT, VERSION } from './config.js';
 
@@ -45,23 +46,33 @@ export const main = async () => {
   app.use(router.allowedMethods());
 
   if (process.env.NODE_ENV === 'development') {
-    const reactApDist = `${BASE_DIR}../react-app/dist`;
-    //console.log({ reactApDist });
-    if (useStaticCache) {
-      app.use(mount('/', staticCache(reactApDist, { maxAge: 60 })));
-    } else {
-      app.use(
-        mount(
-          '/',
-          serve(reactApDist, {
-            index: 'index.html'
-          })
-        )
-      );
-    }
+    // serve up default static files
+    const reactAppPublic = path.join(BASE_DIR, '../react-app/public');
+    app.use(
+      mount(
+        '/',
+        useStaticCache
+          ? staticCache(reactAppPublic, { maxAge: 60 })
+          : serve(reactAppPublic)
+      )
+    );
+
+    // serve up build JS files.
+    const reactAppDist = path.join(BASE_DIR, '../react-app/dist');
+    app.use(
+      mount(
+        '/',
+        useStaticCache
+          ? staticCache(reactAppDist, { maxAge: 60 })
+          : serve(reactAppDist, {
+              index: 'index.html'
+            })
+      )
+    );
+
     // This will catch all other routes that are not caught by previous middleware
     app.use(async (ctx) => {
-      await send(ctx, `${reactApDist}`, {
+      await send(ctx, `${reactAppDist}`, {
         root: '/',
         index: 'index.html'
       });
