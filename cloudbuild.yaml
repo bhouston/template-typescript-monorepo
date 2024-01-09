@@ -12,7 +12,7 @@ steps:
         'update',
         '$_SERVICE_NAME',
         '--platform=managed',
-        '--image=gcr.io/$PROJECT_ID/$_SERVICE_NAME',
+        '--image=gcr.io/$PROJECT_ID/$_SERVICE_NAME:${SHORT_SHA}',
         '--region=us-central1',
         '--quiet'
       ]
