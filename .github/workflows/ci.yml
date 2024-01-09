@@ -3,7 +3,7 @@ name: ci
 on: [push]
 
 jobs:
-  build:
+  init:
     runs-on: ubuntu-latest
     steps:
       - name: git checkout
@@ -22,10 +22,15 @@ jobs:
       - name: npm ci
         run: npm ci --audit=false --fund=false
 
+  build:
+    needs: init
+    runs-on: ubuntu-latest
+    steps:
       - name: npm run build
         run: npm run build
 
   test:
+    needs: init
     runs-on: ubuntu-latest
 
     # Add "id-token" with the intended permissions.
@@ -34,22 +39,6 @@ jobs:
       id-token: 'write'
 
     steps:
-      - name: git checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          show-progress: false
-
-      - name: init node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-          cache-dependency-path: 'package-lock.json'
-
-      - name: npm ci
-        run: npm ci --audit=false --fund=false
-
       - name: npm test
         env:
           TEST_PUBLIC_TOKEN: ${{ secrets.TEST_PUBLIC_TOKEN }}
@@ -57,23 +46,8 @@ jobs:
         run: npm test
 
   lint:
+    needs: init
     runs-on: ubuntu-latest
     steps:
-      - name: git checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          show-progress: false
-
-      - name: init node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-          cache-dependency-path: 'package-lock.json'
-
-      - name: npm ci
-        run: npm ci --audit=false --fund=false
-
       - name: npm run lint
         run: npm run lint
