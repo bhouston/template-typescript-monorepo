@@ -16,7 +16,7 @@ jobs:
       SERVICE_NAME: template-typescript-monorepo
       DOCKERFILE_PATH: .
     steps:
-      - name: gcloud auth
+      - id: auth
         uses: google-github-actions/auth@v2
         with:
           credentials_json: '${{ secrets.GCP_SA_KEY }}'
