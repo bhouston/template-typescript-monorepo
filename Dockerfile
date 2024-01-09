@@ -1,5 +1,5 @@
 # Roughly inspired from: https://bun.sh/guides/ecosystem/docker
-FROM node:20-alpine
+FROM node:20
 
 # install bun
 RUN curl -fsSL https://bun.sh/install | bash
