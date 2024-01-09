@@ -25,7 +25,6 @@ jobs:
         uses: google-github-actions/setup-gcloud@v2
         with:
           skip_install: true
-          project_id: ${{ env.PROJECT_ID }}
 
       - name: git checkout
         uses: actions/checkout@v4
