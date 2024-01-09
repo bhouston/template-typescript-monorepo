@@ -42,7 +42,7 @@ jobs:
       - name: bun install
         run: bun install
 
-      - name: bun test
+      - name: bun run test
         env:
           TEST_PUBLIC_TOKEN: ${{ secrets.TEST_PUBLIC_TOKEN }}
           TEST_PRIVATE_TOKEN: ${{ secrets.TEST_PRIVATE_TOKEN }}
