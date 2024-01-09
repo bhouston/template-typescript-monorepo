@@ -10,7 +10,7 @@ COPY . ./
 RUN bun install
 
 # build all
-RUN npm run build
+RUN bun run build
 
 # run app
 USER bun
