@@ -10,7 +10,7 @@ COPY . ./
 RUN bun install --silent
 
 # build all
-RUN bun run build --scope=koa-server,react-app --include-filtered-dependencies
+RUN bun run build
 
 # run app
 USER bun
