@@ -1,5 +1,8 @@
 # Roughly inspired from: https://bun.sh/guides/ecosystem/docker
-FROM oven/bun:latest
+FROM node:20-alpine
+
+# install bun
+RUN curl -fsSL https://bun.sh/install | bash
 
 WORKDIR /usr/src/app
 
