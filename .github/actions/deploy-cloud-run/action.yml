@@ -31,11 +31,13 @@ runs:
     - name: docker build
       run: |
         docker build -t ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }} .
+      shell: bash
 
     - name: docker push
       run: |
         gcloud auth configure-docker
         docker push ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }}
+      shell: bash
 
     - name: gcloud run deploy
       run: |
@@ -44,3 +46,4 @@ runs:
         --platform managed \
         --region us-central1 \
         --quiet
+      shell: bash
