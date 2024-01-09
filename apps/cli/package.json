@@ -5,10 +5,6 @@
   "source": "./src/index.ts",
   "main": "./dist/index.js",
   "bin": "./bin/cli.js",
-  "scripts": {
-    "build": "tsc",
-    "watch": "tsc --watch"
-  },
   "dependencies": {
     "@bhouston/common-lib": "*",
     "yargs": "^17.7.2"

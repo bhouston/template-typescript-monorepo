@@ -5,8 +5,9 @@ const Home: React.FC = () => {
   const [serverMessage, setServerMessage] = useState<string>();
 
   useMemo(() => {
-    fetch('/api/get-message').then(async (res) => {
+    fetch('/api/message').then(async (res) => {
       const json = await res.json();
+      console.log(json);
       setServerMessage(json.message);
     });
   }, []);
