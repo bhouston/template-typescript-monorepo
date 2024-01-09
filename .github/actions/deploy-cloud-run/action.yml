@@ -14,10 +14,10 @@ inputs:
     description: 'Google Cloud Run Docker Repository'
     required: false
     default: gcr.io
-  dockerfile_path:
+  dockerfile:
     description: 'Location of Dockerfile'
     required: true
-    default: .
+    default: ./Dockerfile
 
 runs:
   using: 'composite'
@@ -35,7 +35,7 @@ runs:
 
     - name: docker build
       run: |
-        docker build -t ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }} ${{ inputs.dockerfile_path }}
+        docker build -t ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }} -f ${{ inputs.dockerfile }} .
       shell: bash
 
     - name: docker push
