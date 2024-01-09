@@ -1,8 +1,8 @@
-# ESBuild + TypeScript + React Monorepository Tempate
+# TypeScript + React App Mono Repository
 
-This is a template for a monorepository that uses best practices for TypeScript, Web Services and React.
+This is a template for a monorepo that uses best practices for TypeScript, Web Services and React.
 
-It is what @bhouston considers best practice in June 2023.
+It is what @bhouston considers best practice in January 2024.
 
 ## The end result
 
@@ -25,10 +25,10 @@ It is what @bhouston considers best practice in June 2023.
 - Lerna for managing the monorepo dependencies in parallel builds
 - Prettier for code formatting
 - ESLint for linting
-- Incremental typescript builds for fast updates
+- Incremental and caching builds via NX.
 - VSCode will auto-format on save and paste.
 - Jest testing
-- NX build caching
+- Github action CI
 
 ## Getting Started
 
