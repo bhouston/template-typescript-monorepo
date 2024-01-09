@@ -1,0 +1,41 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main # or any other branch you want to deploy from
+
+env:
+  PROJECT_ID: bhouston-general-hosting
+  SERVICE_NAME: template-typescript-monorepo
+  GCR_HOSTNAME: gcr.io
+
+jobs:
+  glb-service:
+    runs-on: ubuntu-latest
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v4
+
+      - name: setup gcloud
+        uses: google-github-actions/setup-gcloud@v0.2.1
+        with:
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          project_id: ${{ env.PROJECT_ID }}
+
+      - name: docker build
+        run: |
+          docker build -t $GCR_HOSTNAME/$PROJECT_ID/$SERVICE_NAME:${{ github.sha }} .
+
+      - name: docker push
+        run: |
+          gcloud auth configure-docker
+          docker push $GCR_HOSTNAME/$PROJECT_ID/$SERVICE_NAME:${{ github.sha }}
+
+      - name: gcloud run deploy
+        run: |
+          gcloud run deploy $SERVICE_NAME \
+          --image $GCR_HOSTNAME/$PROJECT_ID/$SERVICE_NAME:${{ github.sha }} \
+          --platform managed \
+          --region us-central1 \
+          --quiet

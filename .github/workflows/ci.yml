@@ -8,9 +8,6 @@ jobs:
     steps:
       - name: git checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          show-progress: false
 
       - name: install workspace
         uses: ./.github/actions/install-workspace
