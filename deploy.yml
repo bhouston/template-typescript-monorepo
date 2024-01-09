@@ -8,7 +8,6 @@ on:
 env:
   PROJECT_ID: bhouston-general-hosting
   SERVICE_NAME: template-typescript-monorepo
-  GCR_HOSTNAME: gcr.io
 
 jobs:
   deploy:
@@ -23,4 +22,3 @@ jobs:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
           project_id: ${{ env.PROJECT_ID }}
           service_name: ${{ env.SERVICE_NAME }}
-          gcr_hostname: ${{ env.GCR_HOSTNAME }}

@@ -7,12 +7,17 @@ inputs:
   service_name:
     description: 'Google Cloud Run Service Name'
     required: true
-  gcr_hostname:
-    description: 'Google Cloud Run Docker Repository'
-    required: true
   credentials_json:
     description: 'Google Cloud Service Account JSON'
     required: true
+  gcr_hostname:
+    description: 'Google Cloud Run Docker Repository'
+    required: false
+    default: gcr.io
+  dockerfile_path:
+    description: 'Location of Dockerfile'
+    required: true
+    default: .
 
 runs:
   using: 'composite'
@@ -30,7 +35,7 @@ runs:
 
     - name: docker build
       run: |
-        docker build -t ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }} .
+        docker build -t ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }} ${{ inputs.dockerfile_path }}
       shell: bash
 
     - name: docker push
