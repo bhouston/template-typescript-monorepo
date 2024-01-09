@@ -20,7 +20,7 @@ jobs:
       - name: deploy cloud run
         uses: ./.github/actions/deploy-cloud-run
         with:
-          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
           project_id: ${{ env.PROJECT_ID }}
           service_name: ${{ env.SERVICE_NAME }}
           gcr_hostname: ${{ env.GCR_HOSTNAME }}
