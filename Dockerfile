@@ -10,9 +10,10 @@ COPY . ./
 RUN bun install --silent
 
 # build all
-RUN bun run build
+RUN bun run build --scope=koa-server,react-app --include-filtered-dependencies
 
 # run app
 USER bun
-EXPOSE 3000/tcp
+ENV PORT=8080
+EXPOSE 8080
 CMD ["bun", "./apps/koa-server/dist/server.js"]
