@@ -1,0 +1,20 @@
+# .github/actions/setup-node/action.yml
+name: 'install workspace'
+description: 'Set up Node.js environment and check out code'
+inputs:
+  node-version-file:
+    description: 'Path to Node version file'
+    default: '.nvmrc'
+runs:
+  using: 'composite'
+  steps:
+    - name: setup node
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: ${{ inputs.node-version-file }}
+        cache: 'npm'
+        cache-dependency-path: 'package-lock.json'
+
+    - name: npm ci
+      run: npm ci --audit=false --fund=false
+      shell: bash

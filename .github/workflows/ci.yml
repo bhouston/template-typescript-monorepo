@@ -12,15 +12,8 @@ jobs:
           fetch-depth: 0
           show-progress: false
 
-      - name: init node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-          cache-dependency-path: 'package-lock.json'
-
-      - name: npm ci
-        run: npm ci --audit=false --fund=false
+      - name: install workspace
+        uses: ./.github/actions/install-workspace
 
       - name: npm run build
         run: npm run build
@@ -36,19 +29,9 @@ jobs:
     steps:
       - name: git checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          show-progress: false
 
-      - name: init node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-          cache-dependency-path: 'package-lock.json'
-
-      - name: npm ci
-        run: npm ci --audit=false --fund=false
+      - name: install workspace
+        uses: ./.github/actions/install-workspace
 
       - name: npm test
         env:
@@ -61,19 +44,9 @@ jobs:
     steps:
       - name: git checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          show-progress: false
 
-      - name: init node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
-          cache-dependency-path: 'package-lock.json'
-
-      - name: npm ci
-        run: npm ci --audit=false --fund=false
+      - name: install workspace
+        uses: ./.github/actions/install-workspace
 
       - name: npm run lint
         run: npm run lint
