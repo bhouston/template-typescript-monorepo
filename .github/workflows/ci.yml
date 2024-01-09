@@ -16,7 +16,7 @@ jobs:
           bun-version: latest
 
       - name: bun install
-        run: bun install
+        run: bun install --silent
 
       - name: bun run build
         run: bun run build
@@ -40,7 +40,7 @@ jobs:
           bun-version: latest
 
       - name: bun install
-        run: bun install
+        run: bun install --silent
 
       - name: bun run test
         env:
@@ -61,7 +61,7 @@ jobs:
           bun-version: latest
 
       - name: bun install
-        run: bun install
+        run: bun install --silent
 
       - name: bun run lint
         run: bun run lint

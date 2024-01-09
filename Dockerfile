@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 COPY . ./
 
 # install dependencies
-RUN bun install
+RUN bun install --silent
 
 # build all
 RUN bun run build
