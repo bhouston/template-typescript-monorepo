@@ -7,7 +7,7 @@ inputs:
   service_name:
     description: 'Google Cloud Run Service Name'
     required: true
-  grc_hostname:
+  gcr_hostname:
     description: 'Google Cloud Run Docker Repository'
     required: true
   credentials_json:
