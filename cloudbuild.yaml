@@ -1,7 +1,7 @@
 steps:
   - name: 'gcr.io/kaniko-project/executor:latest'
-    args:
-      - --destination=gcr.io/$PROJECT_ID/template-typescript-monorepo-image
+   args:
+      - --destination=gcr.io/$PROJECT_ID/$_SERVICE_NAME-image
       - --cache=true
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
     entrypoint: gcloud
@@ -10,9 +10,9 @@ steps:
         'run',
         'services',
         'update',
-        'template-typescript-monorepo',
+        '$_SERVICE_NAME',
         '--platform=managed',
-        '--image=gcr.io/$PROJECT_ID/template-typescript-monorepo-image',
+        '--image=gcr.io/$PROJECT_ID/$_SERVICE_NAME-image',
         '--region=us-central1',
         '--quiet'
       ]

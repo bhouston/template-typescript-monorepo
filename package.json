@@ -15,7 +15,7 @@
     "format": "nx run-many --target=format --all",
     "test": "nx run-many --target=test --all",
     "publish": "nx run-many --target=build,test --all && lerna publish --no-private",
-    "gcloud-setup": "gcloud auth application-default login && gcloud config set project yourprojectname && gcloud config set run/region us-central1"
+    "gcloud-setup": "gcloud auth application-default login && gcloud config set project general-hosting && gcloud config set run/region us-central1"
   },
   "keywords": [],
   "author": "",

@@ -5,7 +5,6 @@ import compress from 'koa-compress';
 import logger from 'koa-logger';
 import mount from 'koa-mount';
 import send from 'koa-send';
-import serve from 'koa-static';
 import staticCache from 'koa-static-cache';
 import path from 'path';
 
@@ -66,32 +65,23 @@ export const getApp = (appProps: AppProps) => {
             }}`
           );
 
-        // serve up default static files
-        const reactAppPublic = path.join(
+        // mount immutable hashed files
+        const reactAppDistAssets = path.join(
           config.BASE_DIR,
-          '../react-app/public'
+          '../react-app/dist/assets'
         );
         app.use(
           mount(
-            '/',
-            useStaticCache
-              ? staticCache(reactAppPublic, { maxAge: 60 })
-              : serve(reactAppPublic)
+            '/assets',
+            staticCache(reactAppDistAssets, {
+              cacheControl: 'public, max-age=31536000, immutable'
+            })
           )
         );
 
-        // serve up build JS files.
+        // serve up other files (index.html) and public folder
         const reactAppDist = path.join(config.BASE_DIR, '../react-app/dist');
-        app.use(
-          mount(
-            '/',
-            useStaticCache
-              ? staticCache(reactAppDist, { maxAge: 60 })
-              : serve(reactAppDist, {
-                  index: 'index.html'
-                })
-          )
-        );
+        app.use(staticCache(reactAppDist, { maxAge: 60 }));
 
         // This will catch all other routes that are not caught by previous middleware
         app.use(async (ctx) => {
