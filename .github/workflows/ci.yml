@@ -13,7 +13,7 @@ jobs:
 
       - uses: oven-sh/setup-bun@v1
         with:
-          bun-version: late st
+          bun-version: latest
 
       - name: bun install
         run: bun install
@@ -37,7 +37,7 @@ jobs:
 
       - uses: oven-sh/setup-bun@v1
         with:
-          bun-version: late st
+          bun-version: latest
 
       - name: bun install
         run: bun install
@@ -58,7 +58,7 @@ jobs:
 
       - uses: oven-sh/setup-bun@v1
         with:
-          bun-version: late st
+          bun-version: latest
 
       - name: bun install
         run: bun install
