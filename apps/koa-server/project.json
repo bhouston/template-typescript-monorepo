@@ -9,6 +9,7 @@
     },
     "build": {},
     "lint": {},
-    "format": {}
+    "format": {},
+    "test": {}
   }
 }

@@ -3,11 +3,13 @@
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "cSpell.words": [
+    "bhouston",
     "cacheable",
     "esbuild",
     "fortawesome",
     "gcloud",
     "GLTF",
+    "healthcheck",
     "interruptible",
     "lerp",
     "microbundle",
