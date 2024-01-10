@@ -31,30 +31,25 @@ It is what @bhouston considers best practice in January 2024.
 ## Getting Started
 
 1. Clone this repository
-2. Run `npm install`
+2. Run `bun install`
 
 ### Tests
 
-1. Run `npm run test` to run all jest tests
+1. Run `bun run test` to run all jest tests
 
 ### Continuous Dev Build
 
-1. Run `npm run dev` to start the hot reload development server & build watchers
-
-#### Start Webserver with Auto-Reload
-
-1. Run `npn run start` to start the webserver in auto-reload mode
-2. Open `http://localhost:8000` in your browser
+1. Run `bun run watch` to start the hot reload development server & build watchers
 
 ### Optimized Production Build
 
-1. Run `npm run build` to build the source
+1. Run `bun run build` to build the source
 
 ### Run the webserver (no reload)
 
-1. Run `npx koa-server` to start the webserver
+1. Run `bunx koa-server` to start the webserver
 2. Open `http://localhost:8000` in your browser
 
 ### Command Line
 
-1. Run `npx cmdline-app` to run the CLI example
+1. Run `bunx cmdline-app` to run the CLI example
