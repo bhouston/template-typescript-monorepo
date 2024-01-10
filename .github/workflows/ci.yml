@@ -55,4 +55,4 @@ jobs:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
           project_id: bhouston-general-hosting
           service_name: template-typescript-monorepo
-          dry_run: ${{ github.ref != 'refs/heads/main' && 'false' || 'true' }}
+          dry_run: ${{ github.ref != 'refs/heads/main' }}
