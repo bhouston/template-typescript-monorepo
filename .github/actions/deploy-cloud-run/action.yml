@@ -18,6 +18,10 @@ inputs:
     description: 'Location of Dockerfile'
     required: true
     default: ./Dockerfile
+  dry_run:
+    description: 'If set to true, skips the deployment step'
+    required: false
+    default: 'false'
 
 runs:
   using: 'composite'
@@ -40,11 +44,12 @@ runs:
 
     - name: docker push
       run: |
-        gcloud auth configure-docker
+        gcloud auth configure-docker ${{ inputs.gcr_hostname }}
         docker push ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }}
       shell: bash
 
     - name: gcloud run deploy
+      if: ${{ inputs.dry_run != 'true' }}
       run: |
         gcloud run deploy ${{ inputs.service_name }} \
         --image ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }} \
