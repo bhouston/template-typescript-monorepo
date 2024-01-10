@@ -7,7 +7,7 @@ import { config } from './utils/getConfig.js';
 export const main = async () => {
   console.log(`${config.NAME}: ${config.VERSION}`);
 
-  const app = getApp({ logging: true, cors: true, compress: true });
+  const app = getApp({ logging: true });
 
   const server = app.listen(config.PORT, () => {
     console.log(`   Server: http://localhost:${config.PORT}`);

@@ -15,7 +15,7 @@ const Home: React.FC = () => {
   return (
     <div className="text-center mt-4">
       <HelloWorld name={serverMessage ?? ''} />
-      <img src="/logos/React-icon.svg" alt="React Logo" />{' '}
+      <img src="/static/React-icon.svg" alt="React Logo" />{' '}
     </div>
   );
 };
