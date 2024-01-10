@@ -6,7 +6,7 @@ COPY . ./
 
 RUN bun install --silent
 
-RUN bun run build --scope=koa-server,react-app --include-filtered-dependencies
+RUN bun run build
 
 ENV PORT=8080
 EXPOSE 8080
