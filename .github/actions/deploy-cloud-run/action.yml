@@ -36,6 +36,10 @@ runs:
       run: echo Run run ${{ inputs.dry_run }}
       shell: bash
 
+    - name: echo 2
+      run: echo Run run check ${{ inputs.dry_run != true }}
+      shell: bash
+
     - name: gcloud sdk
       uses: google-github-actions/setup-gcloud@v2
       with:
@@ -53,7 +57,7 @@ runs:
       shell: bash
 
     - name: gcloud run deploy
-      if: ${{ inputs.dry_run }} == 'false'
+      if: ${{ inputs.dry_run != true }}
       run: |
         gcloud run deploy ${{ inputs.service_name }} \
         --image ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }} \
