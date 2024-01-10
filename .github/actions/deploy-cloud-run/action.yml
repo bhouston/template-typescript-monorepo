@@ -44,7 +44,7 @@ runs:
 
     - name: docker push
       run: |
-        gcloud auth configure-docker
+        gcloud auth configure-docker ${{ inputs.gcr_hostname }}
         docker push ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }}
       shell: bash
 
