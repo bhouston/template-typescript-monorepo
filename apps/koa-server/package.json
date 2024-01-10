@@ -6,13 +6,9 @@
   "devDependencies": {
     "@types/koa__cors": "^4.0.0",
     "@types/koa__router": "^12.0.0",
-    "@types/koa-cache-control": "^2.0.3",
-    "@types/koa-cash": "^4.1.0",
     "@types/koa-compress": "^4.0.3",
     "@types/koa-logger": "^3.1.2",
-    "@types/koa-mount": "^4.0.2",
     "@types/koa-static": "^4.0.2",
-    "@types/koa-static-cache": "^5.1.1",
     "@types/supertest": "^6.0.2",
     "nodemon": "^2.0.22",
     "supertest": "^6.3.3"
@@ -28,10 +24,8 @@
     "koa-compress": "^5.1.1",
     "koa-logger": "^3.2.1",
     "koa-mount": "^4.0.0",
-    "koa-proxies": "^0.12.3",
-    "koa-send": "^5.0.1",
     "koa-static": "^5.0.0",
-    "koa-static-cache": "^5.1.4",
+    "zlib": "^1.0.5",
     "zod": "^3.22.4"
   }
 }
