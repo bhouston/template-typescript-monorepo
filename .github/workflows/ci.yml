@@ -12,8 +12,8 @@ jobs:
       - name: install workspace
         uses: ./.github/actions/install-workspace
 
-      - name: npm run build
-        run: npm run build
+      - name: bun run build
+        run: bun run build
 
   test:
     runs-on: ubuntu-latest
@@ -24,11 +24,11 @@ jobs:
       - name: install workspace
         uses: ./.github/actions/install-workspace
 
-      - name: npm test
+      - name: bun run test
         env:
           TEST_PUBLIC_TOKEN: ${{ secrets.TEST_PUBLIC_TOKEN }}
           TEST_PRIVATE_TOKEN: ${{ secrets.TEST_PRIVATE_TOKEN }}
-        run: npm test
+        run: bun run test
 
   lint:
     runs-on: ubuntu-latest
@@ -39,8 +39,8 @@ jobs:
       - name: install workspace
         uses: ./.github/actions/install-workspace
 
-      - name: npm run lint
-        run: npm run lint
+      - name: bun run lint
+        run: bun run lint
 
   deploy:
     runs-on: ubuntu-latest
