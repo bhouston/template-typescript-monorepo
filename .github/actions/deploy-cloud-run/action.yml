@@ -40,6 +40,10 @@ runs:
       run: echo Run run check ${{ inputs.dry_run != true }}
       shell: bash
 
+    - name: echo 3
+      run: echo Run run check ${{ inputs.dry_run != 'true' }}
+      shell: bash
+
     - name: gcloud sdk
       uses: google-github-actions/setup-gcloud@v2
       with:
