@@ -39,12 +39,7 @@ It is what @bhouston considers best practice in January 2024.
 
 ### Continuous Dev Build
 
-1. Run `npm run dev` to start the hot reload development server & build watchers
-
-#### Start Webserver with Auto-Reload
-
-1. Run `npn run start` to start the webserver in auto-reload mode
-2. Open `http://localhost:8000` in your browser
+1. Run `npm run watch` to start the hot reload development server & build watchers
 
 ### Optimized Production Build
 
@@ -53,7 +48,7 @@ It is what @bhouston considers best practice in January 2024.
 ### Run the webserver (no reload)
 
 1. Run `npx koa-server` to start the webserver
-2. Open `http://localhost:8000` in your browser
+2. Open the link that appears in the console in your browser
 
 ### Command Line
 
