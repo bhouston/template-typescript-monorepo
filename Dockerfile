@@ -6,7 +6,7 @@ COPY . ./
 
 RUN npm ci
 
-RUN npm run build --scope=koa-server,react-app --include-filtered-dependencies
+RUN npx nx run-many -t build -p koa-server react-app
 
 ENV PORT=8080
 EXPOSE 8080
