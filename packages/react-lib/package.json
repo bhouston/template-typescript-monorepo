@@ -8,7 +8,7 @@
   "scripts": {
     "build:css": "bunx postcss src/styles.css -o dist/styles.css",
     "build:tsc": "bunx tsc",
-    "build": "npm run build:tsc && npm run build:css",
+    "build": "bun run build:tsc && bun run build:css",
     "watch": "bunx postcss src/styles.css -o dist/styles.css --watch & bunx tsc --watch"
   },
   "dependencies": {

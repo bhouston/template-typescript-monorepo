@@ -10,6 +10,7 @@ It is what @bhouston considers best practice in January 2024.
 
 ## Features
 
+- Bun runtime for maximum speed.
 - Mono-repository using NPM workspaces
 - TypeScript for type safety
 - ES Modules for fast builds
