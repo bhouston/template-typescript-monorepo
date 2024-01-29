@@ -1,6 +1,4 @@
-FROM node:21-alpine
-
-RUN curl -fsSL https://bun.sh/install | bash
+FROM imbios/bun-node:latest-21-slim
 
 WORKDIR /usr/src/app
 
