@@ -1,5 +1,5 @@
-name: deploy-cloud-run
-description: 'Build, Push and Deploy to Google Cloud Run'
+name: dockerize
+description: 'Build, Push Docker Container'
 inputs:
   project_id:
     description: 'Google Cloud Project ID'
@@ -14,10 +14,19 @@ inputs:
     description: 'Google Cloud Run Docker Repository'
     required: false
     default: gcr.io
+  dockerfile:
+    description: 'Location of Dockerfile'
+    required: true
+    default: ./Dockerfile
 
 runs:
   using: 'composite'
   steps:
+    - name: docker build
+      run: |
+        docker build -t ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }} -f ${{ inputs.dockerfile }} .
+      shell: bash
+
     - id: 'auth'
       name: gcloud auth
       uses: google-github-actions/auth@v2
@@ -29,11 +38,10 @@ runs:
       with:
         skip_install: true
 
-    - name: gcloud run deploy
-      run: |
-        gcloud run deploy ${{ inputs.service_name }} \
-        --image ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }} \
-        --platform managed \
-        --region us-central1 \
-        --quiet
+    - name: gcloud configure docker
+      run: gcloud auth configure-docker ${{ inputs.gcr_hostname }}
+      shell: bash
+
+    - name: docker push
+      run: docker push ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }}
       shell: bash

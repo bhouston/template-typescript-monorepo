@@ -25,9 +25,6 @@ jobs:
         uses: ./.github/actions/install-workspace
 
       - name: npm test
-        env:
-          TEST_PUBLIC_TOKEN: ${{ secrets.TEST_PUBLIC_TOKEN }}
-          TEST_PRIVATE_TOKEN: ${{ secrets.TEST_PRIVATE_TOKEN }}
         run: npm test
 
   lint:
@@ -42,9 +39,25 @@ jobs:
       - name: npm run lint
         run: npm run lint
 
-  deploy:
+  dockerize:
+    name: dockerize
     runs-on: ubuntu-latest
-    needs: [test, lint, build]
+    steps:
+      - name: git checkout
+        uses: actions/checkout@v4
+
+      - name: prepare docker
+        uses: ./.github/actions/dockerize
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+          project_id: bhouston-general-hosting
+          service_name: template-typescript-monorepo
+
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    needs: [test, lint, build, dockerize]
+    if: ${{ github.ref == 'refs/heads/main' }}
     steps:
       - name: git checkout
         uses: actions/checkout@v4
@@ -55,4 +68,3 @@ jobs:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
           project_id: bhouston-general-hosting
           service_name: template-typescript-monorepo
-          dry_run: ${{ github.ref != 'refs/heads/main' }}
