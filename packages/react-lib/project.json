@@ -1,0 +1,23 @@
+{
+  "name": "@bhouston/react-lib",
+  "root": "packages/react-lib",
+  "targets": {
+    "build": {
+      "options": {
+        "commands": ["npx postcss src/styles.css -o dist/styles.css", "tsc"]
+      },
+      "cache": true
+    },
+    "watch": {
+      "options": {
+        "commands": [
+          "npx postcss src/styles.css -o dist/styles.css --watch & tsc --watch"
+        ]
+      },
+      "parallel": "true"
+    },
+    "lint:check": {},
+    "lint": {},
+    "format": {}
+  }
+}

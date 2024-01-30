@@ -36,8 +36,8 @@ jobs:
       - name: install workspace
         uses: ./.github/actions/install-workspace
 
-      - name: npm run lint
-        run: npm run lint
+      - name: npm run lint:check
+        run: npm run lint:check
 
   dockerize:
     name: dockerize
