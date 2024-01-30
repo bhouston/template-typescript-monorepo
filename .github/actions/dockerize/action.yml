@@ -47,5 +47,3 @@ runs:
         file: ${{ inputs.dockerfile }}
         push: true
         tags: ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }}
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
