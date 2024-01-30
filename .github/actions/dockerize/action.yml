@@ -47,3 +47,4 @@ runs:
         file: ${{ inputs.dockerfile }}
         push: true
         tags: ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }}
+        no-cache: true
