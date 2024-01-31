@@ -1,5 +1,13 @@
 {
-  "eslint.probe": ["javascript", "javascriptreact", "typescript", "json"],
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "markdown",
+    "html",
+    "json"
+  ],
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "cSpell.words": [
