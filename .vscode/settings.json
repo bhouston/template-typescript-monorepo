@@ -28,6 +28,7 @@
     "reserialization",
     "reserialized",
     "Slerp",
+    "tailwindcss",
     "threeify"
   ],
   "editor.defaultFormatter": "esbenp.prettier-vscode",

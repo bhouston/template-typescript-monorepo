@@ -11,6 +11,7 @@
     "start": "npm run start -w=koa-server",
     "clean": "node scripts/clean.js --node_modules --dist --.nx",
     "clean:dist": "node scripts/clean.js --dist --.nx",
+    "lint:check": "nx run-many --target=lint:check --all",
     "lint": "nx run-many --target=lint --all",
     "format": "nx run-many --target=format --all",
     "test": "nx run-many --target=test --all",

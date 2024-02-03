@@ -12,6 +12,7 @@
         "commands": ["tsc", "vite build"]
       }
     },
+    "lint:check": {},
     "lint": {},
     "format": {}
   }
