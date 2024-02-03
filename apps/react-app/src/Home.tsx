@@ -8,7 +8,7 @@ const Home: React.FC = () => {
     fetch('/api/message').then(async (res) => {
       const json = await res.json();
       console.log(json);
-      setServerMessage(json.message);
+      return setServerMessage(json.message);
     });
   }, []);
 
