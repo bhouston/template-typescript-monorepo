@@ -1,9 +1,9 @@
 {
-  "name": "cli",
-  "root": "apps/cli",
+  "name": "@bhouston/react-lib",
+  "root": "packages/react-lib",
   "targets": {
-    "watch": {},
     "build": {},
+    "watch": {},
     "lint:check": {},
     "lint": {},
     "format": {}
