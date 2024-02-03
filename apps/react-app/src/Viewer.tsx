@@ -1,11 +1,18 @@
 import { HelloWorld } from '@bhouston/react-lib';
 import React from 'react';
+import styled from 'styled-components';
+
+// Styled component
+const CenteredDiv = styled.div`
+  text-align: center;
+  margin-top: 1rem; /* mt-4 */
+`;
 
 const Viewer: React.FC = () => {
   return (
-    <div className="text-center mt-4">
+    <CenteredDiv>
       <HelloWorld name="Viewer" />
-    </div>
+    </CenteredDiv>
   );
 };
 
