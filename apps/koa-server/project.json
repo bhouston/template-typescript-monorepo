@@ -4,7 +4,10 @@
   "targets": {
     "watch": {
       "options": {
-        "commands": ["bunx tsc --watch", "bunx nodemon dist/server.js"]
+        "commands": [
+          "bunx --bun tsc --watch",
+          "bunx --bun nodemon dist/server.js"
+        ]
       }
     },
     "build": {},

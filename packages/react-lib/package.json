@@ -6,10 +6,10 @@
   "main": "dist/index.js",
   "source": "src/index.ts",
   "scripts": {
-    "build:css": "bunx postcss src/styles.css -o dist/styles.css",
-    "build:tsc": "bunx tsc",
+    "build:css": "bunx --bun postcss src/styles.css -o dist/styles.css",
+    "build:tsc": "bunx --bun tsc",
     "build": "bun run build:tsc && bun run build:css",
-    "watch": "bunx postcss src/styles.css -o dist/styles.css --watch & bunx tsc --watch"
+    "watch": "bunx --bun postcss src/styles.css -o dist/styles.css --watch & bunx --bun tsc --watch"
   },
   "dependencies": {
     "@bhouston/common-lib": "*"

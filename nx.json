@@ -23,7 +23,7 @@
       "outputs": ["{projectRoot}/dist"],
       "options": {
         "cwd": "{projectRoot}",
-        "commands": ["bunx tsc --watch"],
+        "commands": ["bunx --bun tsc --watch"],
         "parallel": true
       }
     },
@@ -34,7 +34,7 @@
       "outputs": ["{projectRoot}/dist"],
       "options": {
         "cwd": "{projectRoot}",
-        "commands": ["bunx tsc"]
+        "commands": ["bunx --bun tsc"]
       },
       "cache": true
     },
