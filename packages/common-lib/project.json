@@ -4,6 +4,7 @@
   "targets": {
     "watch": {},
     "build": {},
+    "typecheck": {},
     "lint:check": {},
     "lint": {},
     "format": {},
