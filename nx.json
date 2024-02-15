@@ -23,7 +23,10 @@
       "outputs": ["{projectRoot}/dist"],
       "options": {
         "cwd": "{projectRoot}",
-        "commands": ["tsc --watch"],
+        "commands": [
+          "swc ./src --ignore **/*.test.ts -d dist --watch",
+          "tsc --emitDeclarationOnly --watch"
+        ],
         "parallel": true
       }
     },
@@ -34,7 +37,21 @@
       "outputs": ["{projectRoot}/dist"],
       "options": {
         "cwd": "{projectRoot}",
-        "commands": ["tsc"]
+        "commands": [
+          "swc ./src --ignore **/*.test.ts -d dist",
+          "tsc --emitDeclarationOnly"
+        ]
+      },
+      "cache": true
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
+      "inputs": ["default", "^default"],
+      "outputs": ["{projectRoot}/dist"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "commands": ["tsc --noEmit"]
       },
       "cache": true
     },
