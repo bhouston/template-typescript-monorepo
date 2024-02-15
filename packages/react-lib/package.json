@@ -5,19 +5,14 @@
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "source": "src/index.ts",
-  "scripts": {
-    "build:css": "bunx --bun postcss src/styles.css -o dist/styles.css",
-    "build:tsc": "bunx --bun tsc",
-    "build": "bun run build:tsc && bun run build:css",
-    "watch": "bunx --bun postcss src/styles.css -o dist/styles.css --watch & bunx --bun tsc --watch"
-  },
   "dependencies": {
-    "@bhouston/common-lib": "*"
+    "@bhouston/common-lib": "*",
+    "styled-components": "^6.1.8"
   },
   "devDependencies": {
-    "postcss-cli": "^10.1.0",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.25",
+    "postcss-cli": "^10.1.0",
     "tailwindcss": "^3.3.2"
   }
 }

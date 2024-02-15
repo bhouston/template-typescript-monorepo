@@ -1,8 +1,7 @@
 {
   "recommendations": [
     "dbaeumer.vscode-eslint",
-    "orta.vscode-jest",
     "esbenp.prettier-vscode",
-    "kisstkondoros.vscode-codemetrics"
+    "github.vscode-github-actions"
   ]
 }

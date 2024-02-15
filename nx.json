@@ -38,14 +38,19 @@
       },
       "cache": true
     },
-    "lint": {
-      "executor": "@nx/eslint:lint",
+    "lint:check": {
+      "executor": "nx:run-commands",
       "options": {
-        "lintFilePatterns": [
-          "{projectRoot}/src/**/*.{js,jsx,ts,tsx,json,yaml}"
-        ],
-        "eslintConfig": ".eslintrc",
-        "fix": true
+        "cwd": "{projectRoot}",
+        "commands": ["eslint \"src/**/*.{ts,tsx}\""]
+      },
+      "cache": false
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "commands": ["eslint --fix \"src/**/*.{ts,tsx}\""]
       },
       "cache": true
     },

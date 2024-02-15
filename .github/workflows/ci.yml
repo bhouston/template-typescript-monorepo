@@ -2,6 +2,10 @@ name: ci
 
 on: [push]
 
+env:
+  PROJECT_ID: bhouston-general-hosting
+  SERVICE_NAME: template-typescript-monorepo
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -50,8 +54,8 @@ jobs:
         uses: ./.github/actions/dockerize
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
-          project_id: bhouston-general-hosting
-          service_name: template-typescript-monorepo
+          project_id: ${{ env.PROJECT_ID }}
+          service_name: ${{ env.SERVICE_NAME }}
 
   deploy:
     name: deploy
@@ -66,5 +70,5 @@ jobs:
         uses: ./.github/actions/deploy-cloud-run
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
-          project_id: bhouston-general-hosting
-          service_name: template-typescript-monorepo
+          project_id: ${{ env.PROJECT_ID }}
+          service_name: ${{ env.SERVICE_NAME }}

@@ -22,11 +22,6 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: docker build
-      run: |
-        docker build -t ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }} -f ${{ inputs.dockerfile }} .
-      shell: bash
-
     - id: 'auth'
       name: gcloud auth
       uses: google-github-actions/auth@v2
@@ -42,6 +37,14 @@ runs:
       run: gcloud auth configure-docker ${{ inputs.gcr_hostname }}
       shell: bash
 
-    - name: docker push
-      run: docker push ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }}
-      shell: bash
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build and push
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ${{ inputs.dockerfile }}
+        push: true
+        tags: ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }}
+        no-cache: true

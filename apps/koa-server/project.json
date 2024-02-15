@@ -8,6 +8,7 @@
       }
     },
     "build": {},
+    "lint:check": {},
     "lint": {},
     "format": {},
     "test": {}

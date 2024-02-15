@@ -12,6 +12,7 @@
         "commands": ["bunx --bun tsc", "bunx --bun vite build"]
       }
     },
+    "lint:check": {},
     "lint": {},
     "format": {}
   }
