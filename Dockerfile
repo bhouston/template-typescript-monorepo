@@ -1,4 +1,4 @@
-FROM imbios/bun-node:latest-21-slim
+FROM oven/bun:1
 
 WORKDIR /usr/src/app
 
