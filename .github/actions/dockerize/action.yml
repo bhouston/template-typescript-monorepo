@@ -20,7 +20,7 @@ inputs:
     default: ./Dockerfile
 
 env:
-  DOCKER_TAG: ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }}
+  DOCKER_TAG: ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}
 
 runs:
   using: 'composite'
@@ -50,6 +50,6 @@ runs:
         context: .
         file: ${{ inputs.dockerfile }}
         push: true
-        tags: ${{ env.DOCKER_TAG }}
+        tags: ${{ env.DOCKER_TAG }}:${{ github.sha }}
         cache-from: type=registry,ref=${{ env.DOCKER_TAG }}:buildcache
         cache-to: type=registry,ref=${{ env.DOCKER_TAG }}:buildcache,mode=max
