@@ -48,5 +48,5 @@ runs:
         file: ${{ inputs.dockerfile }}
         push: true
         tags: ${{ inputs.artifact_registry }}/${{ inputs.project_id }}/docker-registry/${{ inputs.service_name }}:${{ github.sha }}
-        cache-from: type=registry,ref=${{ inputs.artifact_registry }}/${{ inputs.project_id }}//docker-registry/${{ inputs.service_name }}/app:buildcache
-        cache-to: type=registry,ref=${{ inputs.artifact_registry }}/${{ inputs.project_id }}//docker-registry/${{ inputs.service_name }}/app:buildcache,mode=max
+        cache-from: type=registry,ref=${{ inputs.artifact_registry }}/${{ inputs.project_id }}/docker-registry/${{ inputs.service_name }}/app:buildcache
+        cache-to: type=registry,ref=${{ inputs.artifact_registry }}/${{ inputs.project_id }}/docker-registry/${{ inputs.service_name }}/app:buildcache,mode=max
