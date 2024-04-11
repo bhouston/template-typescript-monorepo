@@ -48,5 +48,5 @@ runs:
         file: ${{ inputs.dockerfile }}
         push: true
         tags: ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }}
-        cache-from: type=registry,ref=user/app:buildcache
-        cache-to: type=registry,ref=user/app:buildcache,mode=max
+        cache-from: type=registry,ref=${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }}:buildcache
+        cache-to: type=registry,ref=${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }}:buildcache,mode=max
