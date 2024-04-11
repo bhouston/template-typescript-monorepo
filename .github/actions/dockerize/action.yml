@@ -38,7 +38,7 @@ runs:
         skip_install: true
 
     - name: gcloud configure docker
-      run: gcloud auth configure-docker ${{ inputs.gcr_hostname }}
+      run: gcloud auth configure-docker ${{ inputs.artifact_registry }}
       shell: bash
 
     - name: Set up Docker Buildx
@@ -51,6 +51,6 @@ runs:
         context: .
         file: ${{ inputs.dockerfile }}
         push: true
-        tags: ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }}
+        tags: ${{ inputs.artifact_registry }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }}
         cache-from: type=registry,ref=${{ inputs.artifact_registry }}/${{ inputs.project_id }}/${{ inputs.service_name }}/cache:latest
         cache-to: type=registry,ref=${{ inputs.artifact_registry }}/${{ inputs.project_id }}/${{ inputs.service_name }}/cache:latest,mode=max
