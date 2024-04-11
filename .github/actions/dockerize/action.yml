@@ -52,5 +52,5 @@ runs:
         file: ${{ inputs.dockerfile }}
         push: true
         tags: ${{ inputs.artifact_registry }}/${{ inputs.project_id }}/default/${{ inputs.service_name }}:latest
-        cache-from: type=registry,ref=${{ inputs.artifact_registry }}/${{ inputs.project_id }}/default/${{ inputs.service_name }}:latest
-        cache-to: type=inline,mode=min
+        cache-from: type=registry,ref=${{ inputs.artifact_registry }}/${{ inputs.project_id }}/default/${{ inputs.service_name }}:buildcache
+        cache-to: type=registry,ref=${{ inputs.artifact_registry }}/${{ inputs.project_id }}/default/${{ inputs.service_name }}:buildcache,mode=max
