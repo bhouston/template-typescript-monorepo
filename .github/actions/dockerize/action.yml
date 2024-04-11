@@ -21,7 +21,7 @@ inputs:
   artifact_registry:
     description: 'Artifact Registry'
     required: false
-    default: us-docker.pkg.dev
+    default: us-central1-docker.pkg.dev
 
 runs:
   using: 'composite'
@@ -51,6 +51,6 @@ runs:
         context: .
         file: ${{ inputs.dockerfile }}
         push: true
-        tags: ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }},${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:latest
-        cache-from: type=registry,ref=${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:latest
+        tags: ${{ inputs.artifact_registry }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }},${{ inputs.artifact_registry }}/${{ inputs.project_id }}/${{ inputs.service_name }}:latest
+        cache-from: type=registry,ref=${{ inputs.artifact_registry }}/${{ inputs.project_id }}/${{ inputs.service_name }}:latest
         cache-to: type=inline,mode=min
