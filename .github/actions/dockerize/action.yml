@@ -18,6 +18,10 @@ inputs:
     description: 'Location of Dockerfile'
     required: true
     default: ./Dockerfile
+  artifact_registry:
+    description: 'Artifact Registry'
+    required: false
+    default: us-docker.pkg.dev
 
 runs:
   using: 'composite'
@@ -48,5 +52,5 @@ runs:
         file: ${{ inputs.dockerfile }}
         push: true
         tags: ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }}
-        cache-from: type=registry,ref=${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:buildcache
-        cache-to: type=registry,ref=${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:buildcache,mode=max
+        cache-from: type=registry,ref=${{ inputs.artifact_registry }}/${{ inputs.project_id }}/${{ inputs.service_name }}/cache:latest
+        cache-to: type=registry,ref=${{ inputs.artifact_registry }}/${{ inputs.project_id }}/${{ inputs.service_name }}/cache:latest,mode=max
