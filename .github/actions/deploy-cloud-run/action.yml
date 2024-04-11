@@ -10,10 +10,10 @@ inputs:
   credentials_json:
     description: 'Google Cloud Service Account JSON'
     required: true
-  gcr_hostname:
-    description: 'Google Cloud Run Docker Repository'
+  artifact_registry:
+    description: 'Artifact Registry'
     required: false
-    default: gcr.io
+    default: us-central1-docker.pkg.dev
 
 runs:
   using: 'composite'
@@ -32,7 +32,7 @@ runs:
     - name: gcloud run deploy
       run: |
         gcloud run deploy ${{ inputs.service_name }} \
-        --image ${{ inputs.gcr_hostname }}/${{ inputs.project_id }}/${{ inputs.service_name }}:${{ github.sha }} \
+        --image ${{ inputs.artifact_registry }}/${{ inputs.project_id }}/docker-registry/${{ inputs.service_name }}:${{ github.sha }} \
         --platform managed \
         --region us-central1 \
         --quiet
