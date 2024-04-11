@@ -10,10 +10,6 @@ inputs:
   credentials_json:
     description: 'Google Cloud Service Account JSON'
     required: true
-  gcr_hostname:
-    description: 'Google Cloud Run Docker Repository'
-    required: false
-    default: gcr.io
   dockerfile:
     description: 'Location of Dockerfile'
     required: true
