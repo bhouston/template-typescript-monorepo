@@ -53,6 +53,8 @@
     "typescript": ">=5.2.2"
   },
   "dependencies": {
+    "@google-cloud/storage": "^7.10.1",
+    "p-all": "^5.0.0",
     "source-map-support": "^0.5.21"
   },
   "engines": {
