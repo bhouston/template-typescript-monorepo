@@ -1,9 +1,8 @@
 'use server';
 import { Storage } from '@google-cloud/storage';
-import { profile } from '@threekit/diagnostics';
 import { config } from 'dotenv';
 
-import { objectToMd5Hash } from '../utils/hashes';
+import { objectToMd5Hash } from './md5Hash.js';
 
 config();
 
@@ -94,18 +93,16 @@ export async function internalJsonCache(
       //console.log(`${prefix} fileCache EXPIRED`);
       // If the cached file expired, update with latest query data
       console.log(`${prefix} creator REVALIDATE`);
-      profile(name, creator).then((data) => {
-        const content = JSON.stringify(data);
-        memoryCache[cacheKey] = {
-          timeStamp: new Date().getTime(),
-          data
-        } as CacheEntry;
-        console.log(
-          `${prefix} creator REVALIDATE ${Date.now() - currentTimestamp} ms`
-        );
-        file.save(content, { contentType: 'application/json' });
-        return data;
-      });
+      const content = JSON.stringify(data);
+      memoryCache[cacheKey] = {
+        timeStamp: new Date().getTime(),
+        data
+      } as CacheEntry;
+      console.log(
+        `${prefix} creator REVALIDATE ${Date.now() - currentTimestamp} ms`
+      );
+      file.save(content, { contentType: 'application/json' });
+      return data;
     } else {
       memoryCache[cacheKey] = {
         timeStamp: metadataTimestamp,

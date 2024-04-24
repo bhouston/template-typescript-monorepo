@@ -1,3 +1,4 @@
+import pAll from 'p-all';
 
 export type AsyncForEachOptions = {
   concurrencyLimit?: number;
@@ -10,13 +11,10 @@ export const asyncForEach = async <T>(
   options: AsyncForEachOptions = {}
 ): Promise<void> => {
   const concurrencyLimit = options.concurrencyLimit || 10;
-  const profileName = `'asyncForEach[${options.profileName}]` || 'asyncForEach';
 
-  return profile(profileName, async () => {
-    const actions = [];
-    for (const item of items) {
-      actions.push(() => callback(item));
-    }
-    await pAll(actions, { concurrency: concurrencyLimit });
-  });
+  const actions = [];
+  for (const item of items) {
+    actions.push(() => callback(item));
+  }
+  await pAll(actions, { concurrency: concurrencyLimit });
 };
