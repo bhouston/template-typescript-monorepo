@@ -1,4 +1,4 @@
-import { roundTo } from '../math/roundTo';
+import { roundTo } from '../math/roundTo.js';
 
 export type Unit = {
   value: number;
