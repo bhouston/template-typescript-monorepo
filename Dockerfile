@@ -4,8 +4,7 @@ WORKDIR /usr/src/app
 
 COPY . ./
 
-RUN npm ci
-
+RUN npm ci --workspace koa-server --workspace react-app --include-workspace-root
 RUN npx nx run-many -t build -p koa-server react-app
 
 ENV PORT=8080
