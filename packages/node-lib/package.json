@@ -7,5 +7,9 @@
   "source": "src/index.ts",
   "devDependencies": {
     "zod": "^3.22.4"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^7.12.1",
+    "p-all": "^5.0.0"
   }
 }
