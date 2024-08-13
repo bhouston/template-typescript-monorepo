@@ -15,8 +15,9 @@
     "lint": "nx run-many -t lint --all",
     "format": "nx run-many -t format --all",
     "test": "nx run-many -t test --all",
-    "publish": "nx run-many -t build test --all && lerna publish --no-private",
-    "gcloud-setup": "gcloud auth application-default login && gcloud config set project bhouston-general-hosting && gcloud config set run/region us-central1"
+    "publish": "nx run-many -t build test --all && npx lerna publish --no-private",
+    "gcloud-setup": "gcloud auth application-default login && gcloud config set project bhouston-general-hosting && gcloud config set run/region us-central1",
+    "depcheck": "npx depcheck"
   },
   "keywords": [],
   "author": "",
@@ -32,7 +33,6 @@
     "@typescript-eslint/eslint-plugin": "^5.59.11",
     "@typescript-eslint/parser": "^5.59.11",
     "esbuild": "0.18.3",
-    "eslint": "^8.42.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-node": "^11.1.0",
@@ -52,11 +52,7 @@
     "ts-node": "^10.9.1",
     "typescript": ">=5.2.2"
   },
-  "dependencies": {
-    "@google-cloud/storage": "^7.10.1",
-    "p-all": "^5.0.0",
-    "source-map-support": "^0.5.21"
-  },
+  "dependencies": {},
   "engines": {
     "node": ">=16.0.0"
   }
