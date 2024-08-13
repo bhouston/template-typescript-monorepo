@@ -1,4 +1,4 @@
-name: dockerize-and-deploy
+name: dockerize
 description: 'Build, Push Docker Container'
 inputs:
   project_id:
@@ -50,3 +50,13 @@ runs:
         tags: ${{ inputs.artifact_registry }}/${{ inputs.project_id }}/docker-registry/${{ inputs.service_name }}:${{ github.sha }}
         cache-from: type=registry,ref=${{ inputs.artifact_registry }}/${{ inputs.project_id }}/docker-registry/${{ inputs.service_name }}/app:buildcache
         cache-to: type=registry,ref=${{ inputs.artifact_registry }}/${{ inputs.project_id }}/docker-registry/${{ inputs.service_name }}/app:buildcache,mode=max
+
+    - name: gcloud run deploy
+      if: ${{ github.ref == 'refs/heads/main' }}
+      run: |
+        gcloud run deploy ${{ inputs.service_name }} \
+        --image ${{ inputs.artifact_registry }}/${{ inputs.project_id }}/docker-registry/${{ inputs.service_name }}:${{ github.sha }} \
+        --platform managed \
+        --region us-central1 \
+        --quiet
+      shell: bash
