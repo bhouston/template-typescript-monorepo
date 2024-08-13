@@ -18,17 +18,27 @@ inputs:
     description: 'Artifact Registry'
     required: false
     default: us-central1-docker.pkg.dev
+  skip_auth:
+    description: 'Skip authentication'
+    required: false
+    default: false
+  skip_sdk:
+    description: 'Skip SDK installation'
+    required: false
+    default: false
 
 runs:
   using: 'composite'
   steps:
     - id: 'auth'
       name: gcloud auth
+      if: ${{ !inputs.skip_auth }}
       uses: google-github-actions/auth@v2
       with:
         credentials_json: '${{ inputs.credentials_json }}'
 
     - name: gcloud sdk
+      if: ${{ !inputs.skip_sdk }}
       uses: google-github-actions/setup-gcloud@v2
       with:
         skip_install: true
