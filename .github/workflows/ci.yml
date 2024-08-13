@@ -65,3 +65,5 @@ jobs:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
           project_id: ${{ env.PROJECT_ID }}
           service_name: ${{ env.SERVICE_NAME }}
+          skip_auth: true # already authenticated
+          skip_sdk: true # already installed
