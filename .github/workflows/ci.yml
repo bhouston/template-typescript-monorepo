@@ -51,19 +51,9 @@ jobs:
       - name: git checkout
         uses: actions/checkout@v4
 
-      - name: prepare docker
-        uses: ./.github/actions/dockerize
+      - name: prepare docker and deploy
+        uses: ./.github/actions/dockerize-and-deploy
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
           project_id: ${{ env.PROJECT_ID }}
           service_name: ${{ env.SERVICE_NAME }}
-
-      - name: deploy cloud run
-        if: ${{ github.ref == 'refs/heads/main' }}
-        uses: ./.github/actions/deploy-cloud-run
-        with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
-          project_id: ${{ env.PROJECT_ID }}
-          service_name: ${{ env.SERVICE_NAME }}
-          skip_auth: true # already authenticated
-          skip_sdk: true # already installed
