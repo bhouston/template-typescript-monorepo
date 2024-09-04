@@ -1,4 +1,4 @@
-name: dockerize-and-deploy
+name: dockerize
 description: 'Build, Push Docker Container'
 inputs:
   project_id:
@@ -10,43 +10,52 @@ inputs:
   credentials_json:
     description: 'Google Cloud Service Account JSON'
     required: true
+  gar_hostname:
+    description: 'Google Artifact Registry hostname'
+    required: true
+    default: us-central1-docker.pkg.dev
   dockerfile:
     description: 'Location of Dockerfile'
     required: true
     default: ./Dockerfile
-  artifact_registry:
-    description: 'Artifact Registry'
+  secret_envs:
+    description: 'Secret environment variables'
     required: false
-    default: us-central1-docker.pkg.dev
 
 runs:
   using: 'composite'
   steps:
-    - id: 'auth'
-      name: gcloud auth
-      uses: google-github-actions/auth@v2
+    - run: nproc
+      shell: bash
+
+    - uses: google-github-actions/auth@v2
       with:
         credentials_json: '${{ inputs.credentials_json }}'
 
-    - name: gcloud sdk
-      uses: google-github-actions/setup-gcloud@v2
+    - uses: google-github-actions/setup-gcloud@v2
       with:
         skip_install: true
 
-    - name: gcloud configure docker
-      run: gcloud auth configure-docker ${{ inputs.artifact_registry }}
+    - run: gcloud auth configure-docker ${{ inputs.gar_hostname }}
       shell: bash
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
+    - uses: docker/setup-buildx-action@v3
 
-    # guide to docker caching: https://blacksmith.sh/blog/cache-is-king-a-guide-for-docker-layer-caching-in-github-actions
-    - name: Build and push
+    - run: |
+        if docker manifest inspect ${{ inputs.gar_hostname }}/${{ inputs.project_id }}/shared-docker-registry/${{ inputs.service_name }}:${{ github.sha }} > /dev/null; then
+          echo "Image exists. Skipping build and push."
+          echo "SKIP_BUILD=true" >> $GITHUB_ENV
+        else
+          echo "Image does not exist. Proceeding with build and push."
+          echo "SKIP_BUILD=false" >> $GITHUB_ENV
+        fi
+      shell: bash
+
+    - if: env.SKIP_BUILD == 'false'
       uses: docker/build-push-action@v5
       with:
         context: .
         file: ${{ inputs.dockerfile }}
         push: true
-        tags: ${{ inputs.artifact_registry }}/${{ inputs.project_id }}/docker-registry/${{ inputs.service_name }}:${{ github.sha }}
-        cache-from: type=registry,ref=${{ inputs.artifact_registry }}/${{ inputs.project_id }}/docker-registry/${{ inputs.service_name }}/app:buildcache
-        cache-to: type=registry,ref=${{ inputs.artifact_registry }}/${{ inputs.project_id }}/docker-registry/${{ inputs.service_name }}/app:buildcache,mode=max
+        tags: ${{ inputs.gar_hostname }}/${{ inputs.project_id }}/shared-docker-registry/${{ inputs.service_name }}:${{ github.sha }}
+        build-args: ${{ inputs.secret_envs }}

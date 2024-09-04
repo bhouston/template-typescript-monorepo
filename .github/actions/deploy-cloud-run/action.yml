@@ -10,30 +10,32 @@ inputs:
   credentials_json:
     description: 'Google Cloud Service Account JSON'
     required: true
-  artifact_registry:
-    description: 'Artifact Registry'
-    required: false
+  gar_hostname:
+    description: 'Google Artifact Registry hostname'
+    required: true
     default: us-central1-docker.pkg.dev
+  rollbar_access_token:
+    description: 'Rollbar Access Token'
+    required: false
+    default: ''
 
 runs:
   using: 'composite'
   steps:
-    - id: 'auth'
-      name: gcloud auth
-      uses: google-github-actions/auth@v2
+    - uses: google-github-actions/auth@v2
       with:
         credentials_json: '${{ inputs.credentials_json }}'
 
-    - name: gcloud sdk
-      uses: google-github-actions/setup-gcloud@v2
+    - uses: google-github-actions/deploy-cloudrun@v2
       with:
-        skip_install: true
+        service: ${{ inputs.service_name }}
+        image: ${{ inputs.gar_hostname }}/${{ inputs.project_id }}/shared-docker-registry/${{ inputs.service_name }}:${{ github.sha }}
 
-    - name: gcloud run deploy
-      run: |
-        gcloud run deploy ${{ inputs.service_name }} \
-        --image ${{ inputs.artifact_registry }}/${{ inputs.project_id }}/docker-registry/${{ inputs.service_name }}:${{ github.sha }} \
-        --platform managed \
-        --region us-central1 \
-        --quiet
-      shell: bash
+    - uses: rollbar/github-deploy-action@2.1.2
+      if: ${{ inputs.rollbar_access_token != '' }}
+      with:
+        environment: 'production'
+        version: ${{ github.sha }}
+      env:
+        ROLLBAR_ACCESS_TOKEN: ${{ inputs.rollbar_access_token }}
+        ROLLBAR_USERNAME: ${{ github.actor }}
