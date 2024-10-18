@@ -16,6 +16,7 @@
     "format": "nx run-many -t format --all",
     "test": "nx run-many -t test --all",
     "publish": "nx run-many -t build test --all && npx lerna publish --no-private",
+    "cloc": "npx cloc * --exclude-dir=node_modules,dist,.nx,.next,build",
     "gcloud-setup": "gcloud auth application-default login && gcloud config set project bhouston-general-hosting && gcloud config set run/region us-central1",
     "depcheck": "npx depcheck"
   },
