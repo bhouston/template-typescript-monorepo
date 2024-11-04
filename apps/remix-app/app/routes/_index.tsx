@@ -1,3 +1,4 @@
+import { HelloWorld } from '@bhouston/react-lib';
 import type { MetaFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 
@@ -23,12 +24,13 @@ export default function Page() {
   const { apiHealthy } = useLoaderData<typeof loader>();
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-      <p className="text-2xl font-bold mb-4">Hello World</p>
-      {apiHealthy ? (
-        <p className="text-green-500">API is healthy</p>
-      ) : (
-        <p className="text-red-500">API is not healthy</p>
-      )}
+      <HelloWorld name="Remix">
+        {apiHealthy ? (
+          <p className="text-green-500">API is healthy</p>
+        ) : (
+          <p className="text-red-500">API is not healthy</p>
+        )}
+      </HelloWorld>
     </div>
   );
 }

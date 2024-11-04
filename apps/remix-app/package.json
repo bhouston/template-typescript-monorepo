@@ -4,6 +4,7 @@
   "sideEffects": false,
   "type": "module",
   "dependencies": {
+    "@bhouston/react-lib": "*",
     "@fastify/compress": "^8.0.1",
     "@fastify/middie": "^9.0.2",
     "@fastify/static": "^8.0.2",
