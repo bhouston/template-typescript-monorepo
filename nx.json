@@ -41,6 +41,7 @@
     },
     "typecheck": {
       "executor": "nx:run-commands",
+      "dependsOn": ["^typecheck", "^build"],
       "options": {
         "cwd": "{projectRoot}",
         "commands": ["tsc --noEmit"],
