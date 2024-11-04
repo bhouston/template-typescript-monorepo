@@ -2,6 +2,8 @@ import { HelloWorld } from '@bhouston/react-lib';
 import type { MetaFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 
+import { getFullHost } from '../getLocalHost.ts';
+
 export const meta: MetaFunction = () => {
   return [
     { title: 'TypeScript Monorepo Template' },
@@ -13,7 +15,8 @@ export const meta: MetaFunction = () => {
 };
 
 export const loader = async () => {
-  const apiHealthy = await fetch('http://localhost:3000/api/health')
+  const url = new URL('/api/health', getFullHost());
+  const apiHealthy = await fetch(url.toString())
     .then((res) => res.ok)
     .catch(() => false);
 
