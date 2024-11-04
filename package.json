@@ -13,6 +13,7 @@
     "clean:dist": "node scripts/clean.js --dist --.nx",
     "lint:check": "nx run-many -t lint:check --all",
     "lint": "nx run-many -t lint --all",
+    "typecheck": "nx run-many -t typecheck --all",
     "format": "nx run-many -t format --all",
     "test": "nx run-many -t test --all",
     "cloc": "npx cloc * --exclude-dir=node_modules,dist,.nx,.next,build",
