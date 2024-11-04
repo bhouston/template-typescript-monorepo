@@ -2,11 +2,19 @@ FROM node:22-alpine
 
 WORKDIR /usr/src/app
 
+# copy all sources
 COPY . ./
 
-RUN npm ci -w koa-server -w react-app --include-workspace-root --audit=false --fund=false
-RUN npx nx run-many -t build -p koa-server react-app
+# install dependencies
+RUN npm ci --include-workspace-root -w remix-app --audit=false --fund=false
 
-ENV PORT=8080
+# build
+RUN npx nx run-many -t build -p remix-app
+
+# run server
 EXPOSE 8080
-CMD ["node", "./apps/koa-server/dist/server.js"]
+# set env var NODE_ENV to production
+ENV NODE_ENV=production
+
+WORKDIR /usr/src/app/apps/remix-server
+CMD ["node", "--no-warnings", "--experimental-strip-types", "--experimental-transform-types", "./src/server.ts"]

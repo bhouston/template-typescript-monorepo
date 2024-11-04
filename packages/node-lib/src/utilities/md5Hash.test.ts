@@ -1,8 +1,12 @@
-import { stringToMd5Hash } from '../index.js';
+import assert from 'node:assert';
+import { test } from 'node:test';
 
-// check if hello world is returned
-test('hello world', () => {
-  expect(stringToMd5Hash('Hello World!')).toBe(
+import { stringToMd5Hash } from './md5Hash.js';
+
+// Example test for the handler
+test('hello world', async (t) => {
+  assert.strictEqual(
+    stringToMd5Hash('Hello World!'),
     'ed076287532e86365e841e92bfc50d8c'
   );
 });

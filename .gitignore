@@ -8,3 +8,4 @@ apps/react-app/public/styles.css
 .nx
 stats.html
 docker-build.sh
+log.txt

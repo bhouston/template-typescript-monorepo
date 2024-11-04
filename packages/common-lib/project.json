@@ -2,11 +2,22 @@
   "name": "@bhouston/common-lib",
   "root": "packages/common-lib",
   "targets": {
-    "watch": {},
+    "dev": {},
     "build": {},
     "lint:check": {},
     "lint": {},
     "format": {},
-    "test": {}
+    "typecheck": {},
+    "test": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build", "typecheck"],
+      "inputs": ["default"],
+      "outputs": [],
+      "options": {
+        "cwd": "{projectRoot}",
+        "command": "node --test --no-warnings --experimental-strip-types --experimental-transform-types './dist/**/*.test.js'"
+      },
+      "cache": true
+    }
   }
 }

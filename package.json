@@ -7,15 +7,14 @@
   "main": "index.js",
   "scripts": {
     "build": "nx run-many -t build --all",
-    "watch": "lerna run watch --stream",
-    "start": "npm run start -w koa-server",
+    "dev": "nx run-many -t dev --all",
+    "start": "nx run-many -t start -p remix-app",
     "clean": "node scripts/clean.js --node_modules --dist --.nx",
     "clean:dist": "node scripts/clean.js --dist --.nx",
     "lint:check": "nx run-many -t lint:check --all",
     "lint": "nx run-many -t lint --all",
     "format": "nx run-many -t format --all",
     "test": "nx run-many -t test --all",
-    "publish": "nx run-many -t build test --all && npx lerna publish --no-private",
     "cloc": "npx cloc * --exclude-dir=node_modules,dist,.nx,.next,build",
     "gcloud-setup": "gcloud auth application-default login && gcloud config set project bhouston-general-hosting && gcloud config set run/region us-central1",
     "depcheck": "npx depcheck"
@@ -29,7 +28,6 @@
   ],
   "devDependencies": {
     "@nx/eslint": "^17.2.6",
-    "@types/jest": "^29.5.2",
     "@types/node": "^20.3.1",
     "@typescript-eslint/eslint-plugin": "^5.59.11",
     "@typescript-eslint/parser": "^5.59.11",
@@ -44,17 +42,12 @@
     "eslint-plugin-security": "^1.7.1",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
-    "jest": "^29.5.0",
-    "lerna": "^8.0.1",
     "nx": "^17.2.6",
     "prettier": "^2.8.8",
-    "ts-jest": "^29.1.0",
-    "ts-jest-resolver": "^2.0.1",
-    "ts-node": "^10.9.1",
     "typescript": ">=5.2.2"
   },
   "dependencies": {},
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=22.0.0"
   }
 }

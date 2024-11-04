@@ -17,7 +17,7 @@
     "default": ["{projectRoot}/**/*", "!{projectRoot}/dist/**/*"]
   },
   "targetDefaults": {
-    "watch": {
+    "dev": {
       "executor": "nx:run-commands",
       "dependsOn": ["^build"],
       "inputs": ["default", "^default"],
@@ -38,6 +38,14 @@
         "commands": ["tsc"]
       },
       "cache": true
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{projectRoot}",
+        "commands": ["tsc --noEmit"],
+        "parallel": true
+      }
     },
     "lint:check": {
       "executor": "nx:run-commands",
@@ -66,12 +74,12 @@
     },
     "test": {
       "executor": "nx:run-commands",
-      "dependsOn": ["build"],
+      "dependsOn": ["build", "typecheck"],
       "inputs": ["default"],
       "outputs": [],
       "options": {
         "cwd": "{projectRoot}",
-        "command": "node --experimental-vm-modules --no-warnings ../../node_modules/jest/bin/jest.js"
+        "command": "node --test --no-warnings --experimental-strip-types --experimental-transform-types './src/**/*.test.ts'"
       },
       "cache": true
     }
