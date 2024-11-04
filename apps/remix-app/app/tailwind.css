@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+a {
+  @apply text-blue-700;
+  text-decoration: underline;
+}
+
+a:hover {
+  @apply text-blue-700;
+  text-decoration: underline;
+}

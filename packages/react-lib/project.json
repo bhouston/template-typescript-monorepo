@@ -3,7 +3,7 @@
   "root": "packages/react-lib",
   "targets": {
     "build": {},
-    "watch": {},
+    "dev": {},
     "lint:check": {},
     "lint": {},
     "format": {}

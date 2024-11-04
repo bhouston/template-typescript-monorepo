@@ -2,7 +2,6 @@
   "name": "cli",
   "root": "apps/cli",
   "targets": {
-    "watch": {},
     "build": {},
     "lint:check": {},
     "lint": {},
