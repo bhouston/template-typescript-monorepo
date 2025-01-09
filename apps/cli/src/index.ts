@@ -1,8 +1,9 @@
 import { createRequire } from 'module';
 import path from 'path';
 import process from 'process';
-import type { PackageJson } from 'type-fest';
 import { fileURLToPath } from 'url';
+
+import type { PackageJson } from 'type-fest';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { fileCommands } from 'yargs-file-commands';

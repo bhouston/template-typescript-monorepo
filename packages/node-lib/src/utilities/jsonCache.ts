@@ -29,10 +29,10 @@ const memoryCache: Record<string, CacheEntry> = {};
 
 export async function internalJsonCache(
   name: string,
-  description: Record<string, any>,
+  description: Record<string, object>,
   cacheExpiration: number,
-  creator: () => Promise<any>
-): Promise<any> {
+  creator: () => Promise<object>
+): Promise<object> {
   const currentTimestamp = new Date().getTime();
 
   const descriptionHash = objectToMd5Hash({ ...description, rootHash });
@@ -40,8 +40,8 @@ export async function internalJsonCache(
   const cacheKey = `${name}-${descriptionHash}`;
   const prefix = `[jsonCache] ${name} `;
 
-  const cacheEntry = memoryCache[cacheKey];
-  if (cacheEntry !== undefined) {
+  if (cacheKey in memoryCache) {
+    const cacheEntry = memoryCache[cacheKey];
     if (currentTimestamp - cacheEntry.timeStamp <= cacheExpiration) {
       console.log(
         `${prefix} memoryCache HIT ${Date.now() - currentTimestamp} ms`
@@ -79,20 +79,22 @@ export async function internalJsonCache(
 
   // download file and serve it.
   const [content] = await file.download();
-  const data = JSON.parse(content.toString());
+  const data = JSON.parse(content.toString()) as object;
   console.log(`${prefix} fileCache HIT: ${Date.now() - currentTimestamp} ms`);
 
   // Check if cached file has expired
 
   // eslint-disable-next-line @typescript-eslint/no-floating-promises
   file.getMetadata().then(([metadata]) => {
-    const metadataTimestamp = metadata.updated
-      ? new Date(metadata.updated).getTime()
-      : null;
+    const metadataTimestamp =
+      metadata.updated !== undefined
+        ? new Date(metadata.updated).getTime()
+        : undefined;
 
-    const isExpired = metadataTimestamp
-      ? currentTimestamp - metadataTimestamp > cacheExpiration
-      : false;
+    const isExpired =
+      metadataTimestamp !== undefined
+        ? currentTimestamp - metadataTimestamp > cacheExpiration
+        : false;
 
     if (isExpired) {
       //console.log(`${prefix} fileCache EXPIRED`);
