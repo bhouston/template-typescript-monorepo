@@ -142,6 +142,39 @@
     "security/detect-unsafe-regex": "warn",
 
     // Formatting
-    "prettier/prettier": 2
+    "prettier/prettier": 2,
+
+    // Prevent accidental promises in conditional statements
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        "checksVoidReturn": true,
+        "checksConditionals": true
+      }
+    ],
+
+    // Prevent `any` from spreading
+    "@typescript-eslint/no-unsafe-argument": "error",
+
+    // Enforce consistent type assertions
+    "@typescript-eslint/consistent-type-assertions": [
+      "error",
+      {
+        "assertionStyle": "as",
+        "objectLiteralTypeAssertions": "never"
+      }
+    ],
+
+    // Force early returns instead of else
+    "no-else-return": ["error", { "allowElseIf": false }],
+
+    // Prevent easy-to-miss mistakes
+    "no-implicit-coercion": "error",
+    "no-unneeded-ternary": "error",
+
+    // Prevent common React mistakes
+    "react/jsx-no-constructed-context-values": "error",
+    "react/jsx-no-leaked-render": "error",
+    "react/hook-use-state": "error"
   }
 }

@@ -69,10 +69,11 @@ export async function internalJsonCache(
 
     console.log(`${prefix} creator FETCH ${Date.now() - currentTimestamp} ms`);
 
-    memoryCache[cacheKey] = {
+    const newCacheEntry: CacheEntry = {
       timeStamp: currentTimestamp,
       data
-    } as CacheEntry;
+    };
+    memoryCache[cacheKey] = newCacheEntry;
 
     return data;
   }
@@ -101,22 +102,28 @@ export async function internalJsonCache(
       // If the cached file expired, update with latest query data
       console.log(`${prefix} creator REVALIDATE`);
       const content = JSON.stringify(data);
-      memoryCache[cacheKey] = {
+
+      const newMemoryCacheEntry: CacheEntry = {
         timeStamp: new Date().getTime(),
         data
-      } as CacheEntry;
+      };
+      memoryCache[cacheKey] = newMemoryCacheEntry;
       console.log(
         `${prefix} creator REVALIDATE ${Date.now() - currentTimestamp} ms`
       );
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       file.save(content, { contentType: 'application/json' });
       return data;
-    } else {
-      memoryCache[cacheKey] = {
+    }
+
+    if (metadataTimestamp !== undefined) {
+      const newMemoryCacheEntry: CacheEntry = {
         timeStamp: metadataTimestamp,
         data
-      } as CacheEntry;
+      };
+      memoryCache[cacheKey] = newMemoryCacheEntry;
     }
+
     return data;
   });
 
