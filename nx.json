@@ -52,7 +52,8 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}",
-        "commands": ["eslint \"{app,src}/**/*.{ts,tsx}\""]
+        "commands": ["eslint \"{app,src}/**/*.{ts,tsx}\""],
+        "parallel": true
       },
       "cache": false
     },
@@ -60,9 +61,10 @@
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}",
-        "commands": ["eslint --fix \"{app,src}/**/*.{ts,tsx}\""]
+        "commands": ["eslint --fix \"{app,src}/**/*.{ts,tsx}\""],
+        "parallel": true
       },
-      "cache": true
+      "cache": false
     },
     "format": {
       "executor": "nx:run-commands",
