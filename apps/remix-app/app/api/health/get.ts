@@ -4,5 +4,5 @@ export default async function handler(
   request: FastifyRequest,
   reply: FastifyReply
 ) {
-  reply.status(204).send();
+  await reply.status(204).send();
 }

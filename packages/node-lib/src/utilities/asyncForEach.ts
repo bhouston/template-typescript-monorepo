@@ -10,7 +10,7 @@ export const asyncForEach = async <T>(
   callback: (item: T) => Promise<void>,
   options: AsyncForEachOptions = {}
 ): Promise<void> => {
-  const concurrencyLimit = options.concurrencyLimit || 10;
+  const concurrencyLimit = options.concurrencyLimit ?? 10;
 
   const actions = [];
   for (const item of items) {

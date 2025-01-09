@@ -63,7 +63,10 @@ export async function internalJsonCache(
     console.log(`${prefix} creator FETCH`);
     const data = await creator();
     const content = JSON.stringify(data);
+
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     file.save(content, { contentType: 'application/json' });
+
     console.log(`${prefix} creator FETCH ${Date.now() - currentTimestamp} ms`);
 
     memoryCache[cacheKey] = {
@@ -80,6 +83,8 @@ export async function internalJsonCache(
   console.log(`${prefix} fileCache HIT: ${Date.now() - currentTimestamp} ms`);
 
   // Check if cached file has expired
+
+  // eslint-disable-next-line @typescript-eslint/no-floating-promises
   file.getMetadata().then(([metadata]) => {
     const metadataTimestamp = metadata.updated
       ? new Date(metadata.updated).getTime()
@@ -101,6 +106,7 @@ export async function internalJsonCache(
       console.log(
         `${prefix} creator REVALIDATE ${Date.now() - currentTimestamp} ms`
       );
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
       file.save(content, { contentType: 'application/json' });
       return data;
     } else {
