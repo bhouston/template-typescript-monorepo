@@ -19,7 +19,7 @@ It is what @bhouston considers best practice in November 2024.
 - Both react and vanilla JS libraries
 - Command line, React app, and web server
 - Vite for Bundling, CSS Handling, Live Reloading.
-- Remix for router, SSR
+- @TanStack/start for router, SSR, server API
 - Fastify for server with file-based router
 - Hot reload of React
 - Auto service restart for the web server\*

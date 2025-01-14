@@ -8,7 +8,7 @@
   "scripts": {
     "build": "nx run-many -t build --all",
     "dev": "nx run-many -t dev --all",
-    "start": "nx run-many -t start -p remix-app",
+    "start": "nx run-many -t start -p tan-start-app",
     "clean": "node scripts/clean.js --node_modules --dist --.nx",
     "clean:dist": "node scripts/clean.js --dist --.nx",
     "lint:check": "nx run-many -t lint:check --all",
@@ -50,9 +50,14 @@
     "eslint-plugin-unused-imports": "^2.0.0",
     "nx": "^17.2.6",
     "prettier": "^2.8.8",
-    "typescript": ">=5.2.2"
+    "typescript": ">=5.2.2",
+    "vinxi": "^0.5.1",
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "engines": {
     "node": ">=22.0.0"
+  },
+  "dependencies": {
+    "@tanstack/start": "^1.95.6"
   }
 }

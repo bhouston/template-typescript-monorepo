@@ -1,0 +1,51 @@
+{
+  "name": "tan-start-app",
+  "root": "apps/tan-start-app",
+  "targets": {
+    "dev": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
+      "inputs": ["default", "^default"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "commands": ["vinxi dev"],
+        "parallel": true
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
+      "inputs": ["default", "^default"],
+      "outputs": ["{projectRoot}/build"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "commands": ["vinxi build", "tsc --noEmit"],
+        "parallel": true
+      },
+      "cache": true
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
+      "inputs": ["default", "^default"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "commands": ["vinxi start"]
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
+      "inputs": ["default", "^default"],
+      "options": {
+        "cwd": "{projectRoot}",
+        "commands": ["tsc --noEmit"],
+        "parallel": true
+      },
+      "cache": false
+    },
+    "lint:check": {},
+    "lint": {},
+    "format": {}
+  }
+}
