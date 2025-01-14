@@ -1,4 +1,4 @@
-# TypeScript + React App Mono Repository
+# TypeScript + Cli + Rest API + React App Mono Repository
 
 This is a template for a monorepo that uses best practices for TypeScript, Web Services and React.
 
