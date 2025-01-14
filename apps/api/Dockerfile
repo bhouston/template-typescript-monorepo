@@ -6,10 +6,10 @@ WORKDIR /usr/src/app
 COPY . ./
 
 # install dependencies
-RUN npm ci --include-workspace-root -w tan-start-app --audit=false --fund=false
+RUN npm ci --include-workspace-root -w api --audit=false --fund=false
 
 # build
-RUN npx nx run-many -t build -p tan-start-app
+RUN npx nx run-many -t build -p api
 
 # run server
 EXPOSE 8080
@@ -18,5 +18,5 @@ ENV PORT=8080
 # set env var NODE_ENV to production
 ENV NODE_ENV=production
 
-WORKDIR /usr/src/app/apps/tan-start-app
-CMD ["npx", "vinxi", "start"]
+WORKDIR /usr/src/app/apps/api
+CMD ["node", "./dist/server.js"]

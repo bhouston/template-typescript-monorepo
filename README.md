@@ -2,7 +2,7 @@
 
 This is a template for a monorepo that uses best practices for TypeScript, Web Services and React.
 
-It is what @bhouston considers best practice in November 2024.
+It is what @bhouston considers best practice in January 2025.
 
 ## The end result
 
@@ -22,7 +22,7 @@ It is what @bhouston considers best practice in November 2024.
 - @TanStack/start for router, SSR, server API
 - Fastify for server with file-based router
 - Hot reload of React
-- Auto service restart for the web server\*
+- Auto service restart for the web server
 - NX for managing the monorepo dependencies in parallel builds
 - Prettier for code formatting
 - ESLint for linting

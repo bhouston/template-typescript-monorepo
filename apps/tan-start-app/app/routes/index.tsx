@@ -29,7 +29,10 @@ export const Route = createFileRoute('/')({
     ]
   }),
   loader: async () => {
-    const url = new URL('/api/health', 'http://localhost:3000');
+    const url = new URL(
+      '/api/health',
+      `http://localhost:${process.env.PORT ?? '3000'}`
+    );
     const apiHealthy = await fetch(url.toString())
       .then((res) => res.ok)
       .catch(() => false);
