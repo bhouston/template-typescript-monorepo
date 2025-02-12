@@ -14,11 +14,11 @@ runs:
   steps:
     - uses: pnpm/action-setup@v2
       with:
-        version:  ${{ pnpm-version }}
+        version:  ${{ inputs.pnpm-version }}
 
     - uses: actions/setup-node@v3
       with:
-        node-version: ${{ node-version-file }}
+        node-version: ${{ inputs.node-version-file }}
 
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
