@@ -5,33 +5,20 @@ inputs:
   node-version-file:
     description: 'Path to Node version file'
     default: '.nvmrc'
+  pnpm-version:
+    description: 'Path to Node version file'
+    default: 10.2.1
+
 runs:
   using: 'composite'
   steps:
-    - name: setup node
-      uses: actions/setup-node@v4
+    - uses: pnpm/action-setup@v2
       with:
-        node-version-file: ${{ inputs.node-version-file }}
+        version:  ${{ pnpm-version }}
 
-    - name: Install pnpm
-      uses: pnpm/action-setup@v2
+    - uses: actions/setup-node@v3
       with:
-        version: 8
-        run_install: false
-
-    - name: Get pnpm store directory
-      shell: bash
-      run: |
-        echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_ENV
-
-    - name: Setup pnpm cache
-      uses: actions/cache@v3
-      with:
-        path: ${{ env.STORE_PATH }}
-        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-pnpm-store-
+        node-version: ${{ node-version-file }}
 
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
-      shell: bash
