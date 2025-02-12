@@ -10,8 +10,8 @@
     "build": "pnpm -r build",
     "dev": "pnpm -r dev",
     "start": "pnpm --filter tan-start-app start",
-    "clean": "node scripts/clean.js --node_modules --dist",
-    "clean:dist": "node scripts/clean.js --dist",
+    "clean": "rimraf dist packages/**/dist apps/**/dist",
+    "clean:all": "rimraf dist node_modules packages/**/node_modules packages/**/dist apps/**/node_modules apps/**/dist",
     "lint:check": "pnpm -r lint:check",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",
@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "@tanstack/start": "^1.95.6",
-    "mycoder": "^0.1.0"
+    "mycoder": "^0.1.0",
+    "rimraf": "^6.0.1"
   }
 }
