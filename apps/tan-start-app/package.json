@@ -2,9 +2,18 @@
   "name": "tan-stack-app",
   "version": "0.0.4",
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "dev": "vinxi dev",
+    "build": "vinxi build && tsc --noEmit",
+    "start": "vinxi start",
+    "typecheck": "tsc --noEmit",
+
+      "lint": "eslint \"app/**/*.{ts,tsx}\" --fix",
+      "lint:check": "eslint \"app/**/*.{ts,tsx}\"",      "format": "prettier --write ."
+  },
   "dependencies": {
-    "@bhouston/react-lib": "*",
+    "@bhouston/react-lib": "workspace:*",
+    "@tanstack/react-router": "^1.102.5",
     "@tanstack/start": "^1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

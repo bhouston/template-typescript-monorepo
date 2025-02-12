@@ -5,8 +5,17 @@
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "source": "src/index.ts",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+      "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
+      "lint:check": "eslint \"src/**/*.{ts,tsx}\"",
+
+    "format": "prettier --write ."
+  },
   "dependencies": {
-    "@bhouston/common-lib": "*"
+    "@bhouston/common-lib": "workspace:*"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
