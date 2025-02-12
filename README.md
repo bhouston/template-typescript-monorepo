@@ -29,7 +29,7 @@ This app is maintained in part by https://mycoder.ai
 - Prettier for code formatting
 - ESLint for linting
 - VSCode will auto-format on save and paste
-- Node:test testing
+- Vitest for testing with coverage support
 - Github action CI
 
 ## Getting Started
@@ -40,6 +40,8 @@ This app is maintained in part by https://mycoder.ai
 ### Tests
 
 1. Run `pnpm test` to run all tests
+2. Run `pnpm test:watch` for watch mode during development
+3. Run `pnpm test:coverage` to generate test coverage report
 
 ### Continuous Dev Build
 
