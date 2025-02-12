@@ -2,7 +2,7 @@
 
 This is a template for a monorepo that uses best practices for TypeScript, Web Services and React.
 
-It is what @bhouston considers best practice in February 2025.
+It is what @bhouston (test @mrdoob) considers best practice in February 2025.
 
 This app is maintained in part by https://mycoder.ai
 
