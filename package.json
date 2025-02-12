@@ -16,7 +16,9 @@
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",
     "format": "pnpm -r format",
-    "test": "pnpm -r test",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "cloc": "npx cloc * --exclude-dir=node_modules,dist,.next,build",
     "gcloud-setup": "gcloud auth application-default login && gcloud config set project bhouston-general-hosting && gcloud config set run/region us-central1",
     "depcheck": "npx depcheck",
@@ -30,6 +32,7 @@
     "@types/node": "^20",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
+    "@vitest/coverage-v8": "^3.0.5",
     "eslint-config-prettier": "^9",
     "eslint-plugin-import": "^2",
     "eslint-plugin-prettier": "^5",
@@ -39,7 +42,8 @@
     "typescript": ">=5.2.2",
     "typescript-eslint": "^8",
     "vinxi": "^0.5.1",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.0.5"
   },
   "engines": {
     "node": ">=22.0.0"

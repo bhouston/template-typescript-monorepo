@@ -2,8 +2,14 @@ import cors from '@fastify/cors';
 import dotenv from 'dotenv';
 import Fastify, { type FastifyInstance } from 'fastify';
 import { fastifyFileRouter } from 'fastify-file-router';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 
 dotenv.config();
+
+const isTest = process.env.NODE_ENV === 'test';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 const app = Fastify({
@@ -18,7 +24,7 @@ await app.register(cors, {
 });
 
 await app.register(fastifyFileRouter, {
-  routesDirs: ['./dist/routes'],
+  routesDirs: [isTest ? join(__dirname, 'routes') : './dist/routes'],
 });
 
 export default app;

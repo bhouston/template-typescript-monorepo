@@ -1,12 +1,7 @@
-import assert from 'node:assert';
-import { test } from 'node:test';
+import { expect, test } from 'vitest';
 
 import { stringToMd5Hash } from './md5Hash.js';
 
-// Example test for the handler
-await test('hello world', () => {
-  assert.strictEqual(
-    stringToMd5Hash('Hello World!'),
-    'ed076287532e86365e841e92bfc50d8c',
-  );
+test('hello world', () => {
+  expect(stringToMd5Hash('Hello World!')).toBe('ed076287532e86365e841e92bfc50d8c');
 });
