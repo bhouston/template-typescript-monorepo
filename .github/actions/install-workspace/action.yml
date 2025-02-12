@@ -5,16 +5,21 @@ inputs:
   node-version-file:
     description: 'Path to Node version file'
     default: '.nvmrc'
+  pnpm-version:
+    description: 'Path to Node version file'
+    default: 10.2.1
+
 runs:
   using: 'composite'
   steps:
-    - name: setup node
-      uses: actions/setup-node@v4
+    - uses: pnpm/action-setup@v2
       with:
-        node-version-file: ${{ inputs.node-version-file }}
-        cache: 'npm'
-        cache-dependency-path: 'package-lock.json'
+        version:  ${{ inputs.pnpm-version }}
 
-    - name: npm ci
-      run: npm ci --audit=false --fund=false
-      shell: bash
+    - uses: actions/setup-node@v3
+      with:
+        node-version: ${{ inputs.node-version-file }}
+
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile
+        

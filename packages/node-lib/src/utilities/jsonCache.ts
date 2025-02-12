@@ -14,7 +14,7 @@ type CacheEntry = {
 };
 
 const rootHash = {
-  dbName: ''
+  dbName: '',
 };
 
 const dbName = process.env.DB_DATABASE;
@@ -29,10 +29,10 @@ const memoryCache: Record<string, CacheEntry> = {};
 
 export async function internalJsonCache(
   name: string,
-  description: Record<string, any>,
+  description: Record<string, object>,
   cacheExpiration: number,
-  creator: () => Promise<any>
-): Promise<any> {
+  creator: () => Promise<object>,
+): Promise<object> {
   const currentTimestamp = new Date().getTime();
 
   const descriptionHash = objectToMd5Hash({ ...description, rootHash });
@@ -40,11 +40,11 @@ export async function internalJsonCache(
   const cacheKey = `${name}-${descriptionHash}`;
   const prefix = `[jsonCache] ${name} `;
 
-  const cacheEntry = memoryCache[cacheKey];
-  if (cacheEntry !== undefined) {
+  if (cacheKey in memoryCache) {
+    const cacheEntry = memoryCache[cacheKey];
     if (currentTimestamp - cacheEntry.timeStamp <= cacheExpiration) {
       console.log(
-        `${prefix} memoryCache HIT ${Date.now() - currentTimestamp} ms`
+        `${prefix} memoryCache HIT ${Date.now() - currentTimestamp} ms`,
       );
       return cacheEntry.data;
     }
@@ -63,54 +63,73 @@ export async function internalJsonCache(
     console.log(`${prefix} creator FETCH`);
     const data = await creator();
     const content = JSON.stringify(data);
+
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     file.save(content, { contentType: 'application/json' });
+
     console.log(`${prefix} creator FETCH ${Date.now() - currentTimestamp} ms`);
 
-    memoryCache[cacheKey] = {
+    const newCacheEntry: CacheEntry = {
       timeStamp: currentTimestamp,
-      data
-    } as CacheEntry;
+      data,
+    };
+    memoryCache[cacheKey] = newCacheEntry;
 
     return data;
   }
 
   // download file and serve it.
   const [content] = await file.download();
-  const data = JSON.parse(content.toString());
+  const data = JSON.parse(content.toString()) as object;
   console.log(`${prefix} fileCache HIT: ${Date.now() - currentTimestamp} ms`);
 
   // Check if cached file has expired
-  file.getMetadata().then(([metadata]) => {
-    const metadataTimestamp = metadata.updated
-      ? new Date(metadata.updated).getTime()
-      : null;
 
-    const isExpired = metadataTimestamp
-      ? currentTimestamp - metadataTimestamp > cacheExpiration
-      : false;
+  file
+    .getMetadata()
+    .then(([metadata]) => {
+      const metadataTimestamp =
+        metadata.updated !== undefined
+          ? new Date(metadata.updated).getTime()
+          : undefined;
 
-    if (isExpired) {
-      //console.log(`${prefix} fileCache EXPIRED`);
-      // If the cached file expired, update with latest query data
-      console.log(`${prefix} creator REVALIDATE`);
-      const content = JSON.stringify(data);
-      memoryCache[cacheKey] = {
-        timeStamp: new Date().getTime(),
-        data
-      } as CacheEntry;
-      console.log(
-        `${prefix} creator REVALIDATE ${Date.now() - currentTimestamp} ms`
-      );
-      file.save(content, { contentType: 'application/json' });
+      const isExpired =
+        metadataTimestamp !== undefined
+          ? currentTimestamp - metadataTimestamp > cacheExpiration
+          : false;
+
+      if (isExpired) {
+        //console.log(`${prefix} fileCache EXPIRED`);
+        // If the cached file expired, update with latest query data
+        console.log(`${prefix} creator REVALIDATE`);
+        const content = JSON.stringify(data);
+
+        const newMemoryCacheEntry: CacheEntry = {
+          timeStamp: new Date().getTime(),
+          data,
+        };
+        memoryCache[cacheKey] = newMemoryCacheEntry;
+        console.log(
+          `${prefix} creator REVALIDATE ${Date.now() - currentTimestamp} ms`,
+        );
+        // eslint-disable-next-line @typescript-eslint/no-floating-promises
+        file.save(content, { contentType: 'application/json' });
+        return data;
+      }
+
+      if (metadataTimestamp !== undefined) {
+        const newMemoryCacheEntry: CacheEntry = {
+          timeStamp: metadataTimestamp,
+          data,
+        };
+        memoryCache[cacheKey] = newMemoryCacheEntry;
+      }
+
       return data;
-    } else {
-      memoryCache[cacheKey] = {
-        timeStamp: metadataTimestamp,
-        data
-      } as CacheEntry;
-    }
-    return data;
-  });
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 
   return data;
 }

@@ -16,8 +16,8 @@ jobs:
       - name: install workspace
         uses: ./.github/actions/install-workspace
 
-      - name: npm run build
-        run: npm run build
+      - name: pnpm build
+        run: pnpm run build
 
   test:
     runs-on: ubuntu-latest
@@ -28,8 +28,8 @@ jobs:
       - name: install workspace
         uses: ./.github/actions/install-workspace
 
-      - name: npm test
-        run: npm test
+      - name: pnpm test
+        run: pnpm test
 
   lint:
     runs-on: ubuntu-latest
@@ -40,8 +40,8 @@ jobs:
       - name: install workspace
         uses: ./.github/actions/install-workspace
 
-      - name: npm run lint:check
-        run: npm run lint:check
+      - name: pnpm lint
+        run: pnpm run lint:check
 
   dockerize:
     runs-on: ubuntu-latest

@@ -1,9 +1,9 @@
-import assert from 'node:assert';
-import { test } from 'node:test';
+import { describe, it, expect } from 'vitest';
 
 import { toCamelCase } from './toCamelCase.js';
 
-// Example test for the handler
-test('hello world', async (t) => {
-  assert.strictEqual(toCamelCase('hello world!'), 'Hello world!');
+describe('toCamelCase', () => {
+  it('should convert first letter to uppercase', () => {
+    expect(toCamelCase('hello world!')).toBe('Hello world!');
+  });
 });

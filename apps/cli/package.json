@@ -5,9 +5,19 @@
   "source": "./src/index.ts",
   "main": "./dist/index.js",
   "bin": "./bin/cli.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+
+      "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
+      "lint:check": "eslint \"src/**/*.{ts,tsx}\"",    "format": "prettier --write ."
+  },
   "dependencies": {
-    "@bhouston/common-lib": "*",
-    "yargs": "^17.7.2"
+    "@bhouston/common-lib": "workspace:*",
+    "type-fest": "^4.31.0",
+    "yargs": "^17.7.2",
+    "yargs-file-commands": "^0.0.3"
   },
   "devDependencies": {
     "@types/yargs": "^17.0.33"

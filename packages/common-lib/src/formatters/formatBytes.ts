@@ -3,28 +3,28 @@ import { formatUnit, type UnitArray } from './formatUnit.js';
 const byteUnits: UnitArray = [
   {
     value: 1000 * 1000 * 1000 * 1000 * 1000,
-    notation: 'PB'
+    notation: 'PB',
   },
   {
     value: 1000 * 1000 * 1000 * 1000,
-    notation: 'TB'
+    notation: 'TB',
   },
   {
     value: 1000 * 1000 * 1000,
-    notation: 'GB'
+    notation: 'GB',
   },
   {
     value: 1000 * 1000,
-    notation: 'MB'
+    notation: 'MB',
   },
   {
     value: 1000,
-    notation: 'KB'
+    notation: 'KB',
   },
   {
     value: 1,
-    notation: 'B'
-  }
+    notation: 'B',
+  },
 ];
 
 export const formatBytes = (value: number | undefined) => {

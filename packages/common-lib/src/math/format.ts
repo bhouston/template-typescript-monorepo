@@ -1,6 +1,6 @@
 // Create a formatter with the default locale
 const formatter = new Intl.NumberFormat(undefined, {
-  style: 'decimal'
+  style: 'decimal',
 });
 
 export function format(value: number | undefined): string {

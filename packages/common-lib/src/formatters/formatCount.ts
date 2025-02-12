@@ -3,28 +3,28 @@ import { formatUnit, type UnitArray } from './formatUnit.js';
 const countUnits: UnitArray = [
   {
     value: 1000 * 1000 * 1000 * 1000 * 1000,
-    notation: 'P'
+    notation: 'P',
   },
   {
     value: 1000 * 1000 * 1000 * 1000,
-    notation: 'T'
+    notation: 'T',
   },
   {
     value: 1000 * 1000 * 1000,
-    notation: 'B'
+    notation: 'B',
   },
   {
     value: 1000 * 1000,
-    notation: 'M'
+    notation: 'M',
   },
   {
     value: 1000,
-    notation: 'K'
+    notation: 'K',
   },
   {
     value: 1,
-    notation: ''
-  }
+    notation: '',
+  },
 ];
 
 export const formatCount = (value: number | undefined) => {
