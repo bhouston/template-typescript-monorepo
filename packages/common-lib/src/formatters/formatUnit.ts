@@ -10,7 +10,7 @@ export type UnitArray = Unit[];
 export const formatUnit = (
   value: number,
   significantDigits: number,
-  units: UnitArray
+  units: UnitArray,
 ) => {
   const unit =
     units.find((unit) => value >= unit.value) ?? units[units.length - 1];

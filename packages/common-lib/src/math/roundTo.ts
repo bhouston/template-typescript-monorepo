@@ -3,7 +3,7 @@ export const roundTo = (value: number, significantDigits: number) => {
   const magnitudeDigits = Math.floor(Math.log10(value));
   const scale = Math.pow(
     10,
-    Math.max(significantDigits - 1, 0) - magnitudeDigits
+    Math.max(significantDigits - 1, 0) - magnitudeDigits,
   );
   return Math.round(value * scale) / scale;
 };

@@ -4,6 +4,6 @@ import { test } from 'node:test';
 import { toCamelCase } from './toCamelCase.js';
 
 // Example test for the handler
-await test('hello world', (t) => {
+await test('hello world', () => {
   assert.strictEqual(toCamelCase('hello world!'), 'Hello world!');
 });

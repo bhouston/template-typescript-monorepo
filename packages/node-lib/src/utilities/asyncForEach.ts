@@ -8,7 +8,7 @@ export type AsyncForEachOptions = {
 export const asyncForEach = async <T>(
   items: T[],
   callback: (item: T) => Promise<void>,
-  options: AsyncForEachOptions = {}
+  options: AsyncForEachOptions = {},
 ): Promise<void> => {
   const concurrencyLimit = options.concurrencyLimit ?? 10;
 

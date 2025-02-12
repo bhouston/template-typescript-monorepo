@@ -9,6 +9,7 @@
     "@fastify/http-proxy": "^10.0.1",
     "@fastify/swagger": "^9.2.0",
     "dotenv": "^16.4.5",
+    "@bhouston/common-lib": "*",
     "fastify": "^5.0.0",
     "fastify-file-router": "^0.0.5",
     "get-port": "^7.1.0",

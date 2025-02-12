@@ -6,6 +6,6 @@ export const builder = (args: Argv): Argv => {
   return args;
 };
 
-export const handler = async (_args: ArgumentsCamelCase) => {
+export const handler = (_args: ArgumentsCamelCase) => {
   console.log('Hello world!');
 };

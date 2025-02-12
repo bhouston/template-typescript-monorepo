@@ -2,7 +2,7 @@
 import { createAPIFileRoute } from '@tanstack/start/api';
 
 export const APIRoute = createAPIFileRoute('/api/health')({
-  GET: async () => {
+  GET: () => {
     return new Response(null, { status: 204 });
-  }
+  },
 });

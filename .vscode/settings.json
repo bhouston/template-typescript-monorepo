@@ -15,7 +15,6 @@
     "Buildx",
     "bunx",
     "cacheable",
-    "esbuild",
     "fortawesome",
     "gcloud",
     "GLTF",

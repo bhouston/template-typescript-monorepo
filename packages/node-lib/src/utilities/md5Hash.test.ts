@@ -7,6 +7,6 @@ import { stringToMd5Hash } from './md5Hash.js';
 await test('hello world', () => {
   assert.strictEqual(
     stringToMd5Hash('Hello World!'),
-    'ed076287532e86365e841e92bfc50d8c'
+    'ed076287532e86365e841e92bfc50d8c',
   );
 });

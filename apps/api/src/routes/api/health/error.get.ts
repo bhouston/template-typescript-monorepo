@@ -3,8 +3,8 @@ import type { FastifyReply, FastifyRequest } from 'fastify';
 const ReplySchema = {
   204: {
     description: 'Successful response',
-    type: 'null'
-  }
+    type: 'null',
+  },
 } as const;
 
 export const schema = {
@@ -12,12 +12,12 @@ export const schema = {
   tags: ['utility'],
   operationId: 'health',
   summary: 'Throw Test Error',
-  response: ReplySchema
+  response: ReplySchema,
 };
 
-export default async function handler(
+export default function handler(
   _request: FastifyRequest,
-  _reply: FastifyReply
+  _reply: FastifyReply,
 ) {
   throw new Error('Test Error');
 }
