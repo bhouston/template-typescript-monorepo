@@ -11,9 +11,6 @@ importers:
       '@tanstack/start':
         specifier: ^1.95.6
         version: 1.102.6(@types/node@20.17.17)(db0@0.2.4)(ioredis@5.5.0)(jiti@2.4.2)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(terser@5.38.2)(tsx@4.19.2)(typescript@5.7.3)(vite@6.1.0(@types/node@20.17.17)(jiti@2.4.2)(terser@5.38.2)(tsx@4.19.2)(yaml@2.7.0))(yaml@2.7.0)
-      eslint:
-        specifier: ^9.20.1
-        version: 9.20.1(jiti@2.4.2)
       mycoder:
         specifier: ^0.1.0
         version: 0.1.0(@types/node@20.17.17)(eslint@9.20.1(jiti@2.4.2))(typescript@5.7.3)(vite@6.1.0(@types/node@20.17.17)(jiti@2.4.2)(terser@5.38.2)(tsx@4.19.2)(yaml@2.7.0))(vitest@3.0.5)
@@ -36,6 +33,9 @@ importers:
       '@vitest/coverage-v8':
         specifier: ^3.0.5
         version: 3.0.5(@vitest/browser@3.0.5)(vitest@3.0.5)
+      eslint:
+        specifier: ^9.20.1
+        version: 9.20.1(jiti@2.4.2)
       eslint-config-prettier:
         specifier: ^9
         version: 9.1.0(eslint@9.20.1(jiti@2.4.2))
