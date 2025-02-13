@@ -2,9 +2,6 @@
 name: 'install workspace'
 description: 'Set up Node.js environment and check out code'
 inputs:
-  node-version-file:
-    description: 'Path to Node version file'
-    default: '.nvmrc'
   pnpm-version:
     description: 'Path to Node version file'
     default: 10.2.1
@@ -16,9 +13,9 @@ runs:
       with:
         version: ${{ inputs.pnpm-version }}
 
-    - uses: actions/setup-node@v3
+    - uses: actions/setup-node@v4
       with:
-        node-version: ${{ inputs.node-version-file }}
+        node-version-file: '.nvmrc'
 
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
