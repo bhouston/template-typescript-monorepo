@@ -55,7 +55,7 @@ jobs:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
           project_id: ${{ env.PROJECT_ID }}
           service_name: ${{ env.SERVICE_NAME }}
-          dockerfile: ./Dockerfile
+          dockerfile: ./apps/tan-start-app/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
