@@ -12,5 +12,6 @@
     "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "lint:check": "eslint \"src/**/*.{ts,tsx}\""
   },
-  "devDependencies": {}
+  "devDependencies": {
+  }
 }

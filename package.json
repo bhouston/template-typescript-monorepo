@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "@tanstack/start": "^1.95.6",
+    "eslint": "^9.20.1",
     "mycoder": "^0.1.0",
     "rimraf": "^6.0.1"
   }
