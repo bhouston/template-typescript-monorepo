@@ -9,16 +9,15 @@
     "dev": "tsc --watch",
     "build": "tsc",
     "typecheck": "tsc --noEmit",
-      "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
-      "lint:check": "eslint \"src/**/*.{ts,tsx}\"",
-    "format": "prettier --write .",
-    "test": "node --test --no-warnings --experimental-strip-types --experimental-transform-types './dist/**/*.test.js'"
+    "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
+    "lint:check": "eslint \"src/**/*.{ts,tsx}\""
   },
   "devDependencies": {
-    "zod": "^3.22.4"
   },
   "dependencies": {
     "@google-cloud/storage": "^7.12.1",
-    "p-all": "^5.0.0"
+    "dotenv": "^16.4.5",
+    "p-all": "^5.0.0",
+    "zod": "^3.22.4"
   }
 }

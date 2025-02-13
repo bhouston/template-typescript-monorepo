@@ -23,6 +23,7 @@
     "lerp",
     "microbundle",
     "Nullary",
+    "nvmrc",
     "reactflow",
     "reserialization",
     "reserialized",
@@ -31,6 +32,31 @@
     "threeify",
     "vinxi"
   ],
+
+  "editor.rulers": [160],
+
+  // Workbench
+  "workbench.editor.enablePreview": false, // Opens files in new tab instead of preview
+
+  // JavaScript/TypeScript specific
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.preferences.importModuleSpecifier": "relative",
+
+  // TypeScript specific
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.preferences.importModuleSpecifier": "relative",
+
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.codeActionsOnSave": ["source.formatDocument", "source.fixAll.eslint"]
+  "editor.codeActionsOnSave": ["source.formatDocument", "source.fixAll.eslint"],
+  "files.exclude": {
+    "**/.git": true,
+    "**/.nx": true
+  },
+
+  "css.validate": false,
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascript",
+    "typescriptreact": "javascript"
+  },
+  "tailwindCSS.emmetCompletions": true
 }

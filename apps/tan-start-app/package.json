@@ -7,9 +7,8 @@
     "build": "vinxi build && tsc --noEmit",
     "start": "vinxi start",
     "typecheck": "tsc --noEmit",
-
-      "lint": "eslint \"app/**/*.{ts,tsx}\" --fix",
-      "lint:check": "eslint \"app/**/*.{ts,tsx}\"",      "format": "prettier --write ."
+    "lint": "eslint \"app/**/*.{ts,tsx}\" --fix",
+    "lint:check": "eslint \"app/**/*.{ts,tsx}\""
   },
   "dependencies": {
     "@bhouston/react-lib": "workspace:*",
@@ -25,6 +24,7 @@
     "react-dom": "^18.3.1",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
+    "vite": "^6.1.0",
     "zod": "^3.24.1"
   },
   "devDependencies": {
