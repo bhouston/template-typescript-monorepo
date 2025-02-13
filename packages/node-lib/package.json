@@ -9,9 +9,8 @@
     "dev": "tsc --watch",
     "build": "tsc",
     "typecheck": "tsc --noEmit",
-      "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
-      "lint:check": "eslint \"src/**/*.{ts,tsx}\"",
-    "format": "prettier --write .",
+    "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
+    "lint:check": "eslint \"src/**/*.{ts,tsx}\"",
     "test": "node --test --no-warnings --experimental-strip-types --experimental-transform-types './dist/**/*.test.js'"
   },
   "devDependencies": {

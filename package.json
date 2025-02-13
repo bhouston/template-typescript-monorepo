@@ -15,7 +15,7 @@
     "lint:check": "pnpm -r lint:check",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",
-    "format": "pnpm -r format",
+    "format": "prettier --write .",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",

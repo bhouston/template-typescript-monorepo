@@ -17,7 +17,7 @@ jobs:
         uses: ./.github/actions/install-workspace
 
       - name: pnpm build
-        run: pnpm run build
+        run: pnpm build
 
   test:
     runs-on: ubuntu-latest
