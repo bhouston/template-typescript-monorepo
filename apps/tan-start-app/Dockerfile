@@ -1,22 +1,18 @@
 FROM node:22-alpine
 
-WORKDIR /usr/src/app
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
 
-# copy all sources
-COPY . ./
+WORKDIR /app
+COPY . .
+RUN pnpm install --frozen-lockfile
 
-# install dependencies
-RUN npm ci --include-workspace-root -w tan-start-app --audit=false --fund=false
-
-# build
-RUN npx nx run-many -t build -p tan-start-app
-
-# run server
-EXPOSE 8080
-ENV PORT=8080
-
-# set env var NODE_ENV to production
 ENV NODE_ENV=production
 
-WORKDIR /usr/src/app/apps/tan-start-app
-CMD ["npx", "vinxi", "start"]
+RUN pnpm run build
+
+ENV PORT=8080
+EXPOSE 8080
+WORKDIR /app/apps/tan-start-app
+CMD ["pnpm", "start"]
