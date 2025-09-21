@@ -3,6 +3,7 @@
 ## Test Configuration Structure
 
 The test configuration is managed through the following files:
+
 - `jest.config.js` - Main Jest configuration file
 - `tsconfig.json` - TypeScript configuration for tests
 
@@ -30,6 +31,7 @@ Follow these naming conventions for test files:
 - Use descriptive names that match the module being tested
 
 Example:
+
 ```
 src/
   ├── utils/
@@ -54,16 +56,19 @@ Coverage reports are generated in the `coverage/` directory.
 ## Testing Best Practices
 
 1. **Test Organization**
+
    - Use describe blocks to group related tests
    - Use clear, descriptive test names
    - Follow the Arrange-Act-Assert pattern
 
 2. **Mocking**
+
    - Mock external dependencies
    - Use Jest's mock functions for callbacks and services
    - Keep mocks simple and focused
 
 3. **Test Isolation**
+
    - Each test should be independent
    - Clean up after tests using beforeEach/afterEach
    - Don't share state between tests
@@ -74,6 +79,7 @@ Coverage reports are generated in the `coverage/` directory.
    - Include edge cases
 
 Example Test:
+
 ```typescript
 describe('Parser', () => {
   describe('parseConfig', () => {
@@ -86,7 +92,7 @@ describe('Parser', () => {
 
       // Assert
       expect(result).toEqual({
-        key: 'value'
+        key: 'value',
       });
     });
 
@@ -104,11 +110,13 @@ describe('Parser', () => {
 ## Continuous Integration
 
 Tests are automatically run in the CI pipeline for:
+
 - Pull requests
 - Merges to main branch
 - Release builds
 
 The CI pipeline will fail if:
+
 - Any tests fail
 - Coverage drops below configured thresholds
 - TypeScript compilation errors exist

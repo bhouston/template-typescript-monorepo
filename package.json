@@ -5,7 +5,7 @@
   "description": "",
   "type": "module",
   "main": "index.js",
-  "packageManager": "pnpm@10.2.1",
+  "packageManager": "pnpm@10.17.0",
   "scripts": {
     "build": "pnpm -r build",
     "dev": "pnpm -r --parallel --stream dev",
@@ -21,8 +21,7 @@
     "test:coverage": "vitest run --coverage",
     "cloc": "npx cloc * --exclude-dir=node_modules,dist,.next,build",
     "gcloud-setup": "gcloud auth application-default login && gcloud config set project bhouston-general-hosting && gcloud config set run/region us-central1",
-    "depcheck": "npx depcheck",
-    "mycoder": "mycoder -i"
+    "depcheck": "npx depcheck"
   },
   "keywords": [],
   "author": "",
