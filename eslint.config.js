@@ -72,4 +72,22 @@ export default ts.config(
       'promise/no-multiple-resolved': 'error',
     },
   },
+  {
+    ignores: [
+      '**/dist',
+      '**/node_modules',
+      '**/.output',
+      '**/.nitro',
+      '**/.tanstack',
+      '**/.vinxi',
+      '**/routeTree.gen.ts',
+      '**/pnpm-lock.yaml',
+      '**/coverage',
+      '**/*.d.ts',
+      'eslint.config.js',
+      'prettier.config.ts',
+      'vitest.config.ts',
+      '**/bin/**',
+    ],
+  },
 );

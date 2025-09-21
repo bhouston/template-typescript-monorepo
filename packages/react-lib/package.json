@@ -9,8 +9,6 @@
     "dev": "tsc --watch",
     "build": "tsc",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
-    "lint:check": "eslint \"src/**/*.{ts,tsx}\"",
     "format": "prettier --write ."
   },
   "dependencies": {

@@ -8,9 +8,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "typecheck": "tsc --noEmit",
-    "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
-    "lint:check": "eslint \"src/**/*.{ts,tsx}\""
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@bhouston/common-lib": "workspace:*",

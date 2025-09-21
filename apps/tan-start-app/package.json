@@ -8,8 +8,6 @@
     "build": "vite build",
     "serve": "vite preview",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
-    "lint:check": "eslint \"src/**/*.{ts,tsx}\"",
     "test": "vitest run"
   },
   "dependencies": {

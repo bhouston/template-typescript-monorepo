@@ -7,9 +7,7 @@
     "build": "tsc",
     "dev": "concurrently \"tsc --watch\" \"SERVICE_ENV=development node --watch dist/server.js\"",
     "start": "SERVICE_ENV=development node --watch dist/server.js",
-    "typecheck": "tsc --noEmit",
-    "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
-    "lint:check": "eslint \"src/**/*.{ts,tsx}\""
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@fastify/compress": "^8.0.1",
