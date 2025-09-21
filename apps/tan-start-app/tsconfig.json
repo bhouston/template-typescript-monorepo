@@ -1,5 +1,5 @@
 {
-  "include": ["**/*"],
+  "include": ["${configDir}/**/*"],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "types": ["node", "vite/client"],
@@ -7,11 +7,11 @@
     "module": "ES2022",
     "moduleResolution": "bundler",
     "jsx": "react-jsx",
-    "rootDirs": ["."],
-    "baseUrl": ".",
+    "rootDirs": ["${configDir}"],
+    "baseUrl": "${configDir}",
     "paths": {
-      "~/*": ["./app/*"],
-      "@/*": ["./app/*"]
+      "~/*": ["${configDir}/app/*"],
+      "@/*": ["${configDir}/app/*"]
     },
 
     "esModuleInterop": true,

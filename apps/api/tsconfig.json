@@ -1,7 +1,11 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["src"],
   "compilerOptions": {
-    "outDir": "dist"
+    "types": ["node"],
+    "lib": ["ES2020"],
+    "typeRoots": [
+      "${configDir}/node_modules/@types",
+      "../../node_modules/@types"
+    ]
   }
 }
