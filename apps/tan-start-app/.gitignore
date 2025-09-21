@@ -3,3 +3,5 @@ node_modules
 *.tsbuildinfo
 .output
 .vinxi
+.nitro
+.tanstack

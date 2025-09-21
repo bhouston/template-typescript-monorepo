@@ -14,9 +14,11 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@bhouston/common-lib": "workspace:*"
+    "@bhouston/common-lib": "workspace:*",
+    "react": "^18.3.1"
   },
   "devDependencies": {
+    "@types/react": "^18.3.12",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.25",
     "postcss-cli": "^10.1.0",

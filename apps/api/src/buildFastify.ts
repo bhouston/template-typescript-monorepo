@@ -11,7 +11,6 @@ const isTest = process.env.NODE_ENV === 'test';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 const app = Fastify({
   logger: true,
   trustProxy: true,
