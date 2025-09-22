@@ -7,7 +7,7 @@ import { dirname, join } from 'path';
 
 dotenv.config();
 
-const isTest = process.env.NODE_ENV === 'test';
+const isTest = process.env['NODE_ENV'] === 'test';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 

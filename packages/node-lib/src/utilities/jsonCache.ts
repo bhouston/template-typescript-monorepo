@@ -17,7 +17,7 @@ const rootHash = {
   dbName: '',
 };
 
-const dbName = process.env.DB_DATABASE;
+const dbName = process.env['DB_DATABASE'];
 if (dbName === undefined) {
   throw new Error('DB_DATABASE is undefined');
 }

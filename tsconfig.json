@@ -33,6 +33,12 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
 
+
+    // Additional strict checking options
+    "useUnknownInCatchVariables": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true, // Enable when ready to fix bracket notation
+  
     // modules
     "resolveJsonModule": false, // causes problems by hoisting json files, and src to the root of the dist folder
     "esModuleInterop": true,
