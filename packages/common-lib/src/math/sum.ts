@@ -1,10 +1,14 @@
 const cSplitSumMinimumRange = 5;
 
 const splitSum = (values: number[], start: number, end: number): number => {
+  if( start < 0 || end >= values.length ) {
+    throw new Error('Invalid start or end');
+  }
   if (end - start < cSplitSumMinimumRange) {
     let sum = 0;
     for (let i = start; i <= end; i++) {
-      sum += values[i];
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      sum += values[i]!; // okay since we checked the bounds above
     }
     return sum;
   }

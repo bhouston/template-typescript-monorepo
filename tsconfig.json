@@ -22,36 +22,40 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
 
+
     // important for Linux
     "forceConsistentCasingInFileNames": true,
 
     // linting
     "noImplicitAny": true,
     "noImplicitThis": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
 
-
-    // Additional strict checking options
+    // These slow down compilation and are not necessary for our use case
+    "noUncheckedIndexedAccess": true,
     "useUnknownInCatchVariables": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true, // Enable when ready to fix bracket notation
-  
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    // This doesn't seem actually useful
+    //"exactOptionalPropertyTypes": true,
+
     // modules
     "resolveJsonModule": false, // causes problems by hoisting json files, and src to the root of the dist folder
-    "esModuleInterop": true,
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": false,
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
 
-    // source maps & type maps
-    "declaration": true,
+    "incremental": false,
+    "esModuleInterop": false,
     "sourceMap": true,
+    //"declaration": true,
+    //"declarationMap": true,
 
-    // cache build outputs
-    "incremental": true
+
   },
   "include": ["${configDir}/src/**/*"],
   "exclude": ["${configDir}/node_modules", "${configDir}/dist"]

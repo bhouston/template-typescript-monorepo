@@ -40,8 +40,9 @@ export async function internalJsonCache(
   const cacheKey = `${name}-${descriptionHash}`;
   const prefix = `[jsonCache] ${name} `;
 
-  if (cacheKey in memoryCache) {
-    const cacheEntry = memoryCache[cacheKey];
+  const cacheEntry = memoryCache[cacheKey];
+
+  if (cacheEntry) {
     if (currentTimestamp - cacheEntry.timeStamp <= cacheExpiration) {
       console.log(
         `${prefix} memoryCache HIT ${Date.now() - currentTimestamp} ms`,

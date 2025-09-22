@@ -13,6 +13,6 @@ export const formatUnit = (
   units: UnitArray,
 ) => {
   const unit =
-    units.find((unit) => value >= unit.value) ?? units[units.length - 1];
-  return `${roundTo(value / unit.value, 3)}${unit.notation}`;
+    units.find((unit) => value >= unit.value) ?? units[units.length - 1] ?? { value: 1, notation: '' };
+  return `${roundTo(value / unit.value, significantDigits)}${unit.notation}`;
 };
