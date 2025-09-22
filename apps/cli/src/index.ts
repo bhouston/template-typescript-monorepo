@@ -3,10 +3,11 @@ import path from 'path';
 import process from 'process';
 import { fileURLToPath } from 'url';
 
-import type { PackageJson } from 'type-fest';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { fileCommands } from 'yargs-file-commands';
+
+import type { PackageJson } from 'type-fest';
 
 const require = createRequire(import.meta.url);
 const packageInfo = require('../package.json') as PackageJson;

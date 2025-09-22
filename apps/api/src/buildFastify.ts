@@ -1,9 +1,10 @@
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+
 import cors from '@fastify/cors';
 import dotenv from 'dotenv';
 import Fastify, { type FastifyInstance } from 'fastify';
 import { fastifyFileRouter } from 'fastify-file-router';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
 
 dotenv.config();
 

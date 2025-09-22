@@ -8,68 +8,150 @@ import pluginPromise from 'eslint-plugin-promise';
 
 export default ts.config(
   js.configs.recommended,
-  ts.configs.recommendedTypeChecked,
+  ts.configs.recommended,
   prettierRecommended,
   importPlugin.flatConfigs.recommended,
   pluginPromise.configs['flat/recommended'],
   {
     languageOptions: {
       parserOptions: {
-        project: true,
+        projectService: true,
+        allowDefaultProject: true,
         tsconfigRootDir: import.meta.dirname,
       },
+    },
+    linterOptions: {
+      reportUnusedDisableDirectives: true,
     },
     plugins: {
       'unused-imports': unusedImports,
     },
     rules: {
-      // Basic code quality rules
-      'no-console': 'off',
-      'prefer-const': 'warn',
-      'no-var': 'warn',
-      eqeqeq: ['warn', 'always'],
+      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/no-require-imports': 'error',
+      '@typescript-eslint/no-floating-promises': 'error',
+      '@typescript-eslint/no-misused-promises': [
+        'error',
+        { checksVoidReturn: { attributes: false } },
+      ],
 
-      // Light complexity rules
-      complexity: ['warn', { max: 20 }],
-      'max-depth': ['warn', { max: 4 }],
-      'max-lines-per-function': ['warn', { max: 150 }],
+      // Additional typed rules (pragmatic)
+      '@typescript-eslint/await-thenable': 'error',
+      '@typescript-eslint/no-for-in-array': 'warn',
+      '@typescript-eslint/no-unnecessary-type-assertion': 'warn',
+      '@typescript-eslint/no-duplicate-enum-values': 'error',
+      '@typescript-eslint/no-duplicate-type-constituents': 'warn',
+      '@typescript-eslint/no-confusing-void-expression': [
+        'warn',
+        { ignoreArrowShorthand: true },
+      ],
+      '@typescript-eslint/no-base-to-string': 'warn',
+      '@typescript-eslint/consistent-type-assertions': 'warn',
+      '@typescript-eslint/no-non-null-assertion': 'warn',
+      '@typescript-eslint/no-unsafe-enum-comparison': 'warn',
 
+      // Keep noisy unsafe rules disabled for now
       '@typescript-eslint/no-unsafe-assignment': 'off',
-      '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-unsafe-member-access': 'off',
       '@typescript-eslint/no-unsafe-call': 'off',
       '@typescript-eslint/no-unsafe-return': 'off',
       '@typescript-eslint/no-unsafe-argument': 'off',
-      '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-unused-vars': [
+
+      // TS error-prevention (moderate noise)
+      '@typescript-eslint/no-unnecessary-condition': 'error',
+      '@typescript-eslint/restrict-template-expressions': [
+        'warn',
+        { allowNumber: true, allowBoolean: true, allowNullish: true },
+      ],
+      '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'warn',
+
+      // General JS error-prevention rules
+      'array-callback-return': 'error',
+      'no-async-promise-executor': 'error',
+      'default-case-last': 'error',
+      'no-self-compare': 'error',
+      'no-unmodified-loop-condition': 'error',
+      'no-constant-binary-expression': 'error',
+      'no-useless-return': 'warn',
+      'no-return-assign': ['error', 'always'],
+      'no-await-in-loop': 'warn',
+      'require-atomic-updates': 'warn',
+      'no-useless-catch': 'warn',
+      'no-new-wrappers': 'error',
+      'no-implicit-coercion': [
+        'warn',
+        { boolean: true, number: true, string: true },
+      ],
+      'consistent-return': 'error',
+      'no-fallthrough': 'error',
+      'no-promise-executor-return': 'error',
+      'no-constructor-return': 'error',
+      radix: ['error', 'always'],
+      'valid-typeof': 'error',
+      'prefer-promise-reject-errors': 'warn',
+
+      // General quality (lightweight)
+      'prefer-const': 'warn',
+      'no-var': 'warn',
+      eqeqeq: ['error', 'always'],
+
+      // Disallow dynamic imports
+      'no-restricted-syntax': [
         'error',
-        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+        {
+          selector: 'ImportExpression',
+          message:
+            'Dynamic imports are not allowed. Please use static imports instead. If you need to use dynamic imports, add an eslint-disable comment.',
+        },
       ],
 
-      'import/no-unresolved': 'off',
-      'import/named': 'off',
-      'import/extensions': [
-        'error',
-        'ignorePackages',
-        { js: 'always', ts: 'never' },
-      ],
-
-      'no-unused-vars': 'off', // or "@typescript-eslint/no-unused-vars": "off",
+      // Remove unused imports
       'unused-imports/no-unused-imports': 'error',
+      'unused-imports/no-unused-vars': [
+        'error',
+        {
+          vars: 'all',
+          varsIgnorePattern: '^_',
+          args: 'after-used',
+          argsIgnorePattern: '^_',
+        },
+      ],
 
-      'promise/always-return': 'error',
-      'promise/no-return-wrap': 'error',
-      'promise/param-names': 'error',
-      'promise/catch-or-return': 'error',
-      'promise/no-native': 'off',
-      'promise/no-nesting': 'warn',
-      'promise/no-promise-in-callback': 'warn',
-      'promise/no-callback-in-promise': 'warn',
-      'promise/avoid-new': 'off',
-      'promise/no-new-statics': 'error',
-      'promise/no-return-in-finally': 'warn',
-      'promise/valid-params': 'warn',
-      'promise/no-multiple-resolved': 'error',
+      // Import organization
+      'import/order': [
+        'error',
+        {
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+            'object',
+            'type',
+          ],
+          'newlines-between': 'always',
+          alphabetize: { order: 'asc', caseInsensitive: true },
+          warnOnUnassignedImports: true,
+        },
+      ],
+      'import/no-duplicates': 'error',
+
+      // Disable base rule in favor of unused-imports
+      'no-unused-vars': 'off',
+    },
+    settings: {
+      'import/parsers': {
+        '@typescript-eslint/parser': ['.ts', '.tsx'],
+      },
+      'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
+          project: ['./packages/*/tsconfig.json'],
+        },
+      },
     },
   },
   {
@@ -80,14 +162,19 @@ export default ts.config(
       '**/.nitro',
       '**/.tanstack',
       '**/.vinxi',
+      '**/_doNotUse',
       '**/routeTree.gen.ts',
       '**/pnpm-lock.yaml',
       '**/coverage',
       '**/*.d.ts',
       'eslint.config.js',
       'prettier.config.ts',
+      '**/vite.config.*',
+      '**/nitro.config.*',
+      '**/eslint-rules',
       'vitest.config.ts',
       '**/bin/**',
+      '**/.terraform/**',
     ],
   },
 );

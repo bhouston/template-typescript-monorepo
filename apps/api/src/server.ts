@@ -11,10 +11,9 @@ const port = Number(process.env['PORT'] ?? '3001');
 // You must listen on all IPV4 addresses in Cloud Run
 const host = IS_GOOGLE_CLOUD_RUN ? '0.0.0.0' : undefined;
 
-
 // Run the server!
 try {
-  const address = await app.listen({ port, host: host ?? undefined  });
+  const address = await app.listen({ port, host: host ?? undefined });
   console.log(`Server is running on port ${address}`);
 } catch (err) {
   app.log.error(err);

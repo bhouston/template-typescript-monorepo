@@ -1,5 +1,5 @@
-export function sleep(durationInMilliseconds: number) {
-  return new Promise((resolve) =>
-    setTimeout(resolve, Math.round(durationInMilliseconds)),
-  );
+export function sleep(durationInMilliseconds: number): Promise<void> {
+  return new Promise<void>((resolve) => {
+    setTimeout(resolve, Math.round(durationInMilliseconds));
+  });
 }

@@ -1,7 +1,7 @@
-import { describe, it, expect, beforeAll } from 'vitest';
-import Fastify from 'fastify';
-import cors from '@fastify/cors';
 import { errorToString } from '@bhouston/common-lib';
+import cors from '@fastify/cors';
+import Fastify from 'fastify';
+import { describe, it, expect, beforeAll } from 'vitest';
 
 describe('Health endpoint', () => {
   const app = Fastify({
