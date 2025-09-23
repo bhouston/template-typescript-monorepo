@@ -59,3 +59,5 @@ runs:
         push: true
         tags: ${{ inputs.gar_hostname }}/${{ inputs.project_id }}/shared-docker-registry/${{ inputs.service_name }}:${{ github.sha }}
         build-args: ${{ inputs.secret_envs }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
