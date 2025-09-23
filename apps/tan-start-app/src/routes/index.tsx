@@ -26,7 +26,7 @@ export const Route = createFileRoute('/')({
       },
       {
         name: 'description',
-        content: 'A generic Typescript mono-repo template.',
+        content: 'A generic Typescript mono-repo template illustrating best practices.',
       },
     ],
   }),
