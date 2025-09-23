@@ -7,9 +7,9 @@ const HomePage: React.FC = () => {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
       <HelloWorld name="@TanStack/Start">
         {apiHealthy ? (
-          <p className="text-green-500">API is healthy</p>
+          <p className="text-green-500">Local TanStack StartAPI is healthy</p>
         ) : (
-          <p className="text-red-500">API is not healthy</p>
+          <p className="text-red-500">Local TanStack Start API is NOT healthy</p>
         )}
       </HelloWorld>
     </div>
