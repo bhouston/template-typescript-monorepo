@@ -45,7 +45,7 @@
 
     // modules
     "resolveJsonModule": false, // causes problems by hoisting json files, and src to the root of the dist folder
-    "verbatimModuleSyntax": false,
+    "verbatimModuleSyntax": true,
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
 

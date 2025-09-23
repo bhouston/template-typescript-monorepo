@@ -1,5 +1,6 @@
 import { toCamelCase } from '@bhouston/common-lib';
-import { type FC, type ReactNode } from 'react';
+
+import type { FC, ReactNode } from 'react';
 
 export type HelloWorldProps = {
   name: string;

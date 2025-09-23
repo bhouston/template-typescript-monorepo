@@ -58,6 +58,21 @@ export default ts.config(
       '@typescript-eslint/no-unsafe-return': 'off',
       '@typescript-eslint/no-unsafe-argument': 'off',
 
+      // Enforce verbatimModuleSyntax via type-only imports/exports
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        {
+          prefer: 'type-imports',
+          fixStyle: 'inline-type-imports',
+          disallowTypeAnnotations: false,
+        },
+      ],
+      '@typescript-eslint/consistent-type-exports': [
+        'error',
+        { fixMixedExportsWithInlineTypeSpecifier: true },
+      ],
+      '@typescript-eslint/no-import-type-side-effects': 'error',
+
       // TS error-prevention (moderate noise)
       '@typescript-eslint/no-unnecessary-condition': 'error',
       '@typescript-eslint/restrict-template-expressions': [

@@ -16,9 +16,14 @@ const distDir = path.dirname(fileURLToPath(import.meta.url));
 export const main = async () => {
   const commandsDir = path.join(distDir, 'commands');
 
+  const { name, version } = packageInfo;
+  if (!name || !version) {
+    throw new Error('Package info is not valid, name and version required');
+  }
+
   return yargs(hideBin(process.argv))
-    .scriptName(packageInfo.name!)
-    .version(packageInfo.version!)
+    .scriptName(name)
+    .version(version)
     .command(await fileCommands({ commandDirs: [commandsDir] }))
     .demandCommand(
       1,
