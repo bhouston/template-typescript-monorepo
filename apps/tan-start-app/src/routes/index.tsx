@@ -22,7 +22,7 @@ export const Route = createFileRoute('/')({
   head: () => ({
     meta: [
       {
-        title: 'Ben Houston\'s TypeScript Monorepo Template',
+        title: "Ben Houston's TypeScript Monorepo Template",
       },
       {
         name: 'description',
