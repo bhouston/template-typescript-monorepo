@@ -9,7 +9,9 @@ const HomePage: React.FC = () => {
         {apiHealthy ? (
           <p className="text-green-500">Local TanStack StartAPI is healthy</p>
         ) : (
-          <p className="text-red-500">Local TanStack Start API is NOT healthy</p>
+          <p className="text-red-500">
+            Local TanStack Start API is NOT healthy
+          </p>
         )}
       </HelloWorld>
     </div>
