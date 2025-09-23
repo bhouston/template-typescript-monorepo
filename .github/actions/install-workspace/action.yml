@@ -4,7 +4,7 @@ description: 'Set up Node.js environment and check out code'
 inputs:
   pnpm-version:
     description: 'Path to Node version file'
-    default: 10.2.1
+    default: 10.17.0
 
 runs:
   using: 'composite'
