@@ -1,12 +1,12 @@
 import { toCamelCase } from '@bhouston/common-lib';
-import React from 'react';
+import { type FC, type ReactNode } from 'react';
 
 export type HelloWorldProps = {
   name: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
-export const HelloWorld: React.FC<HelloWorldProps> = ({ name, children }) => (
+export const HelloWorld: FC<HelloWorldProps> = ({ name, children }) => (
   <div className="flex flex-col items-center justify-center min-h-screen bg-blue-100">
     <h1 className="text-6xl text-green-500 mb-6">Hello, {name}!</h1>
     <p className="text-xl text-black">

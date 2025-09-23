@@ -12,7 +12,7 @@ export const formatUnit = (
   significantDigits: number,
   units: UnitArray,
 ) => {
-  const unit =
-    units.find((unit) => value >= unit.value) ?? units[units.length - 1] ?? { value: 1, notation: '' };
+  const unit = units.find((unit) => value >= unit.value) ??
+    units[units.length - 1] ?? { value: 1, notation: '' };
   return `${roundTo(value / unit.value, significantDigits)}${unit.notation}`;
 };

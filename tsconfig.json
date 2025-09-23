@@ -52,8 +52,8 @@
     "incremental": false,
     "esModuleInterop": false,
     "sourceMap": true,
-    //"declaration": true,
-    //"declarationMap": true,
+    "declaration": true,
+    "declarationMap": true,
 
 
   },

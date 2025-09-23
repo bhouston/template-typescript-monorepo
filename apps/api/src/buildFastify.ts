@@ -2,11 +2,11 @@ import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
 import cors from '@fastify/cors';
-import dotenv from 'dotenv';
+import { config as dotenvConfig } from 'dotenv';
 import Fastify, { type FastifyInstance } from 'fastify';
 import { fastifyFileRouter } from 'fastify-file-router';
 
-dotenv.config();
+dotenvConfig();
 
 const isTest = process.env['NODE_ENV'] === 'test';
 const __filename = fileURLToPath(import.meta.url);

@@ -1,7 +1,7 @@
 const cSplitSumMinimumRange = 5;
 
 const splitSum = (values: number[], start: number, end: number): number => {
-  if( start < 0 || end >= values.length ) {
+  if (start < 0 || end >= values.length) {
     throw new Error('Invalid start or end');
   }
   if (end - start < cSplitSumMinimumRange) {
