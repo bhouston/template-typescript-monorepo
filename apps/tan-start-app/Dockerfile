@@ -13,10 +13,12 @@ RUN corepack enable
 WORKDIR /app
 
 COPY pnpm-lock.yaml pnpm-workspace.yaml ./
-RUN --mount=type=cache,target=/root/.pnpm-store pnpm fetch
+# RUN --mount=type=cache,target=/root/.pnpm-store pnpm fetch
+RUN pnpm fetch
 
 COPY . .
-RUN --mount=type=cache,target=/root/.pnpm-store pnpm install --frozen-lockfile --offline && pnpm run build
+# RUN --mount=type=cache,target=/root/.pnpm-store pnpm install --frozen-lockfile --offline && pnpm run build
+RUN pnpm install --frozen-lockfile --offline && pnpm run build
 
 WORKDIR /app/apps/tan-start-app
 

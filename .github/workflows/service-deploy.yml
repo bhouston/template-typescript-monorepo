@@ -60,8 +60,8 @@ jobs:
           file: ${{ inputs.dockerfile }}
           push: true
           tags: ${{ env.IMAGE_PATH }}
-          cache-from: type=gha,scope=${{ inputs.service_name }}
-          cache-to: type=gha,mode=max,scope=${{ inputs.service_name }}
+          #cache-from: type=gha,scope=${{ inputs.service_name }}
+          #cache-to: type=gha,mode=max,scope=${{ inputs.service_name }}
 
       - name: Deploy to Cloud Run
         id: deploy
