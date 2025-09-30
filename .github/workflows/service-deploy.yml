@@ -41,6 +41,7 @@ jobs:
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
 
+
       - name: Configure Docker
         run: gcloud auth configure-docker ${{ vars.GAR_HOSTNAME }}
 
