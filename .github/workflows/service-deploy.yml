@@ -45,10 +45,10 @@ jobs:
       - name: Configure Docker
         run: gcloud auth configure-docker ${{ vars.GAR_HOSTNAME }}
 
-      - name: Set up Buildx
-        uses: docker/setup-buildx-action@v3
-        with:
-          driver: docker-container
+      #- name: Set up Buildx
+      #  uses: docker/setup-buildx-action@v3
+      #  with:
+      #    driver: docker-container
           
       - name: Set image path
         run: echo "IMAGE_PATH=${{ vars.GAR_HOSTNAME }}/${{ inputs.project_id }}/shared-docker-registry/${{ inputs.service_name }}:${{ github.sha }}" >> $GITHUB_ENV
@@ -60,8 +60,8 @@ jobs:
           file: ${{ inputs.dockerfile }}
           push: true
           tags: ${{ env.IMAGE_PATH }}
-          #cache-from: type=gha,scope=${{ inputs.service_name }}
-          #cache-to: type=gha,mode=max,scope=${{ inputs.service_name }}
+          #cache-from: type=gha,scope=$ {{ inputs.service_name }}
+          #cache-to: type=gha,mode=max,scope=$ {{ inputs.service_name }}
 
       - name: Deploy to Cloud Run
         id: deploy
