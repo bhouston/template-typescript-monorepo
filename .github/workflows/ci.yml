@@ -2,78 +2,78 @@ name: ci
 
 on: [push]
 
-env:
-  PROJECT_ID: bhouston-general-hosting
-  SERVICE_NAME: template-typescript-monorepo
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: git checkout
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: install workspace
-        uses: ./.github/actions/install-workspace
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.17.0
+          run_install: false
 
-      - name: pnpm build
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
         run: pnpm build
 
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: git checkout
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: install workspace
-        uses: ./.github/actions/install-workspace
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.17.0
+          run_install: false
 
-      - name: pnpm build
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
         run: pnpm build
 
-      - name: pnpm test
+      - name: Test
         run: pnpm test
 
   lint:
     runs-on: ubuntu-latest
     steps:
-      - name: git checkout
-        uses: actions/checkout@v4
-
-      - name: install workspace
-        uses: ./.github/actions/install-workspace
-
-      - name: pnpm build
-        run: pnpm build
-        
-      - name: pnpm lint
-        run: pnpm run lint:check
-
-  dockerize:
-    runs-on: ubuntu-latest
-    steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Dockerize
-        uses: ./.github/actions/dockerize
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
-          project_id: ${{ env.PROJECT_ID }}
-          service_name: ${{ env.SERVICE_NAME }}
-          dockerfile: ./apps/tan-start-app/Dockerfile
+          version: 10.17.0
+          run_install: false
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: [test, lint, build, dockerize]
-    if: ${{ github.ref == 'refs/heads/main' }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Deploy
-        uses: ./.github/actions/deploy-cloud-run
+      - name: Setup Node
+        uses: actions/setup-node@v5
         with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
-          project_id: ${{ env.PROJECT_ID }}
-          service_name: ${{ env.SERVICE_NAME }}
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint

@@ -1,0 +1,73 @@
+name: Deploy Service
+
+on:
+  workflow_call:
+    inputs:
+      project_id:
+        required: true
+        type: string
+        description: 'GCP Project ID'
+      service_name:
+        required: true
+        type: string
+        description: 'Cloud Run service name'
+      dockerfile:
+        required: true
+        type: string
+        description: 'Path to Dockerfile'
+      context:
+        required: false
+        type: string
+        description: 'Docker build context'
+        default: '.'
+    secrets:
+      GCP_SA_KEY:
+        required: true
+
+jobs:
+  deploy:
+    name: Deploy to Cloud Run
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Google Auth
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: '${{ secrets.GCP_SA_KEY }}'
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Configure Docker
+        run: gcloud auth configure-docker ${{ vars.GAR_HOSTNAME }}
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          driver: docker-container
+          
+      - name: Set image path
+        run: echo "IMAGE_PATH=${{ vars.GAR_HOSTNAME }}/${{ inputs.project_id }}/general/${{ inputs.service_name }}:${{ github.sha }}" >> $GITHUB_ENV
+
+      - name: Build and Push Container
+        uses: docker/build-push-action@v6
+        with:
+          context: ${{ inputs.context }}
+          file: ${{ inputs.dockerfile }}
+          push: true
+          tags: ${{ env.IMAGE_PATH }}
+          cache-from: type=gha,scope=${{ inputs.service_name }}
+          cache-to: type=gha,mode=max,scope=${{ inputs.service_name }}
+
+      - name: Deploy to Cloud Run
+        id: deploy
+        uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: ${{ inputs.service_name }}
+          region: ${{ vars.REGION }}
+          image: ${{ env.IMAGE_PATH }}
+          flags: '--allow-unauthenticated'
+

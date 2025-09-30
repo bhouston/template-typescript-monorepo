@@ -1,0 +1,19 @@
+name: prod
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-web:
+    name: Deploy Web App
+    uses: ./.github/workflows/service-deploy.yml
+    with:
+      project_id: bhouston-general-hosting
+      service_name: template-typescript-monorepo
+      dockerfile: ./apps/tan-start-app/Dockerfile
+      context: .
+    secrets:
+      GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+
