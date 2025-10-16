@@ -8,7 +8,7 @@ ENV PNPM_HOME="/pnpm" \
 
 EXPOSE 8080
 
-RUN corepack enable
+RUN npm install -g pnpm@latest-10
 
 WORKDIR /app
 
