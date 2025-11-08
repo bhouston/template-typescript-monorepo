@@ -8,7 +8,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "start": "node bin/cli.js"
   },
   "dependencies": {
     "@bhouston/common-lib": "workspace:*",
@@ -17,6 +18,7 @@
     "yargs-file-commands": "^0.0.3"
   },
   "devDependencies": {
-    "@types/yargs": "^17.0.33"
+    "@types/yargs": "^17.0.33",
+    "source-map-support": "~0.5.21"
   }
 }
