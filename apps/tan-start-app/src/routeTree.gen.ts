@@ -8,76 +8,55 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createServerRootRoute } from '@tanstack/react-start/server'
-
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { ServerRoute as ApiHelloServerRouteImport } from './routes/api/hello'
-import { ServerRoute as ApiHealthServerRouteImport } from './routes/api/health'
-
-const rootServerRouteImport = createServerRootRoute()
+import { Route as ApiHelloRouteImport } from './routes/api/hello'
+import { Route as ApiHealthRouteImport } from './routes/api/health'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiHelloServerRoute = ApiHelloServerRouteImport.update({
+const ApiHelloRoute = ApiHelloRouteImport.update({
   id: '/api/hello',
   path: '/api/hello',
-  getParentRoute: () => rootServerRouteImport,
+  getParentRoute: () => rootRouteImport,
 } as any)
-const ApiHealthServerRoute = ApiHealthServerRouteImport.update({
+const ApiHealthRoute = ApiHealthRouteImport.update({
   id: '/api/health',
   path: '/api/health',
-  getParentRoute: () => rootServerRouteImport,
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/health': typeof ApiHealthRoute
+  '/api/hello': typeof ApiHelloRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/health': typeof ApiHealthRoute
+  '/api/hello': typeof ApiHelloRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/health': typeof ApiHealthRoute
+  '/api/hello': typeof ApiHelloRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/api/health' | '/api/hello'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/api/health' | '/api/hello'
+  id: '__root__' | '/' | '/api/health' | '/api/hello'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-}
-export interface FileServerRoutesByFullPath {
-  '/api/health': typeof ApiHealthServerRoute
-  '/api/hello': typeof ApiHelloServerRoute
-}
-export interface FileServerRoutesByTo {
-  '/api/health': typeof ApiHealthServerRoute
-  '/api/hello': typeof ApiHelloServerRoute
-}
-export interface FileServerRoutesById {
-  __root__: typeof rootServerRouteImport
-  '/api/health': typeof ApiHealthServerRoute
-  '/api/hello': typeof ApiHelloServerRoute
-}
-export interface FileServerRouteTypes {
-  fileServerRoutesByFullPath: FileServerRoutesByFullPath
-  fullPaths: '/api/health' | '/api/hello'
-  fileServerRoutesByTo: FileServerRoutesByTo
-  to: '/api/health' | '/api/hello'
-  id: '__root__' | '/api/health' | '/api/hello'
-  fileServerRoutesById: FileServerRoutesById
-}
-export interface RootServerRouteChildren {
-  ApiHealthServerRoute: typeof ApiHealthServerRoute
-  ApiHelloServerRoute: typeof ApiHelloServerRoute
+  ApiHealthRoute: typeof ApiHealthRoute
+  ApiHelloRoute: typeof ApiHelloRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -89,37 +68,37 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-  }
-}
-declare module '@tanstack/react-start/server' {
-  interface ServerFileRoutesByPath {
     '/api/hello': {
       id: '/api/hello'
       path: '/api/hello'
       fullPath: '/api/hello'
-      preLoaderRoute: typeof ApiHelloServerRouteImport
-      parentRoute: typeof rootServerRouteImport
+      preLoaderRoute: typeof ApiHelloRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/api/health': {
       id: '/api/health'
       path: '/api/health'
       fullPath: '/api/health'
-      preLoaderRoute: typeof ApiHealthServerRouteImport
-      parentRoute: typeof rootServerRouteImport
+      preLoaderRoute: typeof ApiHealthRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiHealthRoute: ApiHealthRoute,
+  ApiHelloRoute: ApiHelloRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-const rootServerRouteChildren: RootServerRouteChildren = {
-  ApiHealthServerRoute: ApiHealthServerRoute,
-  ApiHelloServerRoute: ApiHelloServerRoute,
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
 }
-export const serverRouteTree = rootServerRouteImport
-  ._addFileChildren(rootServerRouteChildren)
-  ._addFileTypes<FileServerRouteTypes>()

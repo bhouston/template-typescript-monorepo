@@ -1,5 +1,9 @@
-import { createServerFileRoute } from '@tanstack/react-start/server';
+import { createFileRoute } from '@tanstack/react-router';
 
-export const ServerRoute = createServerFileRoute('/api/hello').methods({
-  GET: ({ request }: { request: Request }) => new Response(`Hello, World! from ${request.url}`),
+export const Route = createFileRoute('/api/hello')({
+  server: {
+    handlers: {
+      GET: ({ request }: { request: Request }) => new Response(`Hello, World! from ${request.url}`),
+    },
+  },
 });

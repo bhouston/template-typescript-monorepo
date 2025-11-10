@@ -39,8 +39,6 @@
     "node": ">=22.0.0"
   },
   "dependencies": {
-    "@tanstack/start": "^1.95.6",
-    "mycoder": "^0.1.0",
     "rimraf": "^6.0.1"
   }
 }
