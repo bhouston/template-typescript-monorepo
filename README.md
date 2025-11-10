@@ -50,6 +50,8 @@ This app is maintained in part by https://mycoder.ai
 ### Optimized Production Build
 
 1. Run `pnpm build` to build the source
+2. Run `pnpm start` to run the production server
+
 
 ### Command Line
 
