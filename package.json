@@ -10,6 +10,7 @@
     "build": "pnpm -r build",
     "dev": "pnpm -r --parallel --stream dev",
     "start": "pnpm --filter tan-start-app start",
+    "cli": "pnpm --filter cli start",
     "clean": "rimraf dist packages/**/dist apps/**/dist",
     "clean:all": "rimraf dist node_modules packages/**/node_modules packages/**/dist apps/**/node_modules apps/**/dist",
     "lint:check": "eslint .",
