@@ -1,15 +1,4 @@
 {
-  "eslint.probe": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "markdown",
-    "html",
-    "json"
-  ],
-  "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
   "cSpell.words": [
     "bhouston",
     "Buildx",
@@ -33,30 +22,26 @@
     "vinxi"
   ],
 
-  "editor.rulers": [160],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit",
+    "source.formatDocument": "explicit",
+    "source.organizeImports.biome": "explicit",
+    "source.useSortedAttributes.biome": "explicit"
+  },
 
-  // Workbench
-  "workbench.editor.enablePreview": false, // Opens files in new tab instead of preview
+  "editor.defaultFormatter": "biomejs.biome",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.rulers": [120],
+  "javascript.preferences.importModuleSpecifier": "relative",
 
   // JavaScript/TypeScript specific
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "javascript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.importModuleSpecifier": "relative",
 
   // TypeScript specific
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "typescript.preferences.importModuleSpecifier": "relative",
 
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.codeActionsOnSave": ["source.formatDocument", "source.fixAll.eslint"],
-  "files.exclude": {
-    "**/.git": true,
-    "**/.nx": true
-  },
-
-  "css.validate": false,
-  "tailwindCSS.includeLanguages": {
-    "typescript": "javascript",
-    "typescriptreact": "javascript"
-  },
-  "tailwindCSS.emmetCompletions": true
+  // Workbench
+  "workbench.editor.enablePreview": false // Opens files in new tab instead of preview
 }

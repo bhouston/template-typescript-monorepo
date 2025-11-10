@@ -15,9 +15,6 @@ export const schema = {
   response: ReplySchema,
 };
 
-export default async function handler(
-  _request: FastifyRequest,
-  reply: FastifyReply,
-) {
+export default async function handler(_request: FastifyRequest, reply: FastifyReply) {
   await reply.status(204).send();
 }

@@ -4,13 +4,12 @@ import { createRouter as createTanstackRouter } from '@tanstack/react-router';
 import { routeTree } from './routeTree.gen';
 
 // Create a new router instance
-export const createRouter = () => {
-  return createTanstackRouter({
+export const createRouter = () =>
+  createTanstackRouter({
     routeTree,
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
   });
-};
 
 // Register the router instance for type safety
 declare module '@tanstack/react-router' {

@@ -9,9 +9,7 @@ const HomePage: React.FC = () => {
         {apiHealthy ? (
           <p className="text-green-500">Local TanStack StartAPI is healthy</p>
         ) : (
-          <p className="text-red-500">
-            Local TanStack Start API is NOT healthy
-          </p>
+          <p className="text-red-500">Local TanStack Start API is NOT healthy</p>
         )}
       </HelloWorld>
     </div>
@@ -31,10 +29,7 @@ export const Route = createFileRoute('/')({
     ],
   }),
   loader: async () => {
-    const url = new URL(
-      '/api/health',
-      `http://localhost:${process.env.PORT ?? '3000'}`,
-    );
+    const url = new URL('/api/health', `http://localhost:${process.env.PORT ?? '3000'}`);
     const apiHealthy = await fetch(url.toString())
       .then((res) => res.ok)
       .catch(() => false);

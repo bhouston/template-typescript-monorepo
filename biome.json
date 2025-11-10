@@ -1,0 +1,75 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.3.4/schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on",
+        "useSortedAttributes": "on"
+      }
+    }
+  },
+  "files": {
+    "ignoreUnknown": false,
+    "includes": [
+      "**/src/**/*",
+      "**/.vscode/**/*",
+      "**/index.html",
+      "**/vite.config.js",
+      "!**/src/routeTree.gen.ts",
+      "!**/*.css",
+      "!public/**/*.html",
+      "!node_modules",
+      "!dist",
+      "!.output"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "lineWidth": 120
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "trailingCommas": "all"
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "nursery": {
+        "noDeprecatedImports": "error",
+        "noFloatingPromises": "error",
+        "noImportCycles": "error",
+        "noMisusedPromises": "error",
+        "noShadow": "error",
+        "noUnnecessaryConditions": "error",
+        "noUnusedExpressions": "error",
+        "noUselessCatchBinding": "error",
+        "noUselessUndefined": "error",
+        "useConsistentArrowReturn": "error"
+      },
+      "performance": {
+        "noAwaitInLoops": "error",
+        "noBarrelFile": "error",
+        "noReExportAll": "error",
+        "useTopLevelRegex": "error"
+      },
+      "recommended": true,
+      "security": {
+        "noSecrets": "error"
+      },
+      "style": {
+        "noImplicitBoolean": "error",
+        "noParameterAssign": "error",
+        "noUselessElse": "error",
+        "useAsConstAssertion": "error"
+      }
+    }
+  },
+  "vcs": {
+    "clientKind": "git",
+    "enabled": false,
+    "useIgnoreFile": false
+  }
+}

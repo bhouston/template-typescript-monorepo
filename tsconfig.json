@@ -36,7 +36,6 @@
     "noUncheckedIndexedAccess": true,
     "useUnknownInCatchVariables": true,
     "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true, // Enable when ready to fix bracket notation
     "noUnusedLocals": true,
     "noUnusedParameters": true,
 

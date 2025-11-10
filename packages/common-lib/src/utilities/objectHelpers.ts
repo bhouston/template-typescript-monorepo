@@ -8,10 +8,7 @@ export function pick<T, K extends keyof T>(obj: T, keys: K[]): Pick<T, K> {
   return newObj as Pick<T, K>;
 }
 
-export function filter<T>(
-  obj: T,
-  condition: (value: T[keyof T]) => boolean,
-): Partial<T> {
+export function filter<T>(obj: T, condition: (value: T[keyof T]) => boolean): Partial<T> {
   const newObj: Partial<T> = {};
 
   for (const key in obj) {

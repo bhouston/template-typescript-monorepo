@@ -1,13 +1,12 @@
-import { createRequire } from 'module';
-import path from 'path';
-import process from 'process';
-import { fileURLToPath } from 'url';
+import { createRequire } from 'node:module';
+import path from 'node:path';
+import process from 'node:process';
+import { fileURLToPath } from 'node:url';
 
+import type { PackageJson } from 'type-fest';
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { fileCommands } from 'yargs-file-commands';
-
-import type { PackageJson } from 'type-fest';
 
 const require = createRequire(import.meta.url);
 const packageInfo = require('../package.json') as PackageJson;
@@ -25,10 +24,7 @@ export const main = async () => {
     .scriptName(name)
     .version(version)
     .command(await fileCommands({ commandDirs: [commandsDir] }))
-    .demandCommand(
-      1,
-      'No command specified - use --help for available commands',
-    )
+    .demandCommand(1, 'No command specified - use --help for available commands')
     .showHelpOnFail(true)
     .help().argv;
 };

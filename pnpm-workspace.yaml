@@ -5,4 +5,8 @@ packages:
 link-workspace-packages: true
 
 onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - '@tailwindcss/oxide'
+  - esbuild
+  - msw
   - unrs-resolver

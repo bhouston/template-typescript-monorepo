@@ -26,8 +26,8 @@ This app is maintained in part by https://mycoder.ai
 - Fastify for server with file-based router
 - Hot reload of React
 - Auto service restart for the web server
-- Prettier for code formatting
-- ESLint for linting
+- Biome for code formatting
+- Biome for linting
 - VSCode will auto-format on save and paste
 - Vitest for testing with coverage support
 - Github action CI

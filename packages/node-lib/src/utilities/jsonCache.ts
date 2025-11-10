@@ -10,14 +10,14 @@ const storage = new Storage();
 
 type CacheEntry = {
   timeStamp: number;
-  data: any;
+  data: unknown; // should be JSON
 };
 
 const rootHash = {
   dbName: '',
 };
 
-const dbName = process.env['DB_DATABASE'];
+const dbName = process.env.DB_DATABASE;
 if (dbName === undefined) {
   throw new Error('DB_DATABASE is undefined');
 }
@@ -33,7 +33,7 @@ export async function internalJsonCache(
   cacheExpiration: number,
   creator: () => Promise<object>,
 ): Promise<object> {
-  const currentTimestamp = new Date().getTime();
+  const currentTimestamp = Date.now();
 
   const descriptionHash = objectToMd5Hash({ ...description, rootHash });
 
@@ -44,9 +44,7 @@ export async function internalJsonCache(
 
   if (cacheEntry) {
     if (currentTimestamp - cacheEntry.timeStamp <= cacheExpiration) {
-      console.log(
-        `${prefix} memoryCache HIT ${Date.now() - currentTimestamp} ms`,
-      );
+      console.log(`${prefix} memoryCache HIT ${Date.now() - currentTimestamp} ms`);
       return cacheEntry.data;
     }
   }
@@ -62,26 +60,25 @@ export async function internalJsonCache(
     // If the cached file exists but has expired, start updating the data in the background
 
     console.log(`${prefix} creator FETCH`);
-    const data = await creator();
-    const content = JSON.stringify(data);
+    const createJson = await creator();
+    const creatorString = JSON.stringify(createJson);
 
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    file.save(content, { contentType: 'application/json' });
+    file.save(creatorString, { contentType: 'application/json' });
 
     console.log(`${prefix} creator FETCH ${Date.now() - currentTimestamp} ms`);
 
     const newCacheEntry: CacheEntry = {
       timeStamp: currentTimestamp,
-      data,
+      data: createJson,
     };
     memoryCache[cacheKey] = newCacheEntry;
 
-    return data;
+    return createJson;
   }
 
   // download file and serve it.
   const [content] = await file.download();
-  const data = JSON.parse(content.toString()) as object;
+  const downloadJson = JSON.parse(content.toString()) as object;
   console.log(`${prefix} fileCache HIT: ${Date.now() - currentTimestamp} ms`);
 
   // Check if cached file has expired
@@ -89,48 +86,42 @@ export async function internalJsonCache(
   file
     .getMetadata()
     .then(([metadata]) => {
-      const metadataTimestamp =
-        metadata.updated !== undefined
-          ? new Date(metadata.updated).getTime()
-          : undefined;
+      const metadataTimestamp = metadata.updated !== undefined ? Date.now() : undefined;
 
       const isExpired =
-        metadataTimestamp !== undefined
-          ? currentTimestamp - metadataTimestamp > cacheExpiration
-          : false;
+        metadataTimestamp !== undefined ? currentTimestamp - metadataTimestamp > cacheExpiration : false;
 
       if (isExpired) {
         //console.log(`${prefix} fileCache EXPIRED`);
         // If the cached file expired, update with latest query data
         console.log(`${prefix} creator REVALIDATE`);
-        const content = JSON.stringify(data);
-
-        const newMemoryCacheEntry: CacheEntry = {
-          timeStamp: new Date().getTime(),
-          data,
-        };
-        memoryCache[cacheKey] = newMemoryCacheEntry;
-        console.log(
-          `${prefix} creator REVALIDATE ${Date.now() - currentTimestamp} ms`,
-        );
-        // eslint-disable-next-line @typescript-eslint/no-floating-promises
-        file.save(content, { contentType: 'application/json' });
-        return data;
+        void creator().then((createJson) => {
+          console.log(`${prefix} creator REVALIDATE ${Date.now() - currentTimestamp} ms`);
+          const downloadString = JSON.stringify(createJson);
+          return file.save(downloadString, { contentType: 'application/json' }).then(() => {
+            const newMemoryCacheEntry: CacheEntry = {
+              timeStamp: Date.now(),
+              data: createJson,
+            };
+            memoryCache[cacheKey] = newMemoryCacheEntry;
+          });
+        });
       }
 
-      if (metadataTimestamp !== undefined) {
+      // If the cached file has not expired, update the memory cache
+      else if (metadataTimestamp !== undefined) {
         const newMemoryCacheEntry: CacheEntry = {
           timeStamp: metadataTimestamp,
-          data,
+          data: downloadJson,
         };
         memoryCache[cacheKey] = newMemoryCacheEntry;
       }
 
-      return data;
+      return downloadJson;
     })
     .catch((err) => {
       console.error(err);
     });
 
-  return data;
+  return downloadJson;
 }

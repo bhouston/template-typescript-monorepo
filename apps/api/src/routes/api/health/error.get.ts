@@ -15,9 +15,6 @@ export const schema = {
   response: ReplySchema,
 };
 
-export default function handler(
-  _request: FastifyRequest,
-  _reply: FastifyReply,
-) {
+export default function handler(_request: FastifyRequest, _reply: FastifyReply) {
   throw new Error('Test Error');
 }

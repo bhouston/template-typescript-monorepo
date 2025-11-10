@@ -7,8 +7,8 @@ const splitSum = (values: number[], start: number, end: number): number => {
   if (end - start < cSplitSumMinimumRange) {
     let sum = 0;
     for (let i = start; i <= end; i++) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      sum += values[i]!; // okay since we checked the bounds above
+      // biome-ignore lint/style/noNonNullAssertion: okay since we checked the bounds above
+      sum += values[i]!;
     }
     return sum;
   }
@@ -16,5 +16,4 @@ const splitSum = (values: number[], start: number, end: number): number => {
   return splitSum(values, start, middle) + splitSum(values, middle + 1, end);
 };
 
-export const sum = (values: number[]): number =>
-  splitSum(values, 0, values.length - 1);
+export const sum = (values: number[]): number => splitSum(values, 0, values.length - 1);
