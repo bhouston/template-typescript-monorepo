@@ -31,8 +31,8 @@ export async function internalJsonCache(
   name: string,
   description: Record<string, object>,
   cacheExpiration: number,
-  creator: () => Promise<object>,
-): Promise<object> {
+  creator: () => Promise<unknown>,
+): Promise<unknown> {
   const currentTimestamp = Date.now();
 
   const descriptionHash = objectToMd5Hash({ ...description, rootHash });
