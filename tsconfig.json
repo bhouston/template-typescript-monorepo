@@ -48,13 +48,13 @@
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
 
-    "incremental": false,
     "esModuleInterop": false,
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
 
-
+    "incremental": true,
+    "tsBuildInfoFile": "${configDir}/dist/.tsbuildinfo",
   },
   "include": ["${configDir}/src/**/*"],
   "exclude": ["${configDir}/node_modules", "${configDir}/dist"]

@@ -8,7 +8,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "typecheck": "tsc --noEmit",
+    "tsc": "tsc",
     "start": "node bin/cli.js"
   },
   "dependencies": {

@@ -2,7 +2,7 @@
 
 This is a template for a monorepo that uses best practices for TypeScript, Web Services and React.
 
-It is what @bhouston considers best practice in February 2025.
+It is what @bhouston considers best practice in November 2025.
 
 This app is maintained in part by https://mycoder.ai
 
@@ -47,11 +47,14 @@ This app is maintained in part by https://mycoder.ai
 
 1. Run `pnpm dev` to start the hot reload development server & build watchers
 
+### Typecheck & Production JavaScript
+
+1. Run `pnpm tsc`, uses incremental builds to run fast on large projects
+
 ### Optimized Production Build
 
 1. Run `pnpm build` to build the source
 2. Run `pnpm start` to run the production server
-
 
 ### Command Line
 

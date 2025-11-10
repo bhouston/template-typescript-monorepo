@@ -8,8 +8,7 @@
   "scripts": {
     "dev": "tsc --watch",
     "build": "tsc",
-    "typecheck": "tsc --noEmit",
-    "format": "prettier --write ."
+    "tsc": "tsc"
   },
   "dependencies": {
     "@bhouston/common-lib": "workspace:*",
