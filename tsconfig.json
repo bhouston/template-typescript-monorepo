@@ -15,7 +15,6 @@
     // strictness
     "strict": true,
     "alwaysStrict": true,
-    "strictFunctionTypes": true,
     "allowJs": false,
 
     // no need for checking libs
@@ -26,25 +25,34 @@
     // important for Linux
     "forceConsistentCasingInFileNames": true,
 
+    "strictFunctionTypes": true,
+    "strictBuiltinIteratorReturn": true,
+    "strictBindCallApply": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+
     // linting
+    "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
+    "noImplicitOverride": true,
     "noImplicitThis": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-
-    // These slow down compilation and are not necessary for our use case
     "noUncheckedIndexedAccess": true,
-    "useUnknownInCatchVariables": true,
-    "noImplicitOverride": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "useUnknownInCatchVariables": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
 
     // This doesn't seem actually useful
     //"exactOptionalPropertyTypes": true,
-
+    // biome recommends against.
+    //"noPropertyAccessFromIndexSignature": false,
+    // causes problems by hoisting json files, and src to the root of the dist folder
+    //"resolveJsonModule": false, 
+    
     // modules
-    "resolveJsonModule": false, // causes problems by hoisting json files, and src to the root of the dist folder
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": false,
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
 
@@ -54,6 +62,7 @@
     "declarationMap": true,
 
     "incremental": true,
+    // putting it in the dist folder makes it easier to cleanup and avoid checking in.
     "tsBuildInfoFile": "${configDir}/dist/.tsbuildinfo",
   },
   "include": ["${configDir}/src/**/*"],
