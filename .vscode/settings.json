@@ -24,7 +24,6 @@
 
   "editor.codeActionsOnSave": {
     "source.fixAll.biome": "explicit",
-    "source.formatDocument": "explicit",
     "source.organizeImports.biome": "explicit",
     "source.useSortedAttributes.biome": "explicit"
   },

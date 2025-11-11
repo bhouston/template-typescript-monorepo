@@ -1,7 +1,7 @@
 // Vitest setup file
 
 // Add any global test setup here
-import { beforeAll, afterAll, beforeEach, afterEach } from 'vitest';
+import { afterAll, afterEach, beforeAll, beforeEach } from 'vitest';
 
 beforeAll(() => {
   // Setup code to run once before all tests
