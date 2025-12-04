@@ -6,9 +6,9 @@
   "main": "./dist/index.js",
   "bin": "./bin/cli.js",
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
-    "tsc": "tsc",
+    "build": "tsgo",
+    "dev": "tsgo --watch",
+    "tsgo": "tsgo",
     "start": "node bin/cli.js"
   },
   "dependencies": {

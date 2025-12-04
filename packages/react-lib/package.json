@@ -6,9 +6,9 @@
   "main": "dist/index.js",
   "source": "src/index.ts",
   "scripts": {
-    "dev": "tsc --watch",
-    "build": "tsc",
-    "tsc": "tsc"
+    "dev": "tsgo --watch",
+    "build": "tsgo",
+    "tsgo": "tsgo"
   },
   "dependencies": {
     "@bhouston/common-lib": "workspace:*",

@@ -13,7 +13,7 @@ This app is maintained in part by https://mycoder.ai
 ## Features
 
 - Mono-repository using pnpm workspaces
-- TypeScript for type safety
+- TypeScript (native compiler preview) for type safety
 - ES Modules for fast builds
 - NodeNext node resolution
 - React for UI
@@ -26,8 +26,7 @@ This app is maintained in part by https://mycoder.ai
 - Fastify for server with file-based router
 - Hot reload of React
 - Auto service restart for the web server
-- Biome for code formatting
-- Biome for linting
+- Biome for code formatting & linting
 - VSCode will auto-format on save and paste
 - Vitest for testing with coverage support
 - Github action CI
@@ -49,7 +48,7 @@ This app is maintained in part by https://mycoder.ai
 
 ### Typecheck & Production JavaScript
 
-1. Run `pnpm tsc`, uses incremental builds to run fast on large projects
+1. Run `pnpm tsgo`, uses incremental builds to run fast on large projects
 
 ### Optimized Production Build
 

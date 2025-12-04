@@ -4,10 +4,10 @@
   "type": "module",
   "src": "src/index.ts",
   "scripts": {
-    "build": "tsc",
-    "dev": "concurrently \"tsc --watch\" \"SERVICE_ENV=development node --watch dist/server.js\"",
+    "build": "tsgo",
+    "dev": "concurrently \"tsgo --watch\" \"SERVICE_ENV=development node --watch dist/server.js\"",
     "start": "SERVICE_ENV=development node --watch dist/server.js",
-    "tsc": "tsc"
+    "tsgo": "tsgo"
   },
   "dependencies": {
     "@fastify/compress": "^8.0.1",

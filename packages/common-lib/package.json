@@ -6,9 +6,9 @@
   "types": "dist/index.d.ts",
   "source": "src/index.ts",
   "scripts": {
-    "dev": "tsc --watch",
-    "build": "tsc",
-    "tsc": "tsc"
+    "dev": "tsgo --watch",
+    "build": "tsgo",
+    "tsgo": "tsgo"
   },
   "devDependencies": {
   }

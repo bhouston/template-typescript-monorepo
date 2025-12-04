@@ -14,7 +14,7 @@
     "clean": "rimraf dist packages/**/dist apps/**/dist apps/**/.nitro apps/**/.tanstack apps/**/.output",
     "clean:all": "pnpm clean &&rimraf node_modules packages/**/node_modules apps/**/node_modules",
     "check": "biome check --write",
-    "tsc": "pnpm -r tsc",
+    "tsgo": "pnpm -r tsgo",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
@@ -28,8 +28,8 @@
   "devDependencies": {
     "@biomejs/biome": "2.3.4",
     "@types/node": "^24",
+    "@typescript/native-preview": "7.0.0-dev.20251202.1",
     "@vitest/coverage-v8": "^3.0.5",
-    "typescript": ">=5.2.2",
     "vinxi": "^0.5.1",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.0.5"
