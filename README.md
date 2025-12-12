@@ -8,7 +8,7 @@ This app is maintained in part by https://mycoder.ai
 
 ## The end result
 
-<img width="573" alt="Screenshot 2024-01-09 at 4 53 45 PM" src="https://github.com/bhouston/template-typescript-monorepo/assets/588541/3a7e6b62-ff16-492d-9f20-b409ab84f104">
+<img width="573" src="./Screenshot.png">
 
 ## Features
 
