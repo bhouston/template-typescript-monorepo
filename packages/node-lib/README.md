@@ -4,22 +4,22 @@
 
 The test configuration is managed through the following files:
 
-- `jest.config.js` - Main Jest configuration file
+- `vitest.config.ts` - Main Vitest configuration file (located at the root of the monorepo)
 - `tsconfig.json` - TypeScript configuration for tests
 
 ## Running Tests
 
-You can run tests using the following npm commands:
+You can run tests using the following pnpm commands:
 
 ```bash
 # Run all tests
-npm test
+pnpm test
 
 # Run tests in watch mode
-npm test:watch
+pnpm test:watch
 
 # Run tests with coverage
-npm test:coverage
+pnpm test:coverage
 ```
 
 ## Test File Naming Conventions
@@ -44,7 +44,7 @@ src/
 
 ## Coverage Reporting
 
-Test coverage reports are generated automatically when running `npm test:coverage`. The coverage report includes:
+Test coverage reports are generated automatically when running `pnpm test:coverage`. The coverage report includes:
 
 - Statement coverage
 - Branch coverage
@@ -64,7 +64,7 @@ Coverage reports are generated in the `coverage/` directory.
 2. **Mocking**
 
    - Mock external dependencies
-   - Use Jest's mock functions for callbacks and services
+   - Use Vitest's mock functions for callbacks and services
    - Keep mocks simple and focused
 
 3. **Test Isolation**
@@ -81,6 +81,8 @@ Coverage reports are generated in the `coverage/` directory.
 Example Test:
 
 ```typescript
+import { describe, expect, it } from 'vitest';
+
 describe('Parser', () => {
   describe('parseConfig', () => {
     it('should parse valid configuration', () => {
