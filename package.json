@@ -7,7 +7,7 @@
   "main": "index.js",
   "packageManager": "pnpm@10.17.0",
   "scripts": {
-    "build": "pnpm tsgo -b && pnpm -r build",
+    "build": "tsgo -b && pnpm -r build",
     "dev": "pnpm -r --parallel --stream dev",
     "start": "pnpm --filter tan-start-app start",
     "cli": "pnpm --filter cli start",
