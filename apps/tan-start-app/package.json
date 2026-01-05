@@ -7,7 +7,6 @@
     "start": "node .output/server/index.mjs",
     "build": "vite build",
     "serve": "vite preview",
-    "tsgo": "tsgo",
     "test": "vitest run"
   },
   "dependencies": {

@@ -4,10 +4,8 @@
   "type": "module",
   "src": "src/index.ts",
   "scripts": {
-    "build": "tsgo",
     "dev": "concurrently \"tsgo --watch\" \"SERVICE_ENV=development node --watch dist/server.js\"",
-    "start": "SERVICE_ENV=development node --watch dist/server.js",
-    "tsgo": "tsgo"
+    "start": "SERVICE_ENV=development node --watch dist/server.js"
   },
   "dependencies": {
     "@fastify/compress": "^8.0.1",

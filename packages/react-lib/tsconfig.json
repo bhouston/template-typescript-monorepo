@@ -1,6 +1,10 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "composite": true,
     "jsx": "react-jsx"
-  }
+  },
+  "references": [
+    { "path": "../../packages/common-lib" }
+  ]
 }

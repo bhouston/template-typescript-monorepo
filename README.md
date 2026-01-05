@@ -14,6 +14,7 @@ This app is maintained in part by https://mycoder.ai
 
 - Mono-repository using pnpm workspaces
 - TypeScript (native compiler preview) for type safety
+- Incremental and composite TypeScript configuraiton for speed
 - ES Modules for fast builds
 - NodeNext node resolution
 - React for UI
@@ -48,11 +49,11 @@ This app is maintained in part by https://mycoder.ai
 
 ### Typecheck & Production JavaScript
 
-1. Run `pnpm tsgo`, uses incremental builds to run fast on large projects
+1. Run `pnpm tsgo`, uses incremental composite builds to run fast on large projects
 
 ### Optimized Production Build
 
-1. Run `pnpm build` to build the source
+1. Run `pnpm build` to build the source (uses tsgo on all projects, then vite build on TanStack server)
 2. Run `pnpm start` to run the production server
 
 ### Command Line

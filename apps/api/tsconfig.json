@@ -1,11 +1,15 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "composite": true,
     "types": ["node"],
     "lib": ["ES2020"],
     "typeRoots": [
       "${configDir}/node_modules/@types",
       "../../node_modules/@types"
     ]
-  }
+  },
+  "references": [
+    { "path": "../../packages/common-lib" }
+  ]
 }
