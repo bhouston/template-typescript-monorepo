@@ -1,7 +1,13 @@
 import { errorToString } from '@bhouston/common-lib';
 import cors from '@fastify/cors';
 import Fastify from 'fastify';
+import { fastifyFileRouter } from 'fastify-file-router';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { beforeAll, describe, expect, it } from 'vitest';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 describe('Health endpoint', () => {
   const app = Fastify({
@@ -15,8 +21,8 @@ describe('Health endpoint', () => {
       optionsSuccessStatus: 204,
     });
 
-    app.get('/api/health', async (_, reply) => {
-      reply.status(204).send();
+    await app.register(fastifyFileRouter, {
+      routesDirs: [join(__dirname, '../..')],
     });
 
     await app.ready();

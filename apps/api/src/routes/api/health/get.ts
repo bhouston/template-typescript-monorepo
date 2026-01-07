@@ -1,20 +1,17 @@
-import type { FastifyReply, FastifyRequest } from 'fastify';
+import { defineRouteZod } from 'fastify-file-router';
+import { z } from 'zod';
 
-const ReplySchema = {
-  204: {
-    description: 'Successful response',
-    type: 'null',
+export const route = defineRouteZod({
+  schema: {
+    description: 'Health Check',
+    tags: ['utility'],
+    operationId: 'health',
+    summary: 'Health Check',
+    response: {
+      204: z.null().describe('Successful response'),
+    },
   },
-} as const;
-
-export const schema = {
-  description: 'Health Check',
-  tags: ['utility'],
-  operationId: 'health',
-  summary: 'Health Check',
-  response: ReplySchema,
-};
-
-export default async function handler(_request: FastifyRequest, reply: FastifyReply) {
-  await reply.status(204).send();
-}
+  handler: async (_request, reply) => {
+    await reply.status(204).send();
+  },
+});
