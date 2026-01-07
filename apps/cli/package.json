@@ -13,7 +13,7 @@
     "@bhouston/common-lib": "workspace:*",
     "type-fest": "^4.31.0",
     "yargs": "^17.7.2",
-    "yargs-file-commands": "^0.0.3"
+    "yargs-file-commands": "^1.2.2"
   },
   "devDependencies": {
     "@types/yargs": "^17.0.33",

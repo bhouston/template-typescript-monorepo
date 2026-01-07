@@ -22,7 +22,8 @@ This app is maintained in part by https://mycoder.ai
 - Both react and vanilla JS libraries
 - Command line, React app, and web server
 - Vite for Bundling, CSS Handling, Live Reloading
-- CLI via @yargs + file commands
+- CLI via @yargs + file structure defined commands (via yargs-file-commands)
+- REST API via @fastify + file structure defined routes (via fastify-file-router)
 - @TanStack/start for router, SSR, server API
 - Fastify for server with file-based router
 - Hot reload of React

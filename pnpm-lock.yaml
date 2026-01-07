@@ -58,8 +58,8 @@ importers:
         specifier: ^5.0.0
         version: 5.2.1
       fastify-file-router:
-        specifier: ^0.0.5
-        version: 0.0.5(fastify@5.2.1)
+        specifier: ^2.3.0
+        version: 2.3.0(ajv@8.17.1)(fastify@5.2.1)(zod@4.3.5)
       get-port:
         specifier: ^7.1.0
         version: 7.1.0
@@ -75,6 +75,9 @@ importers:
       ua-parser-js:
         specifier: ^1.0.39
         version: 1.0.40
+      zod:
+        specifier: ^4
+        version: 4.3.5
     devDependencies:
       '@types/source-map-support':
         specifier: ^0.5.10
@@ -98,8 +101,8 @@ importers:
         specifier: ^17.7.2
         version: 17.7.2
       yargs-file-commands:
-        specifier: ^0.0.3
-        version: 0.0.3(yargs@17.7.2)
+        specifier: ^1.2.2
+        version: 1.2.2(yargs@17.7.2)
     devDependencies:
       '@types/yargs':
         specifier: ^17.0.33
@@ -3067,11 +3070,13 @@ packages:
     resolution: {integrity: sha512-y655CeyUQ+jj7KBbYMc4FG01V8ZQqjN+gDYGJ50RtfsUB8iG9AmwmwoAgeKLJdmueKKMrH1RJ7yXHTSoczdv5w==}
     hasBin: true
 
-  fastify-file-router@0.0.5:
-    resolution: {integrity: sha512-/b9WuVmnkHPLysCtgPGdeKb2jLR4mOqZb4j9f6Bu2fDNgWVpWK7poZzIR/PEBfiohxEnb5NnPTyQnAuxmAaDfg==}
-    engines: {node: '>=20.0.0'}
+  fastify-file-router@2.3.0:
+    resolution: {integrity: sha512-P3LQP1Mza9iVJHTuCGDOQftDIF/sL0VSUT51Wy3H9wQdjklioqrTC6q0dXSrN6EkN08oLHg3Owl3IzV0FDufqg==}
+    engines: {node: '>=24.0.0'}
     peerDependencies:
-      fastify: ^5.0.0
+      ajv: ^8
+      fastify: ^5
+      zod: ^4
 
   fastify-plugin@5.0.1:
     resolution: {integrity: sha512-HCxs+YnRaWzCl+cWRYFnHmeRFyR5GVnJTAaCJQiYzQSDwK9MgJdyAsuL3nh0EWRCYMgQ5MeziymvmAhUHYHDUQ==}
@@ -5418,8 +5423,8 @@ packages:
     engines: {node: '>= 14'}
     hasBin: true
 
-  yargs-file-commands@0.0.3:
-    resolution: {integrity: sha512-PzRFfZAH/uuc32dMlPFBtrs0Jfi6Mnf7XOytajYNEHlBo9Zcfvyqc8+Q7svLR8Mb6diTwg/Tab/xJxck6FeuAw==}
+  yargs-file-commands@1.2.2:
+    resolution: {integrity: sha512-Up5lgQYZpoftbo7VNIEcn6YxpP5XUJedsnekO5Mq+vgrKENZyapmXFLrAiN4x8Y6ujU8GZvnEacb90UsPYgNkA==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       yargs: ^17
@@ -5456,6 +5461,9 @@ packages:
 
   zod@3.24.2:
     resolution: {integrity: sha512-lY7CDW43ECgW9u1TcT3IoXHflywfVqDYze4waEz812jR/bZ8FHDsl7pFQoSZTz5N+2NqRXs8GBwnAwo3ZNxqhQ==}
+
+  zod@4.3.5:
+    resolution: {integrity: sha512-k7Nwx6vuWx1IJ9Bjuf4Zt1PEllcwe7cls3VNzm4CQ1/hgtFUK2bRNG3rvnpPUhFjmqJKAKtjV576KnUkHocg/g==}
 
 snapshots:
 
@@ -8372,10 +8380,13 @@ snapshots:
     dependencies:
       strnum: 1.0.5
 
-  fastify-file-router@0.0.5(fastify@5.2.1):
+  fastify-file-router@2.3.0(ajv@8.17.1)(fastify@5.2.1)(zod@4.3.5):
     dependencies:
+      ajv: 8.17.1
       fastify: 5.2.1
       fastify-plugin: 5.0.1
+      json-schema-to-ts: 3.1.1
+      zod: 4.3.5
 
   fastify-plugin@5.0.1: {}
 
@@ -11075,7 +11086,7 @@ snapshots:
 
   yaml@2.7.0: {}
 
-  yargs-file-commands@0.0.3(yargs@17.7.2):
+  yargs-file-commands@1.2.2(yargs@17.7.2):
     dependencies:
       yargs: 17.7.2
 
@@ -11119,3 +11130,5 @@ snapshots:
       readable-stream: 4.7.0
 
   zod@3.24.2: {}
+
+  zod@4.3.5: {}

@@ -1,9 +1,9 @@
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { errorToString } from '@bhouston/common-lib';
 import cors from '@fastify/cors';
 import Fastify from 'fastify';
 import { fastifyFileRouter } from 'fastify-file-router';
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { beforeAll, describe, expect, it } from 'vitest';
 
 const __filename = fileURLToPath(import.meta.url);
