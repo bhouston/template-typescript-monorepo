@@ -74,6 +74,7 @@
     { "path": "./packages/common-lib" },
     { "path": "./packages/node-lib" },
     { "path": "./packages/react-lib" },
+    { "path": "./packages/sdk" },
     { "path": "./apps/cli" },
     { "path": "./apps/api" }
   ]

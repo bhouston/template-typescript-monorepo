@@ -12,3 +12,16 @@ export const withPagination = <T>(yargs: Argv<T>) =>
       default: 10,
       describe: 'Items per page',
     });
+
+export const withPaginationSDK = <T>(yargs: Argv<T>) =>
+  yargs
+    .option('page-offset', {
+      type: 'number',
+      default: 0,
+      describe: 'Number of items to skip',
+    })
+    .option('page-size', {
+      type: 'number',
+      default: 50,
+      describe: 'Number of items to return',
+    });

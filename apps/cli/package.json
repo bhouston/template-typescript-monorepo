@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@bhouston/common-lib": "workspace:*",
+    "@bhouston/sdk": "workspace:*",
+    "axios": "^1.13.2",
     "type-fest": "^4.31.0",
     "yargs": "^17.7.2",
     "yargs-file-commands": "^1.2.2"

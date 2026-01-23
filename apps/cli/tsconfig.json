@@ -10,6 +10,7 @@
     ]
   },
   "references": [
-    { "path": "../../packages/common-lib" }
+    { "path": "../../packages/common-lib" },
+    { "path": "../../packages/sdk" }
   ]
 }

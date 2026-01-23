@@ -9,5 +9,4 @@ stats.html
 docker-build.sh
 log.txt
 coverage
-package.json
 *.tsbuildinfo

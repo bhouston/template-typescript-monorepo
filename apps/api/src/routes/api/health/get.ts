@@ -1,5 +1,5 @@
+import { healthCheckResultSchema } from '@bhouston/sdk';
 import { defineRouteZod } from 'fastify-file-router';
-import { z } from 'zod';
 
 export const route = defineRouteZod({
   schema: {
@@ -8,7 +8,7 @@ export const route = defineRouteZod({
     operationId: 'health',
     summary: 'Health Check',
     response: {
-      204: z.null().describe('Successful response'),
+      204: healthCheckResultSchema,
     },
   },
   handler: async (_request, reply) => {

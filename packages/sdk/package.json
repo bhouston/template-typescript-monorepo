@@ -1,5 +1,5 @@
 {
-  "name": "@bhouston/node-lib",
+  "name": "@bhouston/sdk",
   "version": "1.0.0",
   "type": "module",
   "main": "dist/index.js",
@@ -8,12 +8,13 @@
   "scripts": {
     "dev": "tsgo --watch"
   },
-  "devDependencies": {
-  },
   "dependencies": {
-    "@google-cloud/storage": "^7.12.1",
-    "dotenv": "^16.4.5",
-    "p-all": "^5.0.0",
+    "axios": "^1.13.2",
+    "source-map-support": "~0.5.21",
     "zod": "^4"
+  },
+  "devDependencies": {
+    "@types/node": "^24",
+    "@types/source-map-support": "^0.5.10"
   }
 }

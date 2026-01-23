@@ -39,5 +39,11 @@
   },
   "dependencies": {
     "rimraf": "^6.0.1"
+  },
+  "pnpm": {
+    "overrides": {
+      "fastify-file-router>zod": "^4",
+      "@bhouston/sdk>zod": "^4"
+    }
   }
 }
