@@ -4,8 +4,6 @@ This is a template for a monorepo that uses best practices for TypeScript, Web S
 
 It is what @bhouston considers best practice in November 2025.
 
-This app is maintained in part by https://mycoder.ai
-
 ## The end result
 
 <img width="573" src="./Screenshot.png">
@@ -124,3 +122,7 @@ This architecture ensures that when API contracts change, TypeScript will catch 
 - `apps/api/` - Fastify REST API server (uses SDK schemas for validation)
 - `apps/cli/` - Command-line interface (uses SDK functions)
 - `apps/tan-start-app/` - TanStack Start React app (uses SDK functions)
+
+## Author
+
+[Ben Houston](https://benhouston3d.com), Sponsored by [Land of Assets](https://landofassets.com)

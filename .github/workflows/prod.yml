@@ -10,7 +10,6 @@ jobs:
     name: Deploy Web App
     uses: ./.github/workflows/service-deploy.yml
     with:
-      project_id: bhouston-general-hosting
       service_name: template-typescript-monorepo
       dockerfile: ./apps/tan-start-app/Dockerfile
       context: .
