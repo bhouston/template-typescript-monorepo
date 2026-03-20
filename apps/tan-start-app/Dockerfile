@@ -12,13 +12,12 @@ RUN npm install -g pnpm@latest-10
 
 WORKDIR /app
 
-COPY pnpm-lock.yaml pnpm-workspace.yaml ./
-# RUN --mount=type=cache,target=/root/.pnpm-store pnpm fetch
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN pnpm fetch
 
 COPY . .
-# RUN --mount=type=cache,target=/root/.pnpm-store pnpm install --frozen-lockfile --offline && pnpm build
-RUN pnpm install --frozen-lockfile --offline && pnpm build
+# Prefer offline after fetch; fall back to network if needed (e.g. platform-specific deps)
+RUN pnpm install --frozen-lockfile --prefer-offline && pnpm build
 
 WORKDIR /app/apps/tan-start-app
 
