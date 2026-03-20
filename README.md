@@ -12,7 +12,7 @@ It is what @bhouston considers best practice in November 2025.
 
 - Mono-repository using pnpm workspaces
 - TypeScript (native compiler preview) for type safety
-- Incremental and composite TypeScript configuraiton for speed
+- Incremental and composite TypeScript configuration for speed
 - ES Modules for fast builds
 - NodeNext node resolution
 - React for UI
@@ -21,15 +21,18 @@ It is what @bhouston considers best practice in November 2025.
 - Command line, React app, and web server
 - Vite for Bundling, CSS Handling, Live Reloading
 - SDK defining schema and functions for calling REST API methods
-- CLI via @yargs + file structure defined commands (via yargs-file-commands)
-- REST API via @fastify + file structure defined routes (via fastify-file-router)
+- CLI via @yargs + file structure defined commands (via [yargs-file-commands](https://www.npmjs.com/package/yargs-file-commands))
+- REST API via @fastify + file structure defined routes (via [fastify-file-router](https://www.npmjs.com/package/fastify-file-router))
 - @TanStack/start for router, SSR, server API
 - Fastify for server with file-based router
 - Hot reload of React
 - Auto service restart for the web server
-- Biome for code formatting & linting
-- VSCode will auto-format on save and paste
+- Oxlint for linting and Oxfmt for code formatting
+- VSCode (OXC) auto-format on save and paste
+- Google Analytics (GA4) via [tanstack-router-ga4](https://www.npmjs.com/package/tanstack-router-ga4)
 - Vitest for testing with coverage support
+- E2E testing for the TanStack Start app via @vitest/browser
+- CLI tested via [vitest-command-line](https://www.npmjs.com/package/vitest-command-line) (subprocess helpers and matchers)
 - Github action CI
 
 ## Architecture
@@ -92,12 +95,12 @@ This architecture ensures that when API contracts change, TypeScript will catch 
 ```bash
 pnpm install
 pnpm dev
-pnpm tsc # typescript-native
+pnpm tsc   # tsgo -b (typecheck/build)
 pnpm build
-pnpm lint # oxlint
+pnpm lint  # oxlint
 pnpm lint:fix
 pnpm format # oxfmt
-pnpm test # vitest
+pnpm test  # vitest
 ```
 
 ### Tests
@@ -105,6 +108,18 @@ pnpm test # vitest
 1. Run `pnpm test` to run all tests
 2. Run `pnpm test:watch` for watch mode during development
 3. Run `pnpm test:coverage` to generate test coverage report
+
+### E2E tests (TanStack Start app)
+
+The TanStack Start app includes browser-based e2e tests using [@vitest/browser](https://main.vitest.dev/guide/browser) with the Playwright provider. From the app directory:
+
+```bash
+cd apps/tan-start-app && pnpm test:e2e
+```
+
+This starts the app dev server, runs the e2e suite in a real browser (Chromium), then shuts the server down. Tests live in `apps/tan-start-app/e2e/` and use a custom `openAppPage` command to drive the running app.
+
+4. The CLI app is tested with [vitest-command-line](https://www.npmjs.com/package/vitest-command-line), which runs the real CLI as a subprocess and provides matchers like `toSucceed()` and `toHaveStdout()`
 
 ### Continuous Dev Build
 

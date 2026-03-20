@@ -34,13 +34,13 @@
   "devDependencies": {
     "@types/node": "^24",
     "@typescript/native-preview": "7.0.0-dev.20251229.1",
-    "@vitest/coverage-v8": "^3.0.5",
+    "@vitest/coverage-v8": "^4.0.0",
     "husky": "^9.1.7",
     "oxfmt": "^0.41.0",
     "oxlint": "^1.56.0",
     "vinxi": "^0.5.1",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.0.5"
+    "vitest": "^4.0.0"
   },
   "engines": {
     "node": ">=22.0.0"

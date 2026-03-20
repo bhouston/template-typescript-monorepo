@@ -19,7 +19,10 @@
     "yargs-file-commands": "^1.2.2"
   },
   "devDependencies": {
+    "@types/node": "^24",
     "@types/yargs": "^17.0.33",
-    "source-map-support": "~0.5.21"
+    "source-map-support": "~0.5.21",
+    "vitest": "^4.0.0",
+    "vitest-command-line": "^0.7.0"
   }
 }

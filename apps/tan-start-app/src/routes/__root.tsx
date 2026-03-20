@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createRootRoute, HeadContent, Scripts } from '@tanstack/react-router';
+import { GoogleAnalytics } from 'tanstack-router-ga4';
 import { useState } from 'react';
 
 import appCss from '../styles.css?url';
@@ -47,6 +48,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        <GoogleAnalytics measurementId="G-QNM2WJNRND" />
         <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
         <Scripts />
       </body>

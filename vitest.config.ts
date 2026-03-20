@@ -4,7 +4,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 export default defineConfig({
   plugins: [tsconfigPaths()],
   test: {
-    workspace: [
+    projects: [
       'packages/*',
       'apps/*',
       {
@@ -14,5 +14,9 @@ export default defineConfig({
         },
       },
     ],
+    coverage: {
+      include: ['packages/*/src/**/*.{ts,tsx}', 'apps/*/src/**/*.{ts,tsx}', 'apps/*/app/**/*.{ts,tsx}'],
+      exclude: ['**/*.test.*', '**/*.spec.*', '**/node_modules/**'],
+    },
   },
 });

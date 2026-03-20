@@ -1,5 +1,5 @@
 import { defineCommand } from 'yargs-file-commands';
-import { withPagination } from './shared.js';
+import { withPagination } from '../lib/shared.js';
 
 export const command = defineCommand({
   command: 'list',

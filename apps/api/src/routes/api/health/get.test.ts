@@ -1,13 +1,8 @@
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { errorToString } from '@bhouston/common-lib';
 import cors from '@fastify/cors';
 import Fastify from 'fastify';
 import { fastifyFileRouter } from 'fastify-file-router';
 import { beforeAll, describe, expect, it } from 'vitest';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 describe('Health endpoint', () => {
   const app = Fastify({
@@ -21,8 +16,10 @@ describe('Health endpoint', () => {
       optionsSuccessStatus: 204,
     });
 
+    // Vitest runs with cwd = monorepo root; use relative paths for fastify-file-router
     await app.register(fastifyFileRouter, {
-      routesDirs: [join(__dirname, '../..')],
+      buildRoot: 'apps/api/src',
+      routesDirs: ['routes'],
     });
 
     await app.ready();

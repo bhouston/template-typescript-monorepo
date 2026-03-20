@@ -3,7 +3,7 @@ import { defineCommand } from 'yargs-file-commands';
 import { createClient, createClientWithHost } from '../../lib/client.js';
 
 export const command = defineCommand({
-  command: 'get',
+  command: 'get <userName>',
   describe: 'Get user by username',
   builder: (yargs) =>
     yargs

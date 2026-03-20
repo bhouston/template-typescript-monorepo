@@ -7,7 +7,8 @@
     "start": "node .output/server/index.mjs",
     "build": "vite build",
     "serve": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:e2e": "vitest run --config vitest.e2e.config.ts"
   },
   "dependencies": {
     "@bhouston/react-lib": "workspace:*",
@@ -26,6 +27,7 @@
     "react-dom": "^19.0.0",
     "tailwind-merge": "^3.0.2",
     "tailwindcss": "^4.2.2",
+    "tanstack-router-ga4": "^0.5.2",
     "vite-tsconfig-paths": "^5.1.4",
     "zod": "^4"
   },
@@ -39,11 +41,13 @@
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^6.0.0",
+    "@vitest/browser-playwright": "^4.0.0",
     "jsdom": "^26.0.0",
+    "playwright": "^1.49.0",
     "typescript": "^5.7.2",
     "vite": "^8.0.0",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.0.5",
+    "vitest": "^4.0.0",
     "web-vitals": "^4.2.4"
   }
 }
