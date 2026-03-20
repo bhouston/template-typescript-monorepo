@@ -16,6 +16,16 @@ on:
         type: string
         description: 'Docker build context'
         default: '.'
+      build_args:
+        required: false
+        type: string
+        description: 'Docker build args (multi-line KEY=VALUE)'
+        default: ''
+      env_vars:
+        required: false
+        type: string
+        description: 'Cloud Run env vars (multi-line KEY=VALUE)'
+        default: ''
     secrets:
       GCP_SA_KEY:
         required: true
@@ -24,6 +34,11 @@ jobs:
   deploy:
     name: Deploy to Cloud Run
     runs-on: ubuntu-latest
+    env:
+      GAR_HOSTNAME: us-central1-docker.pkg.dev
+      PROJECT_ID: bhouston-general-hosting
+      REGION: us-central1
+      DOCKER_REGISTRY: shared-docker-registry
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -40,15 +55,10 @@ jobs:
           skip_install: true
 
       - name: Configure Docker
-        run: gcloud auth configure-docker ${{ vars.GAR_HOSTNAME }}
-
-      #- name: Set up Buildx
-      #  uses: docker/setup-buildx-action@v3
-      #  with:
-      #    driver: docker-container
+        run: gcloud auth configure-docker ${{ env.GAR_HOSTNAME }}
 
       - name: Set image path
-        run: echo "IMAGE_PATH=${{ vars.GAR_HOSTNAME }}/${{ vars.PROJECT_ID }}/shared-docker-registry/${{ inputs.service_name }}:${{ github.sha }}" >> $GITHUB_ENV
+        run: echo "IMAGE_PATH=${{ env.GAR_HOSTNAME }}/${{ env.PROJECT_ID }}/${{ env.DOCKER_REGISTRY }}/${{ inputs.service_name }}:${{ github.sha }}" >> $GITHUB_ENV
 
       - name: Build and Push Container
         uses: docker/build-push-action@v6
@@ -57,14 +67,14 @@ jobs:
           file: ${{ inputs.dockerfile }}
           push: true
           tags: ${{ env.IMAGE_PATH }}
-          #cache-from: type=gha,scope=$ {{ inputs.service_name }}
-          #cache-to: type=gha,mode=max,scope=$ {{ inputs.service_name }}
+          build-args: ${{ inputs.build_args }}
 
       - name: Deploy to Cloud Run
         id: deploy
         uses: google-github-actions/deploy-cloudrun@v2
         with:
           service: ${{ inputs.service_name }}
-          region: ${{ vars.REGION }}
+          region: ${{ env.REGION }}
           image: ${{ env.IMAGE_PATH }}
           flags: '--allow-unauthenticated'
+          env_vars: ${{ inputs.env_vars }}

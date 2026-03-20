@@ -8,7 +8,7 @@ on:
 jobs:
   deploy-web:
     name: Deploy Web App
-    uses: ./.github/workflows/service-deploy.yml
+    uses: ./.github/workflows/deploy-service.yml
     with:
       service_name: template-typescript-monorepo
       dockerfile: ./apps/tan-start-app/Dockerfile
