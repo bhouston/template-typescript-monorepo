@@ -24,6 +24,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Type check
+        run: pnpm tsc
+
       - name: Build
         run: pnpm build
 
@@ -47,6 +50,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Type check
+        run: pnpm tsc
 
       - name: Build
         run: pnpm build
@@ -77,3 +83,6 @@ jobs:
 
       - name: Lint
         run: pnpm lint
+
+      - name: Format check
+        run: pnpm format

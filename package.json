@@ -3,17 +3,23 @@
   "version": "1.5.0",
   "private": true,
   "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
   "type": "module",
   "main": "index.js",
-  "packageManager": "pnpm@10.17.0",
   "scripts": {
+    "prepare": "husky",
     "build": "tsgo -b && pnpm -r build",
     "dev": "pnpm -r --parallel --stream dev",
     "start": "pnpm --filter tan-start-app start",
     "cli": "pnpm --filter cli start",
     "clean": "rimraf dist packages/**/dist apps/**/dist apps/**/.nitro apps/**/.tanstack apps/**/.output",
     "clean:all": "pnpm clean &&rimraf node_modules packages/**/node_modules apps/**/node_modules",
-    "check": "biome check --write",
+    "format": "oxfmt .",
+    "lint": "oxlint .",
+    "lint:fix": "oxlint --fix .",
+    "tsc": "tsgo -b",
     "tsgo": "tsgo -b",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -22,14 +28,16 @@
     "gcloud": "gcloud auth application-default login && gcloud config set project bhouston-general-hosting && gcloud config set run/region us-central1",
     "depcheck": "npx depcheck"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+    "rimraf": "^6.0.1"
+  },
   "devDependencies": {
-    "@biomejs/biome": "2.3.4",
     "@types/node": "^24",
-    "@typescript/native-preview": "7.0.0-dev.20251202.1",
+    "@typescript/native-preview": "7.0.0-dev.20251229.1",
     "@vitest/coverage-v8": "^3.0.5",
+    "husky": "^9.1.7",
+    "oxfmt": "^0.41.0",
+    "oxlint": "^1.56.0",
     "vinxi": "^0.5.1",
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.0.5"
@@ -37,13 +45,16 @@
   "engines": {
     "node": ">=22.0.0"
   },
-  "dependencies": {
-    "rimraf": "^6.0.1"
-  },
+  "packageManager": "pnpm@10.17.0",
   "pnpm": {
     "overrides": {
       "fastify-file-router>zod": "^4",
       "@bhouston/sdk>zod": "^4"
+    },
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "vite": "8"
+      }
     }
   }
 }

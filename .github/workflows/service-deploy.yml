@@ -46,7 +46,7 @@ jobs:
       #  uses: docker/setup-buildx-action@v3
       #  with:
       #    driver: docker-container
-          
+
       - name: Set image path
         run: echo "IMAGE_PATH=${{ vars.GAR_HOSTNAME }}/${{ vars.PROJECT_ID }}/shared-docker-registry/${{ inputs.service_name }}:${{ github.sha }}" >> $GITHUB_ENV
 
@@ -68,4 +68,3 @@ jobs:
           region: ${{ vars.REGION }}
           image: ${{ env.IMAGE_PATH }}
           flags: '--allow-unauthenticated'
-

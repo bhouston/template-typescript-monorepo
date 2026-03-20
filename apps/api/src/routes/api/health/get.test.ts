@@ -36,7 +36,7 @@ describe('Health endpoint', () => {
       });
       expect(response.statusCode).toBe(204);
     } catch (err) {
-      throw new Error(`${errorToString(err)}`);
+      throw new Error(`${errorToString(err)}`, { cause: err });
     }
   });
 });

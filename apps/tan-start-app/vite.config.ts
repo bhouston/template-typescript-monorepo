@@ -7,10 +7,9 @@ import viteReact from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import tsConfigPaths from 'vite-tsconfig-paths';
 
-
 export default defineConfig({
   server: {
-    port: parseInt(process.env.PORT ?? '8080', 10)
+    port: parseInt(process.env.PORT ?? '8080', 10),
   },
   plugins: [
     tsConfigPaths({
@@ -20,5 +19,5 @@ export default defineConfig({
     nitroV2Plugin({ preset: 'node-server', compatibilityDate: '2025-11-07' }),
     tailwindcss(),
     viteReact(),
-  ]
+  ],
 });

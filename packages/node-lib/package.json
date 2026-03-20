@@ -1,19 +1,19 @@
 {
   "name": "@bhouston/node-lib",
   "version": "1.0.0",
+  "source": "src/index.ts",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "source": "src/index.ts",
   "scripts": {
-    "dev": "tsgo --watch"
-  },
-  "devDependencies": {
+    "build": "tsgo",
+    "dev": "tsgo -w --preserveWatchOutput --noEmitOnError"
   },
   "dependencies": {
     "@google-cloud/storage": "^7.12.1",
     "dotenv": "^16.4.5",
     "p-all": "^5.0.0",
     "zod": "^4"
-  }
+  },
+  "devDependencies": {}
 }

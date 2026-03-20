@@ -1,10 +1,9 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.node.json",
   "compilerOptions": {
     "composite": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "lib": ["ES2024", "DOM", "DOM.Iterable"]
   },
-  "references": [
-    { "path": "../../packages/common-lib" }
-  ]
+  "references": [{ "path": "../common-lib" }]
 }

@@ -1,12 +1,13 @@
 {
   "name": "cli",
   "version": "1.2.3",
-  "type": "module",
-  "source": "./src/index.ts",
-  "main": "./dist/index.js",
   "bin": "./bin/cli.js",
+  "source": "./src/index.ts",
+  "type": "module",
+  "main": "./dist/index.js",
   "scripts": {
-    "dev": "tsgo --watch",
+    "build": "tsgo",
+    "dev": "tsgo -w --preserveWatchOutput --noEmitOnError",
     "start": "node bin/cli.js"
   },
   "dependencies": {

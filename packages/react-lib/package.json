@@ -1,12 +1,13 @@
 {
   "name": "@bhouston/react-lib",
   "version": "1.0.0",
-  "type": "module",
-  "types": "dist/index.d.ts",
-  "main": "dist/index.js",
   "source": "src/index.ts",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "tsgo --watch"
+    "build": "tsgo",
+    "dev": "tsgo -w --preserveWatchOutput --noEmitOnError"
   },
   "dependencies": {
     "@bhouston/common-lib": "workspace:*",

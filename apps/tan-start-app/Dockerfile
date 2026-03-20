@@ -17,8 +17,8 @@ COPY pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN pnpm fetch
 
 COPY . .
-# RUN --mount=type=cache,target=/root/.pnpm-store pnpm install --frozen-lockfile --offline && pnpm run build
-RUN pnpm install --frozen-lockfile --offline && pnpm run build
+# RUN --mount=type=cache,target=/root/.pnpm-store pnpm install --frozen-lockfile --offline && pnpm build
+RUN pnpm install --frozen-lockfile --offline && pnpm build
 
 WORKDIR /app/apps/tan-start-app
 

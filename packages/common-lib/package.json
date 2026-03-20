@@ -1,13 +1,13 @@
 {
   "name": "@bhouston/common-lib",
   "version": "1.0.0",
+  "source": "src/index.ts",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "source": "src/index.ts",
   "scripts": {
-    "dev": "tsgo --watch"
+    "build": "tsgo",
+    "dev": "tsgo -w --preserveWatchOutput --noEmitOnError"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

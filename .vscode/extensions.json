@@ -1,3 +1,8 @@
 {
-  "recommendations": ["biomejs.biome", "github.vscode-github-actions"]
+  "recommendations": [
+    "vitest.explorer",
+    "oxc.oxc-vscode",
+    "github.vscode-github-actions",
+    "typescriptteam.native-preview"
+  ]
 }

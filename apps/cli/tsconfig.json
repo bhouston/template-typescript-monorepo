@@ -1,16 +1,7 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../tsconfig.node.json",
   "compilerOptions": {
-    "composite": true,
-    "types": ["node"],
-    "lib": ["ES2020"],
-    "typeRoots": [
-      "${configDir}/node_modules/@types",
-      "../../node_modules/@types"
-    ]
+    "composite": true
   },
-  "references": [
-    { "path": "../../packages/common-lib" },
-    { "path": "../../packages/sdk" }
-  ]
+  "references": [{ "path": "../../packages/common-lib" }, { "path": "../../packages/sdk" }]
 }

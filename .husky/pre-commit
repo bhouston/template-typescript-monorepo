@@ -1,0 +1,1 @@
+cd "$(git rev-parse --show-toplevel)" && pnpm format && pnpm tsc && pnpm lint:fix

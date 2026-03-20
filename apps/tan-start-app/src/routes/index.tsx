@@ -7,7 +7,8 @@ import { useMemo } from 'react';
 const HomePage: React.FC = () => {
   // Create client on the client side
   const client = useMemo(() => {
-    const apiHost = typeof window !== 'undefined' ? window.location.origin.replace(/:\d+$/, ':3001') : 'http://localhost:3001';
+    const apiHost =
+      typeof window !== 'undefined' ? window.location.origin.replace(/:\d+$/, ':3001') : 'http://localhost:3001';
     return createAnonymousClient({ host: apiHost });
   }, []);
 
@@ -25,10 +26,7 @@ const HomePage: React.FC = () => {
   });
 
   // Query for hello message
-  const {
-    data: helloMessage,
-    isLoading: isHelloLoading,
-  } = useQuery({
+  const { data: helloMessage, isLoading: isHelloLoading } = useQuery({
     queryKey: ['hello', 'TanStack Start'],
     queryFn: async () => {
       const result = await hello(client, { query: { name: 'TanStack Start' } });

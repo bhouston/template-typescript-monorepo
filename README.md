@@ -39,6 +39,7 @@ It is what @bhouston considers best practice in November 2025.
 This monorepo uses a **shared SDK package** (`packages/sdk`) that provides a single source of truth for API contracts, ensuring type safety and reducing duplication across the entire platform.
 
 **Key Benefits:**
+
 - **Single Source of Truth**: API schemas (params, query, body, response) are defined once in the SDK using Zod
 - **Type Safety**: Shared types ensure API, CLI, and frontend stay in sync
 - **Reduced Duplication**: No need to duplicate schemas or API client code
@@ -52,9 +53,10 @@ This monorepo uses a **shared SDK package** (`packages/sdk`) that provides a sin
    - Validation rules
 
 2. **Fastify API Uses SDK Schemas**: The Fastify API (`apps/api`) imports schemas from the SDK and uses them for route validation:
+
    ```typescript
    import { getUserParamsSchema, userSchema } from '@bhouston/sdk';
-   
+
    export const route = defineRouteZod({
      schema: {
        params: getUserParamsSchema,
@@ -65,6 +67,7 @@ This monorepo uses a **shared SDK package** (`packages/sdk`) that provides a sin
    ```
 
 3. **CLI Uses SDK Functions**: The CLI tool (`apps/cli`) uses SDK functions to make API calls:
+
    ```typescript
    import { getUser } from '@bhouston/sdk';
    const user = await getUser(client, { params: { userName: 'john' } });
@@ -84,6 +87,19 @@ This architecture ensures that when API contracts change, TypeScript will catch 
 1. Clone this repository
 2. Run `pnpm install`
 
+## Development
+
+```bash
+pnpm install
+pnpm dev
+pnpm tsc # typescript-native
+pnpm build
+pnpm lint # oxlint
+pnpm lint:fix
+pnpm format # oxfmt
+pnpm test # vitest
+```
+
 ### Tests
 
 1. Run `pnpm test` to run all tests
@@ -96,7 +112,7 @@ This architecture ensures that when API contracts change, TypeScript will catch 
 
 ### Typecheck & Production JavaScript
 
-1. Run `pnpm tsgo`, uses incremental composite builds to run fast on large projects
+1. Run `pnpm tsc` (or `pnpm tsgo`), uses incremental composite builds to run fast on large projects
 
 ### Optimized Production Build
 

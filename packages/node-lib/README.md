@@ -56,19 +56,16 @@ Coverage reports are generated in the `coverage/` directory.
 ## Testing Best Practices
 
 1. **Test Organization**
-
    - Use describe blocks to group related tests
    - Use clear, descriptive test names
    - Follow the Arrange-Act-Assert pattern
 
 2. **Mocking**
-
    - Mock external dependencies
    - Use Vitest's mock functions for callbacks and services
    - Keep mocks simple and focused
 
 3. **Test Isolation**
-
    - Each test should be independent
    - Clean up after tests using beforeEach/afterEach
    - Don't share state between tests
