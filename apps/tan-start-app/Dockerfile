@@ -1,24 +1,27 @@
 # syntax=docker/dockerfile:1.6
-FROM node:25-alpine
+FROM --platform=linux/amd64 node:25-slim AS base
 
 ENV PNPM_HOME="/pnpm" \
     PATH="$PNPM_HOME:$PATH" \
     NODE_ENV=production \
-    PORT=8080
+    PORT=8080 \
+    CI=true
 
-EXPOSE 8080
-
-RUN npm install -g pnpm@latest-10
+RUN npm install -g pnpm@10.17.0
 
 WORKDIR /app
 
+# Copy dependency manifests first so this layer is cacheable
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-RUN pnpm fetch
+
+# Fetch deps so optional/platform deps install for this platform
+RUN pnpm fetch --reporter=silent
 
 COPY . .
-# Prefer offline after fetch; fall back to network if needed (e.g. platform-specific deps)
+
 RUN pnpm install --frozen-lockfile --prefer-offline && pnpm build
 
 WORKDIR /app/apps/tan-start-app
 
-CMD ["pnpm", "start"]
+EXPOSE 8080
+CMD ["node", ".output/server/index.mjs"]
