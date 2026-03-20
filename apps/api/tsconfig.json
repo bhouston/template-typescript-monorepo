@@ -3,5 +3,8 @@
   "compilerOptions": {
     "composite": true
   },
-  "references": [{ "path": "../../packages/common-lib" }]
+  "references": [
+    { "path": "../../packages/common-lib" },
+    { "path": "../../packages/sdk" }
+  ]
 }
