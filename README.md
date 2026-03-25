@@ -156,4 +156,4 @@ This starts the app dev server, runs the e2e suite in a real browser (Chromium),
 
 ## Author
 
-[Ben Houston](https://benhouston3d.com), Sponsored by [Land of Assets](https://landofassets.com)
+[Ben Houston](https://ben3d.ca), Sponsored by [Land of Assets](https://landofassets.com)
