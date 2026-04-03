@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
     "target": "ES2024",
-    "lib": ["ES2024"],
+    "lib": ["ES2023"],
     "strict": true,
-    "alwaysStrict": true,
     "allowJs": false,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
@@ -30,7 +29,6 @@
     "verbatimModuleSyntax": false,
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
-    "esModuleInterop": false,
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,

@@ -1,9 +1,9 @@
 {
   "include": ["${configDir}/**/*"],
   "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "lib": ["DOM", "DOM.Iterable", "ES2023"],
     "types": ["node", "vite/client"],
-    "target": "ES2022",
+    "target": "ES2024",
     "module": "ES2022",
     "moduleResolution": "bundler",
     "jsx": "react-jsx",
@@ -13,7 +13,6 @@
       "@/*": ["${configDir}/app/*"]
     },
 
-    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "noEmit": true,
