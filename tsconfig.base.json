@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2024",
-    "lib": ["ES2023"],
+    "lib": ["ES2024"],
     "strict": true,
     "allowJs": false,
     "skipLibCheck": true,

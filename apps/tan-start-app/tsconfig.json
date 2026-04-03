@@ -1,7 +1,7 @@
 {
   "include": ["${configDir}/**/*"],
   "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "ES2023"],
+    "lib": ["DOM", "DOM.Iterable", "ES2024"],
     "types": ["node", "vite/client"],
     "target": "ES2024",
     "module": "ES2022",
