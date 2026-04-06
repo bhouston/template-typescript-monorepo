@@ -27,7 +27,7 @@
     "react-dom": "^19.0.0",
     "tailwind-merge": "^3.0.2",
     "tailwindcss": "^4.2.2",
-    "tanstack-router-ga4": "^0.5.2",
+    "tanstack-router-ga4": "^1.6.0",
     "vite-tsconfig-paths": "^5.1.4",
     "zod": "^4"
   },
