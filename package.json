@@ -39,7 +39,6 @@
     "oxfmt": "^0.41.0",
     "oxlint": "^1.56.0",
     "vinxi": "^0.5.1",
-    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^4.1.5"
   },
   "engines": {
@@ -47,6 +46,7 @@
   },
   "packageManager": "pnpm@11.0.8",
   "pnpm": {
+    "resolutionMode": "highest",
     "overrides": {
       "fastify-file-router>zod": "^4",
       "@bhouston/sdk>zod": "^4"

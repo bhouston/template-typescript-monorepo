@@ -6,15 +6,14 @@ import { nitroV2Plugin } from '@tanstack/nitro-v2-vite-plugin';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
 import viteReact from '@vitejs/plugin-react';
 import { defineConfig } from 'vitest/config';
-import tsConfigPaths from 'vite-tsconfig-paths';
 
 import { openAppPage } from './e2e/openAppPage';
 
 export default defineConfig({
+  resolve: {
+    tsconfigPaths: true,
+  },
   plugins: [
-    tsConfigPaths({
-      projects: ['./tsconfig.json'],
-    }),
     tanstackStart(),
     nitroV2Plugin({ preset: 'node-server', compatibilityDate: '2025-11-07' }),
     tailwindcss(),
