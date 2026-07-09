@@ -21,6 +21,6 @@
   "devDependencies": {
     "@types/yargs": "^17.0.35",
     "source-map-support": "~0.5.21",
-    "vitest-command-line": "^0.7.0"
+    "vitest-command-line": "^0.9.0"
   }
 }
