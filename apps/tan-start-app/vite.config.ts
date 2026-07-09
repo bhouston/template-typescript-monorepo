@@ -14,8 +14,8 @@ export default defineConfig({
     tsconfigPaths: true,
   },
   plugins: [
-    viteReact(),
     tanstackStart(),
+    viteReact(),
     nitroV2Plugin({
       preset: 'node-server',
       compatibilityDate: '2025-11-07',
