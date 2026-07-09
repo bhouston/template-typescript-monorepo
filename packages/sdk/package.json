@@ -15,7 +15,6 @@
     "zod": "^4"
   },
   "devDependencies": {
-    "@types/node": "^24",
     "@types/source-map-support": "^0.5.10"
   }
 }

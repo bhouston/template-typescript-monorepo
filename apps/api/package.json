@@ -28,7 +28,7 @@
   "devDependencies": {
     "@types/source-map-support": "^0.5.10",
     "@types/ua-parser-js": "^0.7.39",
-    "concurrently": "^8.2.2"
+    "concurrently": "^10.0.3"
   },
   "src": "src/index.ts"
 }
