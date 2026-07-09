@@ -6,8 +6,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsgo",
-    "dev": "tsgo -w --preserveWatchOutput --noEmitOnError"
+    "build": "tsc",
+    "dev": "tsc -w --preserveWatchOutput --noEmitOnError"
   },
   "dependencies": {
     "@bhouston/common-lib": "workspace:*",

@@ -6,8 +6,8 @@
   "type": "module",
   "main": "./dist/index.js",
   "scripts": {
-    "build": "tsgo",
-    "dev": "tsgo -w --preserveWatchOutput --noEmitOnError",
+    "build": "tsc",
+    "dev": "tsc -w --preserveWatchOutput --noEmitOnError",
     "start": "node bin/cli.js"
   },
   "dependencies": {

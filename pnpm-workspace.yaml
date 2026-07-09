@@ -2,15 +2,21 @@ packages:
   - packages/*
   - apps/*
 
+resolutionMode: highest
+
+overrides:
+  'fastify-file-router>zod': ^4
+  '@bhouston/sdk>zod': ^4
+
+peerDependencyRules:
+  allowedVersions:
+    vite: 8.0.11
+
 allowBuilds:
   '@parcel/watcher': true
+  '@tailwindcss/oxide': true
   esbuild: true
+  msw: true
+  unrs-resolver: true
 
 link-workspace-packages: true
-
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - '@tailwindcss/oxide'
-  - esbuild
-  - msw
-  - unrs-resolver

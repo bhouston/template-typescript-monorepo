@@ -11,7 +11,7 @@ It is what @bhouston considers best practice in November 2025.
 ## Features
 
 - Mono-repository using pnpm workspaces
-- TypeScript (native compiler preview) for type safety
+- TypeScript 7 for type safety
 - Incremental and composite TypeScript configuration for speed
 - ES Modules for fast builds
 - NodeNext node resolution
@@ -95,7 +95,7 @@ This architecture ensures that when API contracts change, TypeScript will catch 
 ```bash
 pnpm install
 pnpm dev
-pnpm tsc   # tsgo -b (typecheck/build)
+pnpm tsc   # tsc -b (typecheck/build)
 pnpm build
 pnpm lint  # oxlint
 pnpm lint:fix
@@ -127,11 +127,11 @@ This starts the app dev server, runs the e2e suite in a real browser (Chromium),
 
 ### Typecheck & Production JavaScript
 
-1. Run `pnpm tsc` (or `pnpm tsgo`), uses incremental composite builds to run fast on large projects
+1. Run `pnpm tsc`, uses incremental composite builds to run fast on large projects
 
 ### Optimized Production Build
 
-1. Run `pnpm build` to build the source (uses tsgo on all projects, then vite build on TanStack server)
+1. Run `pnpm build` to build the source (uses tsc on all projects, then vite build on TanStack server)
 2. Run `pnpm start` to run the production server
 
 ### Command Line

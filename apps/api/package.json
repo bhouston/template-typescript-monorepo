@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "tsgo",
-    "dev": "concurrently \"tsgo -w --preserveWatchOutput --noEmitOnError\" \"SERVICE_ENV=development node --watch dist/server.js\"",
+    "build": "tsc",
+    "dev": "concurrently \"tsc -w --preserveWatchOutput --noEmitOnError\" \"SERVICE_ENV=development node --watch dist/server.js\"",
     "start": "SERVICE_ENV=development node --watch dist/server.js"
   },
   "dependencies": {
