@@ -14,6 +14,7 @@ export default defineConfig({
     tsconfigPaths: true,
   },
   plugins: [
+    viteReact(),
     tanstackStart(),
     nitroV2Plugin({
       preset: 'node-server',
@@ -27,6 +28,5 @@ export default defineConfig({
       },
     }),
     tailwindcss(),
-    viteReact(),
   ],
 });
