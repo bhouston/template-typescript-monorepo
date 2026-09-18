@@ -1,16 +1,5 @@
 {
   "extends": "./tsconfig.base.json",
-  "compilerOptions": {
-    "composite": true
-  },
   "files": [],
-  "include": [],
-  "references": [
-    { "path": "./packages/common-lib" },
-    { "path": "./packages/node-lib" },
-    { "path": "./packages/react-lib" },
-    { "path": "./packages/sdk" },
-    { "path": "./apps/cli" },
-    { "path": "./apps/api" }
-  ]
+  "include": []
 }

@@ -1,7 +1,3 @@
 {
-  "extends": "../../tsconfig.node.json",
-  "compilerOptions": {
-    "composite": true
-  },
-  "references": [{ "path": "../../packages/common-lib" }, { "path": "../../packages/sdk" }]
+  "extends": "../../tsconfig.node.json"
 }
