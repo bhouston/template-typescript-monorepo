@@ -154,6 +154,11 @@ This starts the app dev server, runs the e2e suite in a real browser (Chromium),
 - `apps/cli/` - Command-line interface (uses SDK functions)
 - `apps/tan-start-app/` - TanStack Start React app (uses SDK functions)
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the issue → branch → PR workflow, commit
+conventions, and local checks.
+
 ## Author
 
 [Ben Houston](https://ben3d.ca), Sponsored by [Land of Assets](https://landofassets.com)
