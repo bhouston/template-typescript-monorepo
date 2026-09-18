@@ -10,7 +10,7 @@
   "main": "index.js",
   "scripts": {
     "prepare": "husky",
-    "build": "tsc -b && pnpm -r build",
+    "build": "pnpm -r build",
     "dev": "pnpm -r --parallel --stream dev",
     "start": "pnpm --filter tan-start-app start",
     "cli": "pnpm --filter cli start",
@@ -19,7 +19,7 @@
     "format": "oxfmt .",
     "lint": "oxlint .",
     "lint:fix": "oxlint --fix .",
-    "tsc": "tsc -b",
+    "tsc": "pnpm -r --filter \"!tan-start-app\" exec tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
@@ -36,7 +36,7 @@
     "husky": "^9.1.7",
     "oxfmt": "^0.58.0",
     "oxlint": "^1.73.0",
-    "typescript": "^7",
+    "typescript": "^7.0.2",
     "vinxi": "^0.5.1",
     "vitest": "^4.1.10"
   },

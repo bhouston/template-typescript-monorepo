@@ -1,7 +1,3 @@
 {
-  "extends": "../../tsconfig.node.json",
-  "compilerOptions": {
-    "composite": true
-  },
-  "references": []
+  "extends": "../../tsconfig.node.json"
 }

@@ -95,7 +95,7 @@ This architecture ensures that when API contracts change, TypeScript will catch 
 ```bash
 pnpm install
 pnpm dev
-pnpm tsc   # tsc -b (typecheck/build)
+pnpm tsc   # typecheck every package (plain tsc, no incremental builds)
 pnpm build
 pnpm lint  # oxlint
 pnpm lint:fix
