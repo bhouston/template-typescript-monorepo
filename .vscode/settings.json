@@ -4,51 +4,14 @@
   "editor.formatOnPaste": true,
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.codeActionsOnSave": {
-    "source.fixAll.oxc": "explicit"
+    "source.fixAll.oxc": "explicit",
+    "source.format.oxc": "always"
   },
   "editor.codeActionsOnPaste": {
     "source.fixAll.oxc": "explicit"
   },
-  "typescript.experimental.useTsgo": true,
-  "javascript.preferences.importModuleSpecifier": "relative",
-  "typescript.preferences.importModuleSpecifier": "relative",
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "typescript.updateImportsOnFileMove.enabled": "always",
   "workbench.editor.enablePreview": false,
   "oxc.typeAware": true,
   "oxc.useExecPath": true,
-  "[json]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode"
-  },
-  "files.watcherExclude": {
-    "**/routeTree.gen.ts": true
-  },
-  "search.exclude": {
-    "**/routeTree.gen.ts": true
-  },
-  "files.readonlyInclude": {
-    "**/routeTree.gen.ts": true
-  },
-  "cSpell.words": [
-    "bhouston",
-    "Buildx",
-    "bunx",
-    "cacheable",
-    "fortawesome",
-    "gcloud",
-    "GLTF",
-    "healthcheck",
-    "interruptible",
-    "lerp",
-    "microbundle",
-    "Nullary",
-    "nvmrc",
-    "reactflow",
-    "reserialization",
-    "reserialized",
-    "Slerp",
-    "tailwindcss",
-    "threeify",
-    "vinxi"
-  ]
+  "editor.formatOnSaveMode": "file"
 }
