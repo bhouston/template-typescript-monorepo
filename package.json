@@ -14,7 +14,7 @@
     "dev": "pnpm -r --parallel --stream dev",
     "start": "pnpm --filter tan-start-app start",
     "cli": "pnpm --filter cli start",
-    "clean": "rimraf dist packages/**/dist apps/**/dist apps/**/.nitro apps/**/.tanstack apps/**/.output",
+    "clean": "rimraf dist packages/**/dist apps/**/dist apps/**/.nitro apps/**/.tanstack apps/**/.output *.tsbuildinfo packages/**/*.tsbuildinfo apps/**/*.tsbuildinfo",
     "clean:all": "pnpm clean &&rimraf node_modules packages/**/node_modules apps/**/node_modules",
     "format": "oxfmt .",
     "lint": "oxlint .",
