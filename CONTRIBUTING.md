@@ -7,8 +7,8 @@ and `CLAUDE.md` point here; keep the standard in this file only.
 
 1. Before implementing a feature or fix, open a GitHub issue (or reuse a matching
    existing one). Include a description, motivation, and acceptance criteria.
-2. Branch from current `origin/main`, named `<type>/<issue>-<short-description>`,
-   e.g. `feat/42-batch-export`. Never commit directly to `main`.
+2. Branch from current `origin/main`. Branch names are not required to follow any
+   convention. Never commit directly to `main`.
 3. Use Conventional Commits for every commit: `type(scope): description`. Types:
    `feat`, `fix`, `perf`, `docs`, `chore`, `refactor`, `test`, `style`, `build`,
    `ci`, `revert`.
