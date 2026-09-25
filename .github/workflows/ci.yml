@@ -5,73 +5,45 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-    types: [opened, synchronize, reopened, edited, ready_for_review]
   workflow_call:
 
 permissions:
   contents: read
 
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v5
-
-      - name: Setup Node
-        uses: actions/setup-node@v6
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Build
-        run: pnpm build
-
-      - name: Type check
-        run: pnpm tsc
-
-      - name: Lint
-        run: pnpm lint
-
-      - name: Test
-        run: pnpm test
-
-      - name: Audit dependencies
-        id: audit
-        continue-on-error: true
-        run: pnpm audit --audit-level=high
-
-      - name: Flag audit findings
-        if: steps.audit.outcome == 'failure'
-        run: echo '::warning::Dependency audit found vulnerabilities or could not reach the registry. Review the audit step.'
-
-  contribution:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
       - uses: actions/checkout@v6
         with:
-          fetch-depth: 0
+          persist-credentials: false
       - uses: pnpm/action-setup@v5
       - uses: actions/setup-node@v6
         with:
           node-version-file: '.nvmrc'
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - name: Validate linked issue
-        run: node scripts/check-pr.mjs
-      - name: Lint PR title
-        env:
-          PR_TITLE: ${{ github.event.pull_request.title }}
-        run: printf '%s\n' "$PR_TITLE" | pnpm exec commitlint
-      - name: Lint feature commits
-        env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        run: pnpm exec commitlint --from "$BASE_SHA" --to "$HEAD_SHA"
+      - run: pnpm build
+      - run: pnpm tsc
+      - run: pnpm lint
+      - name: Check formatting
+        run: pnpm exec oxfmt --check .
+      - run: pnpm test --coverage
+      # --- repository-specific steps (package-content check, size budget, e2e, docs, ...) go here ---
+      - name: Audit dependencies
+        id: audit
+        continue-on-error: true
+        run: pnpm audit --audit-level=high
+      - name: Flag audit findings
+        if: steps.audit.outcome == 'failure'
+        run: echo '::warning::Dependency audit found vulnerabilities or could not reach the registry. Review the audit step.'
+      - uses: codecov/codecov-action@v5
+        if: ${{ !cancelled() && hashFiles('coverage/lcov.info') != '' }}
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage/lcov.info
+          fail_ci_if_error: false

@@ -8,12 +8,12 @@ on:
         type: boolean
         default: false
 
+permissions:
+  contents: read
+
 concurrency:
   group: release
   cancel-in-progress: false
-
-permissions:
-  contents: read
 
 jobs:
   guard:
@@ -24,24 +24,36 @@ jobs:
         run: |
           echo "::error::Release must be dispatched with ref=main (got ${{ github.ref }})."
           exit 1
+
   checks:
     needs: guard
     uses: ./.github/workflows/ci.yml
     secrets: inherit
+
   release:
     needs: [guard, checks]
-    # `checks` reports `skipped` (not `success`) outside pull requests because
-    # ci.yml's `contribution` job is skipped, so the default success() gate would
-    # never let this job run.
-    if: ${{ !cancelled() && needs.guard.result == 'success' && needs.checks.result != 'failure' && needs.checks.result != 'cancelled' }}
     runs-on: ubuntu-latest
+    environment: npm
     permissions:
       contents: write
       id-token: write
+    env:
+      HUSKY: '0'
     steps:
       - uses: actions/checkout@v6
         with:
+          ref: ${{ github.sha }}
           fetch-depth: 0
+          persist-credentials: false
+      - name: Verify main has not advanced since dispatch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          head="$(gh api "repos/${{ github.repository }}/git/ref/heads/main" --jq .object.sha)"
+          if [ "$head" != "$GITHUB_SHA" ]; then
+            echo "::error::main moved from $GITHUB_SHA to $head after dispatch; dispatch the release again."
+            exit 1
+          fi
       - uses: pnpm/action-setup@v5
       - uses: actions/setup-node@v6
         with:
@@ -49,10 +61,12 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
-      - name: Release tag, GitHub Release, and changelog
+      - name: Release
         run: pnpm release ${{ inputs.dry_run && '--dry-run' || '' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+          OVSX_PAT: ${{ secrets.OVSX_PAT }}
       - name: Summary
         if: inputs.dry_run
-        run: echo "Dry run complete — no tag was created, nothing was published." >> "$GITHUB_STEP_SUMMARY"
+        run: echo "Dry run complete; nothing was published and no tag was created." >> "$GITHUB_STEP_SUMMARY"

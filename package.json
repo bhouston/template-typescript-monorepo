@@ -17,7 +17,6 @@
     "clean": "rimraf dist packages/**/dist apps/**/dist apps/**/.nitro apps/**/.tanstack apps/**/.output *.tsbuildinfo packages/**/*.tsbuildinfo apps/**/*.tsbuildinfo",
     "clean:all": "pnpm clean &&rimraf node_modules packages/**/node_modules apps/**/node_modules",
     "format": "oxfmt .",
-    "format:check": "oxfmt --check .",
     "lint": "oxlint .",
     "lint:fix": "oxlint --fix .",
     "tsc": "pnpm -r --filter \"!tan-start-app\" exec tsc --noEmit",
@@ -59,7 +58,7 @@
     "*.{json,jsonc,md,mdx,css,html,yml,yaml}": "oxfmt"
   },
   "engines": {
-    "node": ">=26"
+    "node": ">=22"
   },
   "packageManager": "pnpm@11.27.0"
 }
