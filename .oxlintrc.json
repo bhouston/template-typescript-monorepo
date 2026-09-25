@@ -9,7 +9,9 @@
   "rules": {
     "eslint/no-underscore-dangle": "off",
     "eslint/no-unused-private-class-members": "error",
+    "react/exhaustive-deps": "warn",
     "react/react-in-jsx-scope": "off",
+    "react/rules-of-hooks": "error",
     "typescript/no-explicit-any": "error",
     "unicorn/no-new-array": "error"
   },
