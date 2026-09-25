@@ -22,8 +22,8 @@ allowBuilds:
 link-workspace-packages: true
 
 minimumReleaseAgeExclude:
-  - vitest-command-line@0.9.0
-  - yargs-file-commands@1.2.2
-  - tanstack-router-ga4@1.6.0
-  - fastify-file-router@3.0.0
-  - fastify-http-exceptions@1.3.0
+  - vitest-command-line
+  - yargs-file-commands
+  - tanstack-router-ga4
+  - fastify-file-router
+  - fastify-http-exceptions
