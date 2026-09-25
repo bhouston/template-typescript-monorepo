@@ -1,6 +1,15 @@
 name: ci
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, edited, ready_for_review]
+  workflow_call:
+
+permissions:
+  contents: read
 
 jobs:
   ci:
@@ -11,9 +20,6 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v5
-        with:
-          version: 11.0.8
-          run_install: false
 
       - name: Setup Node
         uses: actions/setup-node@v6
@@ -35,3 +41,37 @@ jobs:
 
       - name: Test
         run: pnpm test
+
+      - name: Audit dependencies
+        id: audit
+        continue-on-error: true
+        run: pnpm audit --audit-level=high
+
+      - name: Flag audit findings
+        if: steps.audit.outcome == 'failure'
+        run: echo '::warning::Dependency audit found vulnerabilities or could not reach the registry. Review the audit step.'
+
+  contribution:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v5
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Validate linked issue
+        run: node scripts/check-pr.mjs
+      - name: Lint PR title
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: printf '%s\n' "$PR_TITLE" | pnpm exec commitlint
+      - name: Lint feature commits
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: pnpm exec commitlint --from "$BASE_SHA" --to "$HEAD_SHA"

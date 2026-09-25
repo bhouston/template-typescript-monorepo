@@ -1,0 +1,29 @@
+name: Feature or change
+description: Describe a feature, fix, or repository improvement.
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What should change?
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Why is this useful? For bugs, include reproduction steps and expected behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: List observable outcomes and how to test them.
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints
+      description: Compatibility, performance, scope, or other requirements.
