@@ -23,9 +23,6 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^21.2.2
         version: 21.2.3
-      '@semantic-release/changelog':
-        specifier: ^7.0.0
-        version: 7.0.0(semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2))
       '@semantic-release/commit-analyzer':
         specifier: ^13.0.1
         version: 13.0.1(semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2))(supports-color@10.2.2)
@@ -1789,12 +1786,6 @@ packages:
 
   '@sec-ant/readable-stream@0.4.1':
     resolution: {integrity: sha512-831qok9r2t8AlxLko40y2ebgSDhenenCatLVeW/uBtnHPyhHOvG0C7TvfgecV+wHzIm5KUICgzmVpWS+IMEAeg==}
-
-  '@semantic-release/changelog@7.0.0':
-    resolution: {integrity: sha512-TNPyag5db24o7jWjre7UwKB4EcL8oJxbRhnDQ7hmZRAYqzreAc6PgdxQuU3pppp5xQinYtiumL0iG8SSKvnlzg==}
-    engines: {node: ^22.22.2 || >=24.15}
-    peerDependencies:
-      semantic-release: '>=20.1.0'
 
   '@semantic-release/commit-analyzer@13.0.1':
     resolution: {integrity: sha512-wdnBPHKkr9HhNhXOhZD5a2LNl91+hs8CC2vsAVYxtZH3y0dV3wKn+uZSN61rdJQZ8EGxzWB3inWocBHV9+u/CQ==}
@@ -7132,13 +7123,6 @@ snapshots:
     optional: true
 
   '@sec-ant/readable-stream@0.4.1': {}
-
-  '@semantic-release/changelog@7.0.0(semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2))':
-    dependencies:
-      '@semantic-release/error': 4.0.0
-      aggregate-error: 5.0.0
-      lodash-es: 4.18.1
-      semantic-release: 25.0.9(supports-color@10.2.2)(typescript@7.0.2)
 
   '@semantic-release/commit-analyzer@13.0.1(semantic-release@25.0.9(supports-color@10.2.2)(typescript@7.0.2))(supports-color@10.2.2)':
     dependencies:
