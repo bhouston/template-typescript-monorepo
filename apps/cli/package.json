@@ -13,6 +13,7 @@
   "dependencies": {
     "@bhouston/common-lib": "workspace:*",
     "@bhouston/sdk": "workspace:*",
+    "@clidoc/yargs": "^0.1.1",
     "axios": "^1.13.2",
     "type-fest": "^4.31.0",
     "yargs": "^18.0.0",
