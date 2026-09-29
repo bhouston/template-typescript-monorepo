@@ -1,5 +1,6 @@
 import { execSync } from 'node:child_process';
-import { existsSync } from 'node:fs';
+import { existsSync, mkdtempSync, readFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import path from 'node:path';
 import process from 'node:process';
 import { fileURLToPath } from 'node:url';
@@ -49,5 +50,22 @@ describe('CLI', () => {
     });
     expect(result.exitCode).toBe(1);
     expect(result.stderr).toMatch(/Health check failed|ECONNREFUSED|fetch failed/i);
+  });
+
+  it('docgen prints an OpenCLI document covering nested commands', async () => {
+    const result = await cli.run(['docgen'], { timeout: 5_000 });
+    expect(result).toSucceed();
+    const document = JSON.parse(result.stdout);
+    expect(document.info).toMatchObject({ binary: 'cli', title: 'cli' });
+    expect(Object.keys(document.commands)).toEqual(
+      expect.arrayContaining(['cli hello', 'cli docgen', 'cli users get', 'cli users list', 'cli studio start']),
+    );
+  });
+
+  it('docgen writes markdown to --output', async () => {
+    const output = path.join(mkdtempSync(path.join(tmpdir(), 'cli-docgen-')), 'reference.md');
+    const result = await cli.run(['docgen', '--format', 'markdown', '-o', output], { timeout: 5_000 });
+    expect(result).toSucceed();
+    expect(readFileSync(output, 'utf8')).toMatch(/## cli users list/);
   });
 });

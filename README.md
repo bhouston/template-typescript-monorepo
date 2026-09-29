@@ -143,6 +143,7 @@ This starts the app dev server, runs the e2e suite in a real browser (Chromium),
    - `pnpm cli hello --name "World"` - Call hello endpoint
    - `pnpm cli users list` - List users
    - `pnpm cli users get <userName>` - Get user details
+   - `pnpm cli docgen --format markdown` - Generate an [OpenCLI](https://clidoc.dev) reference for the CLI (via [@clidoc/yargs](https://www.npmjs.com/package/@clidoc/yargs))
 
 ### Monorepo Structure
 

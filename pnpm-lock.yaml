@@ -135,6 +135,9 @@ importers:
       '@bhouston/sdk':
         specifier: workspace:*
         version: link:../../packages/sdk
+      '@clidoc/yargs':
+        specifier: ^0.1.1
+        version: 0.1.1
       axios:
         specifier: ^1.13.2
         version: 1.13.2(debug@4.4.3(supports-color@10.2.2))
@@ -457,6 +460,14 @@ packages:
 
   '@blazediff/core@1.10.0':
     resolution: {integrity: sha512-AOQff0zgR7cGsZL+4E7hVkmujoPUpm0J9xzWGWZj5wCjd3gmxESXAPfKyuzs93VdpQNFhHlBhfOjrcZ+XTERtQ==}
+
+  '@clidoc/core@1.0.0':
+    resolution: {integrity: sha512-oyUkkXQ7VNRO7fXXn388oYe77jE+rVZE8MVhXcZb3C9VlDwAlTx/EUTk1QjQMrnd7ecJxuryb/E3qsq8gLcqAQ==}
+    engines: {node: '>=22.12.0'}
+
+  '@clidoc/yargs@0.1.1':
+    resolution: {integrity: sha512-HrJkUOIQKzjcPA6WOPLs8vBy8wu8xcHV9G56PAJpRscP3vUIz9iop1QtQUmOB8XJ/6G6/g7CzQTWVcAXlFF85w==}
+    engines: {node: '>=22.12.0'}
 
   '@cloudflare/kv-asset-handler@0.4.2':
     resolution: {integrity: sha512-SIOD2DxrRRwQ+jgzlXCqoEFiKOFqaPjhnNTGKXSRLvp1HiOvapLaFG2kEr9dYQTYe8rKrd9uvDUzmAITeNyaHQ==}
@@ -4561,10 +4572,6 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
 
-  picomatch@4.0.4:
-    resolution: {integrity: sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==}
-    engines: {node: '>=12'}
-
   picomatch@4.0.7:
     resolution: {integrity: sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==}
     engines: {node: '>=12'}
@@ -6126,6 +6133,16 @@ snapshots:
 
   '@blazediff/core@1.10.0': {}
 
+  '@clidoc/core@1.0.0':
+    dependencies:
+      ajv: 8.17.1
+      ajv-formats: 3.0.1(ajv@8.17.1)
+      yaml: 2.9.1
+
+  '@clidoc/yargs@0.1.1':
+    dependencies:
+      '@clidoc/core': 1.0.0
+
   '@cloudflare/kv-asset-handler@0.4.2': {}
 
   '@colors/colors@1.5.0':
@@ -6573,7 +6590,7 @@ snapshots:
 
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
-      '@jridgewell/sourcemap-codec': 1.5.5
+      '@jridgewell/sourcemap-codec': 1.6.0
       '@jridgewell/trace-mapping': 0.3.31
 
   '@jridgewell/remapping@2.3.5':
@@ -6595,7 +6612,7 @@ snapshots:
   '@jridgewell/trace-mapping@0.3.31':
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
-      '@jridgewell/sourcemap-codec': 1.5.5
+      '@jridgewell/sourcemap-codec': 1.6.0
 
   '@mapbox/node-pre-gyp@2.0.3(supports-color@10.2.2)':
     dependencies:
@@ -8787,10 +8804,6 @@ snapshots:
     dependencies:
       reusify: 1.1.0
 
-  fdir@6.5.0(picomatch@4.0.4):
-    optionalDependencies:
-      picomatch: 4.0.4
-
   fdir@6.5.0(picomatch@4.0.7):
     optionalDependencies:
       picomatch: 4.0.7
@@ -9371,7 +9384,7 @@ snapshots:
       whatwg-encoding: 3.1.1
       whatwg-mimetype: 4.0.0
       whatwg-url: 14.2.0
-      ws: 8.19.0
+      ws: 8.21.3
       xml-name-validator: 5.0.0
     transitivePeerDependencies:
       - bufferutil
@@ -10089,8 +10102,6 @@ snapshots:
 
   picomatch@2.3.1: {}
 
-  picomatch@4.0.4: {}
-
   picomatch@4.0.7: {}
 
   pify@2.3.0: {}
@@ -10179,7 +10190,7 @@ snapshots:
   postcss-load-config@4.0.2(postcss@8.5.6):
     dependencies:
       lilconfig: 3.1.3
-      yaml: 2.8.2
+      yaml: 2.9.1
     optionalDependencies:
       postcss: 8.5.6
 
@@ -10970,8 +10981,8 @@ snapshots:
 
   tinyglobby@0.2.17:
     dependencies:
-      fdir: 6.5.0(picomatch@4.0.4)
-      picomatch: 4.0.4
+      fdir: 6.5.0(picomatch@4.0.7)
+      picomatch: 4.0.7
 
   tinypool@2.1.0: {}
 
@@ -11486,8 +11497,7 @@ snapshots:
 
   yaml@2.8.2: {}
 
-  yaml@2.9.1:
-    optional: true
+  yaml@2.9.1: {}
 
   yargs-file-commands@1.2.2(yargs@18.0.0):
     dependencies:
