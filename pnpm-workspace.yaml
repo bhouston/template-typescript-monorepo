@@ -28,3 +28,5 @@ minimumReleaseAgeExclude:
   - tanstack-router-ga4
   - fastify-file-router
   - fastify-http-exceptions
+  - '@clidoc/core@1.1.0'
+  - '@clidoc/yargs@1.1.0'

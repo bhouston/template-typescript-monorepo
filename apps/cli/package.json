@@ -13,11 +13,11 @@
   "dependencies": {
     "@bhouston/common-lib": "workspace:*",
     "@bhouston/sdk": "workspace:*",
-    "@clidoc/yargs": "^0.1.1",
+    "@clidoc/yargs": "^1.1.0",
     "axios": "^1.13.2",
     "type-fest": "^4.31.0",
     "yargs": "^18.0.0",
-    "yargs-file-commands": "^1.2.2"
+    "yargs-file-commands": "^2.1.0"
   },
   "devDependencies": {
     "@types/yargs": "^17.0.35",
