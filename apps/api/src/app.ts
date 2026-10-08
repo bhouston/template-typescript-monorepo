@@ -11,7 +11,7 @@ import { registerFileRoutes } from './lib/fileRouter.js';
 dotenvConfig();
 
 const app = new OpenAPIHono({
-  // Return 400 JSON for schema validation failures (Fastify did this by default).
+  // Return 400 JSON for schema validation failures (Hono's default is a bare 400).
   defaultHook: (result, c) => {
     if (!result.success) {
       return c.json({ error: 'Bad Request', issues: result.error.issues }, 400);

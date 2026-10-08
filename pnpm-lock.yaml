@@ -5,7 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  fastify-file-router>zod: ^4
   '@bhouston/sdk>zod': ^4
   conventional-changelog-conventionalcommits: 9.3.1
 

@@ -4,7 +4,7 @@ import { pathToFileURL } from 'node:url';
 
 import type { OpenAPIHono, RouteConfig, RouteHandler } from '@hono/zod-openapi';
 
-// Same conventions as fastify-file-router (remix style): `api/users/$id/get.ts` -> GET /api/users/{id},
+// Remix-style file conventions: `api/users/$id/get.ts` -> GET /api/users/{id},
 // `files/$.get.ts` -> splat, `(group)` directories are dropped, `_`/`.`-prefixed and test files are ignored.
 const methods = new Set(['delete', 'get', 'head', 'patch', 'post', 'put']);
 const extensions = new Set(['.js', '.ts']);

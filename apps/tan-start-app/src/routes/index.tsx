@@ -41,9 +41,9 @@ const HomePage: React.FC = () => {
         {isHealthLoading ? (
           <p className="text-gray-500">Checking API health...</p>
         ) : isHealthError ? (
-          <p className="text-red-500">Fastify API is NOT healthy</p>
+          <p className="text-red-500">API is NOT healthy</p>
         ) : (
-          <p className="text-green-500">Fastify API is healthy</p>
+          <p className="text-green-500">API is healthy</p>
         )}
         {isHelloLoading ? (
           <p className="text-gray-500 mt-2">Loading hello message...</p>
