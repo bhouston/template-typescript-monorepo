@@ -24,6 +24,7 @@ It is what @bhouston considers best practice in November 2025.
 - CLI via @yargs + file structure defined commands (via [yargs-file-commands](https://www.npmjs.com/package/yargs-file-commands))
 - REST API via [Hono](https://hono.dev) + [@hono/zod-openapi](https://www.npmjs.com/package/@hono/zod-openapi) with file structure defined routes and a generated `/openapi.json`
 - @TanStack/start for router, SSR, server API
+- Hono for server with file-based router
 - Hot reload of React
 - Auto service restart for the web server
 - Oxlint for linting and Oxfmt for code formatting
