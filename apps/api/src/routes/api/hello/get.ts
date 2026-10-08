@@ -1,22 +1,20 @@
 import { helloQuerySchema, helloResultSchema } from '@bhouston/sdk';
-import { defineRouteZod } from 'fastify-file-router';
+import { createRoute, type RouteHandler } from '@hono/zod-openapi';
 
-export const route = defineRouteZod({
-  schema: {
-    description: 'Hello endpoint with optional name parameter',
-    tags: ['utility'],
-    operationId: 'hello',
-    summary: 'Hello',
-    querystring: helloQuerySchema,
-    response: {
-      200: helloResultSchema,
-    },
-  },
-  handler: async (request, reply) => {
-    const query = request.query as { name?: string } | undefined;
-    const name = query?.name || 'World';
-    return reply.status(200).send({
-      message: `Hello, ${name}!`,
-    });
+export const route = createRoute({
+  method: 'get',
+  path: '/api/hello',
+  description: 'Hello endpoint with optional name parameter',
+  tags: ['utility'],
+  operationId: 'hello',
+  summary: 'Hello',
+  request: { query: helloQuerySchema },
+  responses: {
+    200: { description: 'Greeting', content: { 'application/json': { schema: helloResultSchema } } },
   },
 });
+
+export const handler: RouteHandler<typeof route> = (c) => {
+  const { name = 'World' } = c.req.valid('query');
+  return c.json({ message: `Hello, ${name}!` }, 200);
+};

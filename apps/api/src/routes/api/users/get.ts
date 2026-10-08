@@ -1,23 +1,18 @@
 import { listUsersQuerySchema, listUsersResultSchema } from '@bhouston/sdk';
-import { defineRouteZod } from 'fastify-file-router';
+import { createRoute, type RouteHandler } from '@hono/zod-openapi';
 
-export const route = defineRouteZod({
-  schema: {
-    description: 'List users with optional search and pagination',
-    tags: ['users'],
-    operationId: 'list-users',
-    summary: 'List users',
-    querystring: listUsersQuerySchema,
-    response: {
-      200: listUsersResultSchema,
-    },
-  },
-  handler: async (_request, reply) => {
-    // TODO: Implement actual user listing logic
-    // For now, return empty list
-    return reply.status(200).send({
-      rows: [],
-      rowCount: 0,
-    });
+export const route = createRoute({
+  method: 'get',
+  path: '/api/users',
+  description: 'List users with optional search and pagination',
+  tags: ['users'],
+  operationId: 'list-users',
+  summary: 'List users',
+  request: { query: listUsersQuerySchema },
+  responses: {
+    200: { description: 'Users', content: { 'application/json': { schema: listUsersResultSchema } } },
   },
 });
+
+// TODO: Implement actual user listing logic
+export const handler: RouteHandler<typeof route> = (c) => c.json({ rows: [], rowCount: 0 }, 200);

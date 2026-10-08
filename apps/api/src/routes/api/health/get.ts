@@ -1,17 +1,15 @@
-import { healthCheckResultSchema } from '@bhouston/sdk';
-import { defineRouteZod } from 'fastify-file-router';
+import { createRoute, type RouteHandler } from '@hono/zod-openapi';
 
-export const route = defineRouteZod({
-  schema: {
-    description: 'Health Check',
-    tags: ['utility'],
-    operationId: 'health',
-    summary: 'Health Check',
-    response: {
-      204: healthCheckResultSchema,
-    },
-  },
-  handler: async (_request, reply) => {
-    await reply.status(204).send();
+export const route = createRoute({
+  method: 'get',
+  path: '/api/health',
+  description: 'Health Check',
+  tags: ['utility'],
+  operationId: 'health',
+  summary: 'Health Check',
+  responses: {
+    204: { description: 'Successful health check response' },
   },
 });
+
+export const handler: RouteHandler<typeof route> = (c) => c.body(null, 204);

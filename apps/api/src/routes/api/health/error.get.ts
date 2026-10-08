@@ -1,17 +1,17 @@
-import { defineRouteZod } from 'fastify-file-router';
-import { z } from 'zod';
+import { createRoute, type RouteHandler } from '@hono/zod-openapi';
 
-export const route = defineRouteZod({
-  schema: {
-    description: 'Throw Error',
-    tags: ['utility'],
-    operationId: 'health-error',
-    summary: 'Throw Test Error',
-    response: {
-      204: z.null().describe('Successful response'),
-    },
-  },
-  handler: async (_request, _reply) => {
-    throw new Error('Test Error');
+export const route = createRoute({
+  method: 'get',
+  path: '/api/health/error',
+  description: 'Throw Error',
+  tags: ['utility'],
+  operationId: 'health-error',
+  summary: 'Throw Test Error',
+  responses: {
+    204: { description: 'Successful response' },
   },
 });
+
+export const handler: RouteHandler<typeof route> = () => {
+  throw new Error('Test Error');
+};
