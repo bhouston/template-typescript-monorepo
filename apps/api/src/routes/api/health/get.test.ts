@@ -25,6 +25,19 @@ describe('API', () => {
     expect(res.status).toBe(500);
   });
 
+  it('sends CORS headers on success, error, and preflight responses', async () => {
+    for (const path of ['/api/hello', '/api/health/error', '/api/users/bad--name', '/nope']) {
+      expect((await app.request(path)).headers.get('access-control-allow-origin')).toBe('*');
+    }
+    const preflight = await app.request('/api/hello', {
+      method: 'OPTIONS',
+      headers: { 'Access-Control-Request-Headers': 'x-foo' },
+    });
+    expect(preflight.status).toBe(204);
+    expect(preflight.headers.get('access-control-allow-headers')).toBe('x-foo');
+    expect(preflight.headers.get('access-control-allow-methods')).toContain('PATCH');
+  });
+
   it('serves OpenAPI generated from SDK schemas', async () => {
     const doc = (await (await app.request('/openapi.json')).json()) as {
       paths: Record<string, { get: { parameters: { name: string }[] } }>;
