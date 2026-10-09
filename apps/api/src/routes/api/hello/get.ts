@@ -1,22 +1,20 @@
 import { helloQuerySchema, helloResultSchema } from '@bhouston/sdk';
-import { defineRouteZod } from 'fastify-file-router';
+import { defineRoute } from '../../../lib/fileRouter.js';
 
-export const route = defineRouteZod({
+export const route = defineRoute({
   schema: {
     description: 'Hello endpoint with optional name parameter',
     tags: ['utility'],
     operationId: 'hello',
     summary: 'Hello',
-    querystring: helloQuerySchema,
-    response: {
-      200: helloResultSchema,
+    request: { query: helloQuerySchema },
+    responses: {
+      200: { description: 'Greeting', content: { 'application/json': { schema: helloResultSchema } } },
     },
   },
-  handler: async (request, reply) => {
-    const query = request.query as { name?: string } | undefined;
-    const name = query?.name || 'World';
-    return reply.status(200).send({
-      message: `Hello, ${name}!`,
-    });
+
+  handler: (c) => {
+    const { name = 'World' } = c.req.valid('query');
+    return c.json({ message: `Hello, ${name}!` }, 200);
   },
 });

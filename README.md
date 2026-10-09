@@ -22,9 +22,9 @@ It is what @bhouston considers best practice in November 2025.
 - Vite for Bundling, CSS Handling, Live Reloading
 - SDK defining schema and functions for calling REST API methods
 - CLI via @yargs + file structure defined commands (via [yargs-file-commands](https://www.npmjs.com/package/yargs-file-commands))
-- REST API via @fastify + file structure defined routes (via [fastify-file-router](https://www.npmjs.com/package/fastify-file-router))
+- REST API via [Hono](https://hono.dev) + [@hono/zod-openapi](https://www.npmjs.com/package/@hono/zod-openapi) with file structure defined routes and a generated `/openapi.json`
 - @TanStack/start for router, SSR, server API
-- Fastify for server with file-based router
+- Hono for server with file-based router
 - Hot reload of React
 - Auto service restart for the web server
 - Oxlint for linting and Oxfmt for code formatting
@@ -55,15 +55,15 @@ This monorepo uses a **shared SDK package** (`packages/sdk`) that provides a sin
    - Response types
    - Validation rules
 
-2. **Fastify API Uses SDK Schemas**: The Fastify API (`apps/api`) imports schemas from the SDK and uses them for route validation:
+2. **Hono API Uses SDK Schemas**: The Hono API (`apps/api`) imports schemas from the SDK and uses them for route validation. Routes are discovered from the file system, so `routes/api/users/$userName/get.ts` serves `GET /api/users/{userName}`:
 
    ```typescript
    import { getUserParamsSchema, userSchema } from '@bhouston/sdk';
 
-   export const route = defineRouteZod({
+   export const route = defineRoute({
      schema: {
-       params: getUserParamsSchema,
-       response: { 200: userSchema },
+       request: { params: getUserParamsSchema },
+       responses: { 200: { description: 'User', content: { 'application/json': { schema: userSchema } } } },
      },
      // ...
    });
@@ -137,7 +137,7 @@ This starts the app dev server, runs the e2e suite in a real browser (Chromium),
 ### Command Line
 
 1. Run `pnpm cli` to run the CLI example
-2. The CLI uses SDK functions to interact with the Fastify API
+2. The CLI uses SDK functions to interact with the Hono API
 3. Example commands:
    - `pnpm cli health` - Check API health
    - `pnpm cli hello --name "World"` - Call hello endpoint
@@ -151,7 +151,7 @@ This starts the app dev server, runs the e2e suite in a real browser (Chromium),
 - `packages/common-lib/` - Shared utilities and helpers
 - `packages/node-lib/` - Node.js-specific utilities
 - `packages/react-lib/` - React components and hooks
-- `apps/api/` - Fastify REST API server (uses SDK schemas for validation)
+- `apps/api/` - Hono REST API server (uses SDK schemas for validation)
 - `apps/cli/` - Command-line interface (uses SDK functions)
 - `apps/tan-start-app/` - TanStack Start React app (uses SDK functions)
 

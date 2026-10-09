@@ -1,17 +1,17 @@
-import { defineRouteZod } from 'fastify-file-router';
-import { z } from 'zod';
+import { defineRoute } from '../../../lib/fileRouter.js';
 
-export const route = defineRouteZod({
+export const route = defineRoute({
   schema: {
     description: 'Throw Error',
     tags: ['utility'],
     operationId: 'health-error',
     summary: 'Throw Test Error',
-    response: {
-      204: z.null().describe('Successful response'),
+    responses: {
+      204: { description: 'Successful response' },
     },
   },
-  handler: async (_request, _reply) => {
+
+  handler: () => {
     throw new Error('Test Error');
   },
 });
