@@ -46,7 +46,7 @@
     "oxlint": "^1.90.0",
     "oxlint-tsgolint": "^7.0.2005",
     "semantic-release": "^25.0.9",
-    "typescript": "^7.0.2",
+    "typescript": "7.1.0-beta",
     "vinxi": "^0.5.11",
     "vitest": "^5.0.5"
   },
