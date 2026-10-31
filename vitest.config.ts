@@ -2,6 +2,7 @@ import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
+    fsModuleCache: true,
     projects: [
       'packages/*',
       'apps/*',
@@ -9,6 +10,7 @@ export default defineConfig({
         test: {
           include: ['{app,src}/**/*.test.*'],
           environment: 'node',
+          fsModuleCache: true,
         },
       },
     ],
