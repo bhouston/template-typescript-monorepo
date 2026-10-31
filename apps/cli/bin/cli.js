@@ -3,4 +3,4 @@ import 'source-map-support/register.js'; // required for cross platform source m
 
 import { main } from '../dist/index.js';
 
-main();
+void main();
