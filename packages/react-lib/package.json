@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "@bhouston/common-lib": "workspace:*",
-    "react": "^18.3.1"
+    "react": "^19.3.1"
   },
   "devDependencies": {
-    "@types/react": "^18.3.31",
+    "@types/react": "^19.3.0",
     "autoprefixer": "^10.6.2",
     "postcss": "^8.5.32",
     "postcss-cli": "^10.1.0",
