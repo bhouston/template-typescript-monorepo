@@ -37,7 +37,7 @@
     "@semantic-release/commit-analyzer": "^13.0.1",
     "@semantic-release/github": "^12.0.10",
     "@semantic-release/release-notes-generator": "^14.1.1",
-    "@types/node": "^24.19.2",
+    "@types/node": "^22.20.5",
     "@vitest/coverage-v8": "^5.0.5",
     "conventional-changelog-conventionalcommits": "9.3.1",
     "husky": "^9.1.7",
