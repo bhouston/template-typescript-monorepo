@@ -17,7 +17,7 @@ export function DefaultCatchBoundary({ error }: ErrorComponentProps) {
         <button
           className={`px-2 py-1 bg-gray-600 rounded-sm text-white uppercase font-extrabold`}
           onClick={() => {
-            router.invalidate();
+            void router.invalidate();
           }}
           type="button"
         >

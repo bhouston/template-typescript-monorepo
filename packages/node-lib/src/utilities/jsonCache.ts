@@ -63,7 +63,10 @@ export async function internalJsonCache(
     const createJson = await creator();
     const creatorString = JSON.stringify(createJson);
 
-    file.save(creatorString, { contentType: 'application/json' });
+    // Fire and forget: a failed cache write must not fail the request.
+    file.save(creatorString, { contentType: 'application/json' }).catch((error: unknown) => {
+      console.error(`${prefix} cache save failed`, error);
+    });
 
     console.log(`${prefix} creator FETCH ${Date.now() - currentTimestamp} ms`);
 
