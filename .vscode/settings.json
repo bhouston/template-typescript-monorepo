@@ -1,17 +1,26 @@
 {
   "editor.rulers": [120],
-  "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
   "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.formatOnPaste": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.oxc": "explicit",
-    "source.format.oxc": "always"
-  },
-  "editor.codeActionsOnPaste": {
     "source.fixAll.oxc": "explicit"
   },
-  "workbench.editor.enablePreview": false,
-  "oxc.typeAware": true,
   "oxc.useExecPath": true,
-  "editor.formatOnSaveMode": "file"
+  "js/ts.experimental.useTsgo": true,
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "workbench.editor.enablePreview": false,
+  "files.readonlyInclude": {
+    "**/routeTree.gen.ts": true
+  },
+  "files.watcherExclude": {
+    "**/routeTree.gen.ts": true
+  },
+  "search.exclude": {
+    "**/routeTree.gen.ts": true
+  }
 }

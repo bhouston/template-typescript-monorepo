@@ -1,8 +1,10 @@
 {
   "recommendations": [
-    "vitest.explorer",
     "oxc.oxc-vscode",
+    "typescriptteam.native-preview",
+    "vitest.explorer",
     "github.vscode-github-actions",
-    "typescriptteam.native-preview"
-  ]
+    "bradlc.vscode-tailwindcss"
+  ],
+  "unwantedRecommendations": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint", "biomejs.biome"]
 }
