@@ -20,5 +20,8 @@
       "files": ["**/*.test.ts", "**/*.test.tsx", "**/*.spec.ts", "**/*.spec.tsx", "**/test/**", "**/tests/**"],
       "plugins": ["eslint", "typescript", "oxc", "unicorn", "react", "jsx-a11y", "vitest"]
     }
-  ]
+  ],
+  "options": {
+    "typeAware": true
+  }
 }
