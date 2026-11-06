@@ -170,6 +170,10 @@ This starts the app dev server, runs the e2e suite in a real browser (Chromium),
 - `apps/cli/` - Command-line interface (uses SDK functions)
 - `apps/tan-start-app/` - TanStack Start React app (uses SDK functions)
 
+## Releases
+
+See [RELEASING.md](RELEASING.md) for how releases are published and [GitHub Releases](https://github.com/bhouston/template-typescript-monorepo/releases) for changes.
+
 ## Contribution
 
 See [Contributing Guide](CONTRIBUTING.md).
