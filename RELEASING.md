@@ -34,15 +34,7 @@ Everything this repository publishes shares one version. `package.json` versions
 
 ## One-Time Setup
 
-1. On npmjs.com, open each package's Trusted Publisher settings, choose GitHub Actions, and enter:
-
-   | Field                | Value         |
-   | -------------------- | ------------- |
-   | Organization or user | `bhouston`    |
-   | Repository           | `template-typescript-monorepo`    |
-   | Workflow filename    | `release.yml` |
-   | Environment name     | `npm`         |
-
+1. On npmjs.com, open each package's Trusted Publisher settings, choose GitHub Actions, and enter organization or user `bhouston`, repository `template-typescript-monorepo`, workflow filename `release.yml`, and environment name `npm`.
 2. Protect `main`: require pull requests and the CI checks, allow merge commits, and block force pushes and deletion.
 3. If the repository uploads coverage to Codecov, add the `CODECOV_TOKEN` repository secret.
 
