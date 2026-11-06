@@ -54,6 +54,8 @@ The Release workflow refuses any ref other than `main`, re-runs CI on the dispat
 
 When there are no release-worthy commits, the run is a no-op. Never bump versions, edit changelogs, or push release tags by hand.
 
+See [RELEASING.md](RELEASING.md) for release setup, recovery, and repository specifics.
+
 ## Security
 
 Report vulnerabilities privately through GitHub's private vulnerability reporting (see `SECURITY.md` where present), never in a public issue.
