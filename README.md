@@ -1,4 +1,19 @@
+<p align="center">
+  <a href="https://codecov.io/gh/bhouston/template-typescript-monorepo"><img src="https://codecov.io/gh/bhouston/template-typescript-monorepo/branch/main/graph/badge.svg" alt="coverage"></a>
+  <a href="https://discord.gg/fwupDN493R"><img src="https://img.shields.io/badge/chat-discord-blue?style=flat&logo=discord" alt="discord chat"></a>
+</p>
+<br/>
+
 # TypeScript + Cli + Rest API + React App Mono Repository
+
+> A pnpm monorepo template with a typed SDK shared by API, CLI and React app.
+
+- 🧱 pnpm Workspaces Monorepo
+- 🔗 Shared Zod SDK
+- 🌐 Fastify File-Routed API
+- ⌨️ Yargs File-Routed CLI
+- ⚛️ TanStack Start React App
+- ✅ Vitest, Oxlint and Oxfmt
 
 This is a template for a monorepo that uses best practices for TypeScript, Web Services and React.
 
@@ -155,11 +170,14 @@ This starts the app dev server, runs the e2e suite in a real browser (Chromium),
 - `apps/cli/` - Command-line interface (uses SDK functions)
 - `apps/tan-start-app/` - TanStack Start React app (uses SDK functions)
 
-## Contributing
+## Contribution
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the issue → branch → PR workflow, commit
-conventions, and local checks.
+See [Contributing Guide](CONTRIBUTING.md).
+
+## License
+
+MIT
 
 ## Author
 
-[Ben Houston](https://ben3d.ca), Sponsored by [Land of Assets](https://landofassets.com)
+[Ben Houston](https://ben3d.ca), Sponsored by [Land of Assets](https://landofassets.com).
